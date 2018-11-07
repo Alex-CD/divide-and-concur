@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+project(DAC)
+include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(${PROJECT_SOURCE_DIR}/tests)
+add_executable(dac src/main.cpp)

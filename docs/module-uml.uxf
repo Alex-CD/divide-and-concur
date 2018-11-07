@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>110</x>
-      <y>80</y>
+      <x>170</x>
+      <y>60</y>
       <w>1390</w>
       <h>680</h>
     </coordinates>
@@ -15,12 +15,13 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>650</y>
+      <x>240</x>
+      <y>630</y>
       <w>230</w>
       <h>90</h>
     </coordinates>
-    <panel_attributes>Main.cpp
+    <panel_attributes>&lt;&lt;singleton&gt;&gt;
+Main.cpp
 --
 Instantiates games, and persists.</panel_attributes>
     <additional_attributes/>
@@ -28,8 +29,8 @@ Instantiates games, and persists.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>730</y>
+      <x>330</x>
+      <y>710</y>
       <w>100</w>
       <h>110</h>
     </coordinates>
@@ -40,8 +41,8 @@ Instantiates games, and persists.</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
-      <y>440</y>
+      <x>680</x>
+      <y>420</y>
       <w>220</w>
       <h>260</h>
     </coordinates>
@@ -63,8 +64,8 @@ core.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>580</y>
+      <x>330</x>
+      <y>560</y>
       <w>150</w>
       <h>90</h>
     </coordinates>
@@ -75,8 +76,8 @@ Instantiates games</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
-      <y>460</y>
+      <x>230</x>
+      <y>440</y>
       <w>220</w>
       <h>110</h>
     </coordinates>
@@ -88,8 +89,8 @@ Instantiates games</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
-      <y>330</y>
+      <x>230</x>
+      <y>310</y>
       <w>220</w>
       <h>110</h>
     </coordinates>
@@ -102,8 +103,8 @@ Instantiates games</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>380</x>
-      <y>410</y>
+      <x>440</x>
+      <y>390</y>
       <w>260</w>
       <h>100</h>
     </coordinates>
@@ -114,8 +115,8 @@ Extends</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>380</x>
-      <y>530</y>
+      <x>440</x>
+      <y>510</y>
       <w>260</w>
       <h>40</h>
     </coordinates>
@@ -126,8 +127,8 @@ Extends</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>870</x>
-      <y>260</y>
+      <x>930</x>
+      <y>240</y>
       <w>150</w>
       <h>90</h>
     </coordinates>
@@ -140,8 +141,8 @@ renderer.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>870</x>
-      <y>120</y>
+      <x>930</x>
+      <y>100</y>
       <w>150</w>
       <h>130</h>
     </coordinates>
@@ -158,8 +159,8 @@ gameLogic.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>510</x>
-      <y>250</y>
+      <x>570</x>
+      <y>230</y>
       <w>150</w>
       <h>90</h>
     </coordinates>
@@ -172,8 +173,8 @@ audio.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>340</y>
+      <x>880</x>
+      <y>320</y>
       <w>90</w>
       <h>120</h>
     </coordinates>
@@ -183,8 +184,8 @@ audio.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>330</y>
+      <x>630</x>
+      <y>310</y>
       <w>90</w>
       <h>130</h>
     </coordinates>
@@ -195,8 +196,8 @@ audio.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
-      <y>150</y>
+      <x>890</x>
+      <y>130</y>
       <w>270</w>
       <h>330</h>
     </coordinates>
@@ -207,8 +208,8 @@ audio.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>140</x>
-      <y>270</y>
+      <x>200</x>
+      <y>250</y>
       <w>280</w>
       <h>320</h>
     </coordinates>
@@ -218,8 +219,8 @@ audio.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>930</x>
-      <y>580</y>
+      <x>990</x>
+      <y>560</y>
       <w>130</w>
       <h>110</h>
     </coordinates>
@@ -236,8 +237,8 @@ sceneObject.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
-      <y>590</y>
+      <x>890</x>
+      <y>570</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -248,8 +249,8 @@ sceneObject.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>670</x>
-      <y>250</y>
+      <x>730</x>
+      <y>230</y>
       <w>150</w>
       <h>90</h>
     </coordinates>
@@ -262,8 +263,8 @@ network.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1170</x>
-      <y>460</y>
+      <x>1230</x>
+      <y>440</y>
       <w>130</w>
       <h>110</h>
     </coordinates>
@@ -275,8 +276,8 @@ network.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>930</x>
-      <y>460</y>
+      <x>990</x>
+      <y>440</y>
       <w>130</w>
       <h>110</h>
     </coordinates>
@@ -290,8 +291,8 @@ gameObject.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
-      <y>510</y>
+      <x>890</x>
+      <y>490</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -302,8 +303,8 @@ gameObject.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>680</x>
-      <y>330</y>
+      <x>740</x>
+      <y>310</y>
       <w>30</w>
       <h>130</h>
     </coordinates>
@@ -314,8 +315,8 @@ gameObject.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>510</y>
+      <x>1110</x>
+      <y>490</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
@@ -326,8 +327,8 @@ Extends</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1150</x>
-      <y>420</y>
+      <x>1210</x>
+      <y>400</y>
       <w>170</w>
       <h>170</h>
     </coordinates>
