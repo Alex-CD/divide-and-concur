@@ -70,8 +70,9 @@
 # .idea/*.iml
 # .idea/modules
 
-# CMake
-cmake-build-*/
+# Build path
+build/
+
 
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
