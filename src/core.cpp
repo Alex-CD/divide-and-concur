@@ -3,3 +3,12 @@
 //
 
 #include "core.h"
+#include <pthread.h>
+
+
+void start(){
+
+}
+
+
+
