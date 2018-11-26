@@ -7,5 +7,7 @@
 #include "catch2.h"
 
 //Including other test classes
-#include "main-tests.cpp"
-#include "core-tests.cpp"
+#include "MainTests.cpp"
+#include "CoreTests.cpp"
+#include "RendererTests.cpp"
+#include "gameLogicTests.cpp"

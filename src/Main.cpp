@@ -6,8 +6,7 @@
 #include <string>
 #include <iostream>
 #include <thread>
-#include <core.h>
-
+#include <Core.h>
 
 using namespace std;
 
@@ -15,10 +14,9 @@ int main() {
   cout << "Welcome to divide and concur, a concurrency-based gamelogic environment for the modern era.";
   cout << "Please select a gamelogic to play";
 
-  int max_games = 5;
+  int max_games = 10;
   int current_games = 0;
   string keepPlaying;
-
 
   thread games[max_games];
 
@@ -26,7 +24,7 @@ int main() {
   while(keepPlaying == "y"){
 
     if(current_games <= max_games){
-      games[current_games + 1] = thread()
+      games[current_games + 1] = thread();
     }
 
     cin >> keepPlaying;
