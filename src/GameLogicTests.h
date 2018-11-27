@@ -5,7 +5,7 @@
 #ifndef DAC_GAMELOGIC_H
 #define DAC_GAMELOGIC_H
 
-class gameLogic {
+class GameLogic {
 
 };
 

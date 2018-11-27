@@ -5,4 +5,6 @@
 #ifndef DAC_AUDIOHANDLER_H
 #define DAC_AUDIOHANDLER_H
 
+class AudioHandler{};
+
 #endif //DAC_AUDIOHANDLER_H

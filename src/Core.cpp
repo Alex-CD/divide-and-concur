@@ -6,22 +6,33 @@
 #include <string>
 #include <iostream>
 #include <thread>
-#include <Core.h>
+#include "Core.h"
 
 
 
 
 Core::Core(){
-  isTerminated = false;
-  initialise();
+  isTerminating = false;
+  state = 0;
 }
 
 int Core::initialise() {
-  /* create new threads
-   * then terminate method */
+  // Instantiate components
+  renderer = Renderer(&isTerminating);
+
+  // Initialise components
+  state += renderer.initalise();
+
+  return state;
+}
 
 
-  return -1;
+int Core::getState(){
+  return state;
+}
+
+void Core::terminate() {
+  isTerminating = true;
 }
 
 

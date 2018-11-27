@@ -3,12 +3,12 @@
 //
 
 #include "Renderer.h"
-
 #include <stdint.h>
 #include <string>
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
 
 
 
@@ -47,9 +47,7 @@ int Renderer::instantiateWindow() {
 
 int Renderer::renderLoop(){
   while(!glfwWindowShouldClose(window) || *isTerminating) {
-    /*
-     * Draw objects from currentscene in back buffer here.
-     * */
+    // TODO draw objects into back frame buffer
 
     /* Render here */
     glClear(GL_COLOR_BUFFER_BIT);
@@ -68,10 +66,10 @@ int Renderer::renderLoop(){
 
 
 int Renderer::initalise() {
+  // TODO create new thread and run render loop
+
   if(instantiateWindow() == -1){
     printf("Failed to instantiate openGL");
     return -1;
   }
-
-  renderLoop();
 }
