@@ -7,8 +7,8 @@
 #ifndef DAC_RENDERER_H
 #define DAC_RENDERER_H
 
-#include <GLFW/glfw3.h>
 #include <thread>
+#include "windows.h"
 
 using namespace std;
 
@@ -16,16 +16,15 @@ class Renderer{
  public:
   Renderer() = default;
   explicit Renderer(bool* isTerminating);
-  int initalise();
+  int initialise();
+  void start();
 
  private:
   thread renderThread;
   int instantiateWindow();
   int renderLoop();
-  GLFWwindow *window;
   bool *isTerminating;
-
-
+  static DWORD WINAPI initSelf(LPVOID* lpParameter);
 };
 
 #endif //DAC_RENDERER_H

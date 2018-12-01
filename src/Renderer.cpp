@@ -6,15 +6,14 @@
 #include <stdint.h>
 #include <string>
 #include <iostream>
-#include <glad/glad.h>
+#include <glad.c>
 #include <GLFW/glfw3.h>
 
-
-
-
+GLFWwindow *window;
 Renderer::Renderer(bool* isTerminating){
   isTerminating = isTerminating;
 }
+
 
 int Renderer::instantiateWindow() {
 
@@ -63,13 +62,31 @@ int Renderer::renderLoop(){
   return 0;
 }
 
+void Renderer::start(){
+  DWORD threadID;
+  unsigned int threadCount = 0;
+  CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)initSelf, &threadCount, 0, &threadID);
+
+}
+
+DWORD WINAPI Renderer::initSelf(LPVOID* lpParameter) {
+  // Instantiate components
+  Renderer *renderer = (Renderer*)lpParameter;
+  renderer->initialise();
+  return 0;
+}
 
 
-int Renderer::initalise() {
+
+int Renderer::initialise() {
+
+
   // TODO create new thread and run render loop
-
   if(instantiateWindow() == -1){
     printf("Failed to instantiate openGL");
     return -1;
   }
+
+  renderLoop();
+  return 0;
 }

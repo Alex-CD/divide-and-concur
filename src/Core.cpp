@@ -16,16 +16,26 @@ Core::Core(){
   state = 0;
 }
 
-int Core::initialise() {
-  // Instantiate components
-  renderer = Renderer(&isTerminating);
+void Core::start(){
+  DWORD threadID;
+  unsigned int threadCount = 0;
 
-  // Initialise components
-  state += renderer.initalise();
-
-  return state;
+  CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)initSelf, &threadCount, 0, &threadID);
 }
 
+DWORD WINAPI Core::initSelf(LPVOID* lpParameter) {
+  // Instantiate components
+  Core *core = (Core*)lpParameter;
+  core->initialise();
+  return 0;
+}
+
+
+int Core::initialise(){
+  Renderer renderer;
+  renderer.start();
+  return 0;
+}
 
 int Core::getState(){
   return state;
