@@ -30,7 +30,6 @@ class Core {
 
  public:
   Core();
-
   static void start();
   void terminate();
   int getState();

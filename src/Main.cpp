@@ -11,10 +11,13 @@
 
 using namespace std;
 
+/**
+ * Launches the game.
+ * @return
+ */
 int main() {
   cout << "Welcome to divide and concur, a concurrency-based gamelogic environment for the modern era.";
   cout << "Please select a gamelogic to play";
-
 
   int max_games = 10;
   string keepPlaying;
@@ -24,7 +27,6 @@ int main() {
   core.start();
 
   while(true){}
-
-
+  return 0;
 }
 

@@ -22,7 +22,7 @@ class Renderer{
  private:
   thread renderThread;
   int instantiateWindow();
-  int renderLoop();
+  void renderLoop();
   bool *isTerminating;
   static DWORD WINAPI initSelf(LPVOID* lpParameter);
 };

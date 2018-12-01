@@ -10,11 +10,20 @@
 #include <GLFW/glfw3.h>
 
 GLFWwindow *window;
+
+/**
+ * Default constructor for the method.
+ * @param isTerminating points to the thread termination signal variable in Core.
+ */
 Renderer::Renderer(bool* isTerminating){
   isTerminating = isTerminating;
 }
 
 
+/**
+ * Internal method, instantiates an OpenGL window.
+ * @returns status code, indicating success of window instantiation.
+ */
 int Renderer::instantiateWindow() {
 
   /* Initialize the library */
@@ -44,7 +53,11 @@ int Renderer::instantiateWindow() {
 }
 
 
-int Renderer::renderLoop(){
+/**
+ * Internal method, The main render loop of the application.
+ * Continues until the window closes or the
+ */
+void Renderer::renderLoop(){
   while(!glfwWindowShouldClose(window) || *isTerminating) {
     // TODO draw objects into back frame buffer
 
@@ -59,9 +72,10 @@ int Renderer::renderLoop(){
   }
 
   glfwTerminate();
-  return 0;
 }
-
+/**
+ * Starts the thread that runs the renderer.
+ */
 void Renderer::start(){
   DWORD threadID;
   unsigned int threadCount = 0;
@@ -69,6 +83,12 @@ void Renderer::start(){
 
 }
 
+/**
+ * Internal method, used to create the thread of the renderer component
+ * @param lpParameter Data to be passed to the new thread.
+ * @return Unused.
+ * @see Core.initSelf
+ */
 DWORD WINAPI Renderer::initSelf(LPVOID* lpParameter) {
   // Instantiate components
   Renderer *renderer = (Renderer*)lpParameter;
@@ -77,11 +97,12 @@ DWORD WINAPI Renderer::initSelf(LPVOID* lpParameter) {
 }
 
 
-
+/**
+ * Initialises the renderer.
+ * @return
+ */
 int Renderer::initialise() {
 
-
-  // TODO create new thread and run render loop
   if(instantiateWindow() == -1){
     printf("Failed to instantiate openGL");
     return -1;

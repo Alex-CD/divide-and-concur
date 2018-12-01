@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>120</x>
-      <y>120</y>
+      <x>50</x>
+      <y>80</y>
       <w>1390</w>
       <h>680</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>190</x>
-      <y>690</y>
+      <x>120</x>
+      <y>650</y>
       <w>230</w>
       <h>90</h>
     </coordinates>
@@ -29,8 +29,8 @@ Instantiates games, and persists.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
-      <y>770</y>
+      <x>210</x>
+      <y>730</y>
       <w>100</w>
       <h>110</h>
     </coordinates>
@@ -41,8 +41,8 @@ Instantiates games, and persists.</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>480</y>
+      <x>560</x>
+      <y>440</y>
       <w>220</w>
       <h>260</h>
     </coordinates>
@@ -67,8 +67,8 @@ core.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
-      <y>620</y>
+      <x>210</x>
+      <y>580</y>
       <w>150</w>
       <h>90</h>
     </coordinates>
@@ -79,8 +79,8 @@ Instantiates games</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>500</y>
+      <x>110</x>
+      <y>460</y>
       <w>220</w>
       <h>110</h>
     </coordinates>
@@ -92,8 +92,8 @@ Instantiates games</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>370</y>
+      <x>110</x>
+      <y>330</y>
       <w>220</w>
       <h>110</h>
     </coordinates>
@@ -106,8 +106,8 @@ Instantiates games</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>390</x>
-      <y>450</y>
+      <x>320</x>
+      <y>410</y>
       <w>260</w>
       <h>100</h>
     </coordinates>
@@ -118,8 +118,8 @@ Extends</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>390</x>
-      <y>570</y>
+      <x>320</x>
+      <y>530</y>
       <w>260</w>
       <h>40</h>
     </coordinates>
@@ -130,8 +130,8 @@ Extends</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>880</x>
-      <y>300</y>
+      <x>810</x>
+      <y>260</y>
       <w>150</w>
       <h>90</h>
     </coordinates>
@@ -145,8 +145,8 @@ renderer.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>880</x>
-      <y>160</y>
+      <x>810</x>
+      <y>120</y>
       <w>150</w>
       <h>130</h>
     </coordinates>
@@ -162,13 +162,13 @@ gameLogic.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>520</x>
-      <y>290</y>
+      <x>450</x>
+      <y>250</y>
       <w>150</w>
       <h>90</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;interface&gt;&gt;
-audio.cpp
+    <panel_attributes>&lt;&lt;consumer&gt;&gt;
+audioHandler.cpp
 -
 - audioQueue*
 - audioQueueMutex*</panel_attributes>
@@ -177,8 +177,8 @@ audio.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
-      <y>380</y>
+      <x>760</x>
+      <y>340</y>
       <w>90</w>
       <h>120</h>
     </coordinates>
@@ -188,8 +188,8 @@ audio.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>580</x>
-      <y>370</y>
+      <x>510</x>
+      <y>330</y>
       <w>90</w>
       <h>130</h>
     </coordinates>
@@ -200,8 +200,8 @@ audio.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>190</y>
+      <x>770</x>
+      <y>150</y>
       <w>270</w>
       <h>330</h>
     </coordinates>
@@ -212,8 +212,8 @@ audio.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>150</x>
-      <y>310</y>
+      <x>80</x>
+      <y>270</y>
       <w>280</w>
       <h>320</h>
     </coordinates>
@@ -223,8 +223,8 @@ audio.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>940</x>
-      <y>620</y>
+      <x>870</x>
+      <y>580</y>
       <w>130</w>
       <h>110</h>
     </coordinates>
@@ -241,8 +241,8 @@ sceneObject.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>630</y>
+      <x>770</x>
+      <y>590</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -253,13 +253,13 @@ sceneObject.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>680</x>
-      <y>290</y>
+      <x>610</x>
+      <y>250</y>
       <w>150</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
-network.cpp
+networkHandler.cpp
 --
 - gameObjects*
 - gameObjectsMuted*</panel_attributes>
@@ -268,8 +268,8 @@ network.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1180</x>
-      <y>500</y>
+      <x>1110</x>
+      <y>460</y>
       <w>130</w>
       <h>110</h>
     </coordinates>
@@ -281,8 +281,8 @@ network.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>940</x>
-      <y>500</y>
+      <x>870</x>
+      <y>460</y>
       <w>130</w>
       <h>110</h>
     </coordinates>
@@ -296,8 +296,8 @@ gameObject.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>550</y>
+      <x>770</x>
+      <y>510</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -308,8 +308,8 @@ gameObject.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>690</x>
-      <y>370</y>
+      <x>620</x>
+      <y>330</y>
       <w>30</w>
       <h>130</h>
     </coordinates>
@@ -320,8 +320,8 @@ gameObject.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1060</x>
-      <y>550</y>
+      <x>990</x>
+      <y>510</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
@@ -332,12 +332,41 @@ Extends</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1160</x>
-      <y>460</y>
+      <x>1090</x>
+      <y>420</y>
       <w>170</w>
       <h>170</h>
     </coordinates>
     <panel_attributes>example</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1050</x>
+      <y>130</y>
+      <w>150</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+InputHandler.cpp
+--
+- gameObjects*
+- audioQueue*
+- sceneObjects*
+(+ semaphores)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>250</y>
+      <w>380</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>360.0;10.0;360.0;120.0;10.0;230.0</additional_attributes>
   </element>
 </diagram>
