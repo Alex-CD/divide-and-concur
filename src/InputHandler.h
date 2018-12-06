@@ -4,9 +4,4 @@
 
 #ifndef DAC_INPUTHANDLER_H
 #define DAC_INPUTHANDLER_H
-
-class InputHandler {
-
-};
-
 #endif //DAC_INPUTHANDLER_H

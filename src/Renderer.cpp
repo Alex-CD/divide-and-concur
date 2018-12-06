@@ -8,7 +8,6 @@
 #include <iostream>
 #include <glad.c>
 #include <GLFW/glfw3.h>
-
 GLFWwindow *window;
 
 /**
@@ -21,6 +20,7 @@ Renderer::Renderer(bool* isTerminating){
 
 
 /**
+ * Built on GLFW example docs (https://www.glfw.org/docs/latest/window_guide.html)
  * Internal method, instantiates an OpenGL window.
  * @returns status code, indicating success of window instantiation.
  */
@@ -32,7 +32,7 @@ int Renderer::instantiateWindow() {
 
 
   /* Create a windowed mode window and its OpenGL context */
-  window = glfwCreateWindow(400, 400, "Hello World", nullptr, nullptr);
+  window = glfwCreateWindow(400, 400, "Divide and Concur", nullptr, nullptr);
 
   if (!window) {
     glfwTerminate();
@@ -41,6 +41,7 @@ int Renderer::instantiateWindow() {
 
   /* Make the window's context current */
   glfwMakeContextCurrent(window);
+  cout << "Message from renderer thread.";
 
 
   if (!gladLoadGL()) {
@@ -54,6 +55,7 @@ int Renderer::instantiateWindow() {
 
 
 /**
+ * Built on GLFW docs ( https://www.glfw.org/docs/latest/window_guide.html )
  * Internal method, The main render loop of the application.
  * Continues until the window closes or the
  */

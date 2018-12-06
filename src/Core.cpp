@@ -28,6 +28,7 @@ void Core::start(){
   DWORD threadID;
   unsigned int threadCount = 0;
   CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)initSelf, &threadCount, 0, &threadID);
+  cout << "Message from core thread.";
 }
 
 /**
@@ -54,6 +55,8 @@ DWORD WINAPI Core::initSelf(LPVOID* lpParameter) {
 int Core::initialise(){
   Renderer renderer;
   renderer.start();
+
+
   return 0;
 }
 
