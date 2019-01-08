@@ -5,7 +5,6 @@
 #include <stdint.h>
 #include <string>
 #include <iostream>
-#include <windows.h>
 #include "Core.h"
 
 using namespace std;
@@ -23,7 +22,6 @@ int main() {
 
   unsigned int myCounter = 0;
   Core core;
-  core.start();
 
 
   // Stopping the launcher from terminating (and taking the new threads with it)

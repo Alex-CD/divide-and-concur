@@ -8,7 +8,6 @@
 #define DAC_RENDERER_H
 
 #include <thread>
-#include "windows.h"
 
 using namespace std;
 
@@ -17,14 +16,12 @@ class Renderer{
   Renderer() = default;
   explicit Renderer(bool* isTerminating);
   int initialise();
-  void start();
 
  private:
   thread renderThread;
   int instantiateWindow();
   void renderLoop();
   bool *isTerminating;
-  static DWORD WINAPI initSelf(LPVOID* lpParameter);
 };
 
 #endif //DAC_RENDERER_H

@@ -2,12 +2,15 @@
 // Created by Alex on 09/11/2018.
 //
 
-#include "Renderer.h"
+
 #include <stdint.h>
 #include <string>
 #include <iostream>
 #include <glad.c>
 #include <GLFW/glfw3.h>
+
+#include "Renderer.h"
+
 GLFWwindow *window;
 
 /**
@@ -75,29 +78,6 @@ void Renderer::renderLoop(){
 
   glfwTerminate();
 }
-/**
- * Starts the thread that runs the renderer.
- */
-void Renderer::start(){
-  DWORD threadID;
-  unsigned int threadCount = 0;
-  CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)initSelf, &threadCount, 0, &threadID);
-
-}
-
-/**
- * Internal method, used to create the thread of the renderer component
- * @param lpParameter Data to be passed to the new thread.
- * @return Unused.
- * @see Core.initSelf
- */
-DWORD WINAPI Renderer::initSelf(LPVOID* lpParameter) {
-  // Instantiate components
-  Renderer *renderer = (Renderer*)lpParameter;
-  renderer->initialise();
-  return 0;
-}
-
 
 /**
  * Initialises the renderer.

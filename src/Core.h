@@ -6,14 +6,14 @@
 #define DAC_CORE_H
 
 #include <string>
-#include <thread>
 #include <mutex>
+#include <pthread.h>
 
 #include "Renderer.h"
 #include "AudioHandler.h"
 #include "GameLogicTests.h"
 #include "InputHandler.h"
-#include "windows.h"
+
 
 using namespace std;
 
@@ -26,11 +26,10 @@ class Core {
   GameLogic gameLogic;
   AudioHandler audioHandler;
   int initialise();
-  static DWORD WINAPI initSelf(LPVOID* lpParameter);
+
 
  public:
   Core();
-  static void start();
   void terminate();
   int getState();
 };
