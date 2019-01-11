@@ -21,12 +21,17 @@ class Core {
 
  private:
   bool isTerminating;
-  pthread_t coreThread;
   int state;
+
   Renderer renderer;
-  GameLogic gameLogic;
-  AudioHandler audioHandler;
+  //GameLogic gameLogic;
+  //AudioHandler audioHandler;
   //InputHandler inputHandler;
+  pthread_t renderThread;
+  //pthread_t gameLogicThread;
+  //pthread_t audioHandlerThread;
+  //pthread_t inputHandlerThread;
+  void startComponents();
   void start();
 
 

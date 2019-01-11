@@ -26,7 +26,8 @@ int main() {
 
 
   while(gamesCount < MAX_THREADS && keepGoing){
-    pthread_create(&gamesThreads[gamesCount], nullptr, Core::threadEntry, nullptr);
+    games[gamesCount].terminate();
+    pthread_create(&gamesThreads[gamesCount], nullptr, Core::threadEntry, &games[gamesCount]);
     cout << "\nPress enter to launch another game\n";
     cin >> keepGoing;
     gamesCount += 1;

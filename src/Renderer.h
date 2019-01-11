@@ -15,13 +15,14 @@ class Renderer{
  public:
   Renderer() = default;
   explicit Renderer(bool* isTerminating);
-  int initialise();
+  static void *threadEntry(void *param);
 
  private:
   thread renderThread;
   int instantiateWindow();
   void renderLoop();
   bool *isTerminating;
+  void start();
 };
 
 #endif //DAC_RENDERER_H

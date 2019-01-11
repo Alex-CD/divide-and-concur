@@ -15,23 +15,27 @@
  * Default constructor
  */
 Core::Core(){
-  isTerminating = false;
-  state = 0;
+  this->isTerminating = false;
+  this->state = 0;
+  this->renderer = Renderer();
 }
 
 /**
  * Internal method, target of new thread creation
  */
 void *Core::threadEntry(void *param){
-  Core *thisGame = (Core*)param;
+  auto *thisGame = (Core*)param;
   thisGame->start();
   return nullptr;
 }
 
-
 void Core::start(){
+  startComponents();
+}
 
-  cout << "hi world!\n";
+
+void Core::startComponents(){
+  pthread_create(&this->renderThread, nullptr, Renderer::threadEntry, &this->renderer);
 }
 
 /**
@@ -47,7 +51,7 @@ int Core::getState(){
  * CANNOT BE RELIED ON TO TERMINATE A STUCK LOGIC THREAD
  */
 void Core::terminate() {
-  isTerminating = true;
+  this->isTerminating = true;
 }
 
 

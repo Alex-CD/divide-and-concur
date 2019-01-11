@@ -6,7 +6,7 @@ project(DAC CXX)
 
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib )
 
-add_executable(dac src/Main.cpp src/Core.cpp  src/Renderer.cpp)
+add_executable(dac src/Main.cpp src/Core.cpp  src/Renderer.cpp src/GameLogic.cpp)
 add_executable(dactest src/Core.cpp  src/Renderer.cpp tests/Tests.cpp tests/CoreTests.cpp tests/RendererTests.cpp tests/GameLogicTests.cpp  tests/MainTests.cpp src/glad.c)
 
 include_directories(include/)

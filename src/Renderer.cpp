@@ -21,6 +21,24 @@ Renderer::Renderer(bool* isTerminating){
   isTerminating = isTerminating;
 }
 
+/**
+ * Internal method, target of new thread creation
+ */
+void *Renderer::threadEntry(void *param){
+  auto *thisGame = (Renderer*)param;
+  thisGame->start();
+  return nullptr;
+}
+
+/**
+ * Starts the logic for the renderer module.
+ * Terminates when isTerminating is set to true
+ * Create a new thread on threadEntry if you need multithreading.
+ */
+void Renderer::start(){
+  instantiateWindow();
+  renderLoop();
+}
 
 /**
  * Built on GLFW example docs (https://www.glfw.org/docs/latest/window_guide.html)
@@ -77,19 +95,4 @@ void Renderer::renderLoop(){
   }
 
   glfwTerminate();
-}
-
-/**
- * Initialises the renderer.
- * @return
- */
-int Renderer::initialise() {
-
-  if(instantiateWindow() == -1){
-    printf("Failed to instantiate openGL");
-    return -1;
-  }
-
-  renderLoop();
-  return 0;
 }
