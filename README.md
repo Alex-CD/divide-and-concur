@@ -1,7 +1,56 @@
 # Divide and Concur
-A concurrency-base game environment, written in python.
-
+A concurrency-base game environment, written in C++.
 
 ## Getting started
 
-## License
+### Installing dependencies
+
+##### OpenGL:
+
+Depending on what drivers are installed, you should already have this installed.
+For a full list of packages that contain this, run
+
+```
+apt-file search libGL.so
+```
+
+Virtualbox additions definitely has this dependency, so if you really can't get this to work, try compiling it in a virtualbox dev environment.
+
+
+##### X11dev tools
+
+You'll need the x11 window manager dev tools to build this.
+
+```
+sudo apt-get install x11-dev
+```
+
+ 
+##### GLFW (v3.2.1 tested):
+
+GLFW is the wrapper library for OpenGL, for things like window management.
+
+If you're on Linux, you'll need to compile GLFW yourself as most package manager versions are out of date.
+You'll need to download the [source files](https://www.glfw.org/download.html), then run:
+
+```
+cmake .
+make install
+```
+
+this will place a compiled version of the library into your libs folder :)
+
+There are pre-compiled versions of GLFW for windows available, though you'll have to modify some of the linux-specific dependencies in cmakelists to get it to compile.
+
+
+### Compiling
+
+You need to use cmake to build this project.
+It should work with up to date versions of g++, gcc and make.
+
+
+### Running
+
+Compiling the project will spit out two executables, one is the program itself, one is a test suite.
+
+# License
