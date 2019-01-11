@@ -21,7 +21,8 @@ Core::Core(){
 }
 
 /**
- * Internal method, target of new thread creation
+ * Create a new thread on this object for component multithreading.
+ * Calls start() when run.
  */
 void *Core::threadEntry(void *param){
   auto *thisGame = (Core*)param;
@@ -29,11 +30,21 @@ void *Core::threadEntry(void *param){
   return nullptr;
 }
 
+/**
+ * Does the logic of the Core module.
+ * Can be called directly (for unit testing).
+ * For multithreading, create new thread on threadEntry
+ */
 void Core::start(){
   startComponents();
 }
 
-
+/**
+ * Internal method.
+ * Creates new methods in each of the component threads,
+ * and stores the thread pointers in the Core pthread_t members
+ * (Components should already be initialised!)
+ */
 void Core::startComponents(){
   pthread_create(&this->renderThread, nullptr, Renderer::threadEntry, &this->renderer);
 }

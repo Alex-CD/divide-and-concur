@@ -14,7 +14,6 @@ using namespace std;
 class Renderer{
  public:
   Renderer() = default;
-  explicit Renderer(bool* isTerminating);
   static void *threadEntry(void *param);
 
  private:

@@ -12,7 +12,7 @@ using namespace std;
 
 /**
  * Launches the game.
- * @return
+ * @return Application exit code.
  */
 int main() {
   const int MAX_THREADS = 15;

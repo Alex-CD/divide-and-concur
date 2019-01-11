@@ -22,7 +22,8 @@ Renderer::Renderer(bool* isTerminating){
 }
 
 /**
- * Internal method, target of new thread creation
+ * For multithreading on this component, create a new thread on this method.
+ * Calls start()
  */
 void *Renderer::threadEntry(void *param){
   auto *thisGame = (Renderer*)param;
