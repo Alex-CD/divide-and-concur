@@ -3,6 +3,18 @@ A concurrency-base game environment, written in C++.
 
 ## Getting started
 
+### Generating Docs
+
+This project is fully documented with Javadoc-style comments.
+
+To generate documentation, run:
+
+```
+cd [project root]
+doxygen Doxyfile
+```
+doxygen will then spit out HTML and LaTeX documentation in docs/ .
+
 ### Installing dependencies
 
 ##### OpenGL:
