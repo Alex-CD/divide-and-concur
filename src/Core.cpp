@@ -6,9 +6,9 @@
 #include <stdint.h>
 #include <string>
 #include <iostream>
-#include "Core.h"
 #include <pthread.h>
 
+#include "Core.h"
 
 
 /**
@@ -19,16 +19,19 @@ Core::Core(){
   state = 0;
 }
 
-
-
 /**
- * Internal method, spawns child components for the game.
- * @return a status code indicating whether or not component creation was successful.
+ * Internal method, target of new thread creation
  */
-int Core::initialise(){
-  Renderer renderer;
+void *Core::threadEntry(void *param){
+  Core *thisGame = (Core*)param;
+  thisGame->start();
+  return nullptr;
+}
 
-  return 0;
+
+void Core::start(){
+
+  cout << "hi world!\n";
 }
 
 /**
@@ -38,7 +41,6 @@ int Core::initialise(){
 int Core::getState(){
   return state;
 }
-
 
 /**
  * Sends a terminate signal to the child threads.

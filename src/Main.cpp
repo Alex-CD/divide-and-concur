@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include <string>
 #include <iostream>
+#include <pthread.h>
 #include "Core.h"
 
 using namespace std;
@@ -14,18 +15,23 @@ using namespace std;
  * @return
  */
 int main() {
-  cout << "Welcome to divide and concur, a concurrency-based gamelogic environment for the modern era.";
-  cout << "\nMessage from launcher thread.";
-
-  int max_games = 10;
-  string keepPlaying;
-
-  unsigned int myCounter = 0;
-  Core core;
+    const int MAX_THREADS = 15;
 
 
-  // Stopping the launcher from terminating (and taking the new threads with it)
-  while(true){}
-  return 0;
+    cout << "Welcome to divide and concur, a concurrency-based gamelogic environment for the modern era.";
+    auto *games = new Core[MAX_THREADS];
+    auto *gamesThreads = new pthread_t[MAX_THREADS];
+    int gamesCount = 0;
+    bool keepGoing = true;
+
+
+    while(gamesCount < MAX_THREADS && keepGoing){
+        pthread_create(&gamesThreads[gamesCount], nullptr, Core::threadEntry, nullptr);
+        cout << "\nPress enter to launch another game\n";
+        cin >> keepGoing;
+        gamesCount += 1;
+    }
+
+    return 0;
 }
 

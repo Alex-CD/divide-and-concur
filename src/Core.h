@@ -21,17 +21,21 @@ class Core {
 
  private:
   bool isTerminating;
+  pthread_t coreThread;
   int state;
   Renderer renderer;
   GameLogic gameLogic;
   AudioHandler audioHandler;
-  int initialise();
+  //InputHandler inputHandler;
+  void start();
+
 
 
  public:
   Core();
   void terminate();
   int getState();
+  static void *threadEntry(void *param);
 };
 
 #endif //DAC_CORE_H
