@@ -27,8 +27,6 @@ Core::Core(){
  */
 int Core::initialise(){
   Renderer renderer;
-  renderer.start();
-
 
   return 0;
 }
