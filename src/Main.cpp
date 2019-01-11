@@ -15,23 +15,23 @@ using namespace std;
  * @return
  */
 int main() {
-    const int MAX_THREADS = 15;
+  const int MAX_THREADS = 15;
 
 
-    cout << "Welcome to divide and concur, a concurrency-based gamelogic environment for the modern era.";
-    auto *games = new Core[MAX_THREADS];
-    auto *gamesThreads = new pthread_t[MAX_THREADS];
-    int gamesCount = 0;
-    bool keepGoing = true;
+  cout << "Welcome to divide and concur, a concurrency-based gamelogic environment for the modern era.";
+  auto *games = new Core[MAX_THREADS];
+  auto *gamesThreads = new pthread_t[MAX_THREADS];
+  int gamesCount = 0;
+  bool keepGoing = true;
 
 
-    while(gamesCount < MAX_THREADS && keepGoing){
-        pthread_create(&gamesThreads[gamesCount], nullptr, Core::threadEntry, nullptr);
-        cout << "\nPress enter to launch another game\n";
-        cin >> keepGoing;
-        gamesCount += 1;
-    }
+  while(gamesCount < MAX_THREADS && keepGoing){
+    pthread_create(&gamesThreads[gamesCount], nullptr, Core::threadEntry, nullptr);
+    cout << "\nPress enter to launch another game\n";
+    cin >> keepGoing;
+    gamesCount += 1;
+  }
 
-    return 0;
+  return 0;
 }
 
