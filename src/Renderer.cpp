@@ -60,7 +60,6 @@ int Renderer::instantiateWindow() {
 
   /* Make the window's context current */
   glfwMakeContextCurrent(window);
-  cout << "Message from renderer thread.";
 
 
   if (!gladLoadGL()) {
@@ -91,12 +90,7 @@ void Renderer::renderLoop(){
     /* Poll for and process events */
     glfwPollEvents();
 
-
-    cout << "render loop";
-
   }
-
-  cout << "Window terminating";
 
   glfwTerminate();
 }
