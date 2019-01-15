@@ -18,12 +18,17 @@
 using namespace std;
 
 class Core {
+ public:
+  Core();
+  void terminate();
+  int getState();
+  static void *threadEntry(void *param);
 
  private:
   bool isTerminating;
   int state;
 
-  Renderer renderer;
+  Renderer *renderer;
   //GameLogic gameLogic;
   //AudioHandler audioHandler;
   //InputHandler inputHandler;
@@ -33,14 +38,7 @@ class Core {
   //pthread_t inputHandlerThread;
   void startComponents();
   void start();
-
-
-
- public:
-  Core();
-  void terminate();
-  int getState();
-  static void *threadEntry(void *param);
 };
+
 
 #endif //DAC_CORE_H

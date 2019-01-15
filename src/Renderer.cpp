@@ -11,14 +11,9 @@
 
 #include "Renderer.h"
 
-GLFWwindow *window;
 
-/**
- * Default constructor for the method.
- * @param isTerminating points to the thread termination signal variable in Core.
- */
-Renderer::Renderer(bool* isTerminating){
-  isTerminating = isTerminating;
+Renderer::Renderer(bool *isTerminating) {
+  this->isTerminating = isTerminating;
 }
 
 /**
@@ -26,15 +21,15 @@ Renderer::Renderer(bool* isTerminating){
  * Calls start()
  */
 void *Renderer::threadEntry(void *param){
-  auto *thisGame = (Renderer*)param;
-  thisGame->start();
+  auto *thisRenderer = (Renderer*)param;
+  thisRenderer->start();
   return nullptr;
 }
 
 /**
  * Starts the logic for the renderer module.
  * Terminates when isTerminating is set to true
- * Create a new thread on threadEntry if you need multithreading.
+ * Create a new thread on threadEntry if you need multithreading.1
  */
 void Renderer::start(){
   instantiateWindow();
@@ -61,6 +56,8 @@ int Renderer::instantiateWindow() {
     return -1;
   }
 
+
+
   /* Make the window's context current */
   glfwMakeContextCurrent(window);
   cout << "Message from renderer thread.";
@@ -82,7 +79,7 @@ int Renderer::instantiateWindow() {
  * Continues until the window closes or the
  */
 void Renderer::renderLoop(){
-  while(!glfwWindowShouldClose(window) || *isTerminating) {
+  while(!glfwWindowShouldClose(this->window) || !isTerminating) {
     // TODO draw objects into back frame buffer
 
     /* Render here */
@@ -93,7 +90,13 @@ void Renderer::renderLoop(){
 
     /* Poll for and process events */
     glfwPollEvents();
+
+
+    cout << "render loop";
+
   }
+
+  cout << "Window terminating";
 
   glfwTerminate();
 }

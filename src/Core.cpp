@@ -17,7 +17,7 @@
 Core::Core(){
   this->isTerminating = false;
   this->state = 0;
-  this->renderer = Renderer();
+  this->renderer = new Renderer(&this->isTerminating);
 }
 
 /**

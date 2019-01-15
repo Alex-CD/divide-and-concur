@@ -7,21 +7,22 @@
 #ifndef DAC_RENDERER_H
 #define DAC_RENDERER_H
 
-#include <thread>
+#include <pthread.h>
+#include <GLFW/glfw3.h>
 
 using namespace std;
 
-class Renderer{
+class Renderer {
  public:
-  Renderer() = default;
+  explicit Renderer(bool *isTerminating);
   static void *threadEntry(void *param);
+  void start();
 
  private:
-  thread renderThread;
+  GLFWwindow *window;
   int instantiateWindow();
   void renderLoop();
   bool *isTerminating;
-  void start();
 };
 
 #endif //DAC_RENDERER_H
