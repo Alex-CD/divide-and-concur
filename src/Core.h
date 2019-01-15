@@ -11,7 +11,7 @@
 
 #include "Renderer.h"
 #include "AudioHandler.h"
-#include "GameLogicTests.h"
+#include "GameLogic.h"
 #include "InputHandler.h"
 
 
@@ -23,6 +23,7 @@ class Core {
   void terminate();
   int getState();
   static void *threadEntry(void *param);
+  void start();
 
  private:
   bool isTerminating;
@@ -37,7 +38,6 @@ class Core {
   //pthread_t audioHandlerThread;
   //pthread_t inputHandlerThread;
   void startComponents();
-  void start();
 };
 
 
