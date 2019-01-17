@@ -27,12 +27,11 @@ class Core {
 
  private:
   bool isTerminating;
-  int state;
 
   Renderer *renderer;
-  //GameLogic gameLogic;
-  //AudioHandler audioHandler;
-  //InputHandler inputHandler;
+  GameLogic *gameLogic;
+  AudioHandler *audioHandler;
+  InputHandler *inputHandler;
   pthread_t renderThread;
   //pthread_t gameLogicThread;
   //pthread_t audioHandlerThread;

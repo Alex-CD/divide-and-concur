@@ -17,7 +17,6 @@ using namespace std;
 int main() {
   const int MAX_THREADS = 15;
 
-
   cout << "Welcome to divide and concur, a concurrency-based gamelogic environment for the modern era.";
   auto *games = new Core[MAX_THREADS];
   auto *gamesThreads = new pthread_t[MAX_THREADS];
@@ -26,7 +25,7 @@ int main() {
 
 
   while(gamesCount < MAX_THREADS && keepGoing){
-    games[gamesCount].terminate();
+
     pthread_create(&gamesThreads[gamesCount], nullptr, Core::threadEntry, &games[gamesCount]);
     cout << "\nPress enter to launch another game\n";
     cin >> keepGoing;

@@ -15,9 +15,12 @@
  * Default constructor
  */
 Core::Core(){
+  this->renderer = nullptr;
+  this->audioHandler = nullptr;
+  this->inputHandler = nullptr;
+  this->gameLogic = nullptr;
+
   this->isTerminating = false;
-  this->state = 0;
-  this->renderer = new Renderer(&this->isTerminating);
 }
 
 /**
@@ -37,6 +40,8 @@ void *Core::threadEntry(void *param){
  */
 void Core::start(){
   startComponents();
+
+  // do the next thing the core module needs to do
 }
 
 /**
@@ -46,6 +51,7 @@ void Core::start(){
  * (Components should already be initialised!)
  */
 void Core::startComponents(){
+
   pthread_create(&this->renderThread, nullptr, Renderer::threadEntry, &this->renderer);
 }
 
@@ -54,7 +60,10 @@ void Core::startComponents(){
  * @return A status code. 0=not launched, <0=error state, >0=nominal state.
  */
 int Core::getState(){
-  return state;
+  return (this->renderer != nullptr)
+      + (this->gameLogic != nullptr)
+      + (this->audioHandler != nullptr)
+      + (this->inputHandler != nullptr);
 }
 
 /**
