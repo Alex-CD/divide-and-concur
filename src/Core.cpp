@@ -53,6 +53,7 @@ void Core::start(){
 void Core::startComponents(){
 
   pthread_create(&this->renderThread, nullptr, Renderer::threadEntry, &this->renderer);
+  pthread_create(&this->audioHandlerThread, nullptr, AudioHandler::threadEntry, &this->renderer);
 }
 
 /**
