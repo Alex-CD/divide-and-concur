@@ -33,7 +33,7 @@ class Core {
   AudioHandler *audioHandler;
   InputHandler *inputHandler;
   pthread_t renderThread;
-  //pthread_t gameLogicThread;
+  pthread_t gameLogicThread;
   pthread_t audioHandlerThread;
   //pthread_t inputHandlerThread;
   void startComponents();

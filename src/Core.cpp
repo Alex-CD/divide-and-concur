@@ -52,11 +52,15 @@ void Core::start(){
  */
 void Core::startComponents(){
   this->renderer = new Renderer(&this->isTerminating);
-  this->audioHandler= new AudioHandler(&this->isTerminating);
+  this->audioHandler = new AudioHandler(&this->isTerminating);
+  this->gameLogic = new GameLogic(&this->isTerminating);
   
   pthread_create(&this->renderThread, nullptr, Renderer::threadEntry, &this->renderer);
   pthread_create(&this->audioHandlerThread, nullptr, AudioHandler::threadEntry, &this->audioHandler);
+  pthread_create(&this->gameLogicThread, nullptr, GameLogic::threadEntry, &this->gameLogic);
 }
+
+
 
 /**
  * Gets the current state of the child components.
