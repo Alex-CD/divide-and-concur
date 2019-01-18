@@ -51,9 +51,11 @@ void Core::start(){
  * (Components should already be initialised!)
  */
 void Core::startComponents(){
-
+  this->renderer = new Renderer(&this->isTerminating);
+  this->audioHandler= new AudioHandler(&this->isTerminating);
+  
   pthread_create(&this->renderThread, nullptr, Renderer::threadEntry, &this->renderer);
-  pthread_create(&this->audioHandlerThread, nullptr, AudioHandler::threadEntry, &this->renderer);
+  pthread_create(&this->audioHandlerThread, nullptr, AudioHandler::threadEntry, &this->audioHandler);
 }
 
 /**
