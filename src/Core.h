@@ -27,7 +27,6 @@ class Core {
 
  private:
   bool isTerminating;
-
   Renderer *renderer;
   GameLogic *gameLogic;
   AudioHandler *audioHandler;
@@ -37,6 +36,7 @@ class Core {
   pthread_t audioHandlerThread;
   //pthread_t inputHandlerThread;
   void startComponents();
+  void disposeComponents();
 };
 
 

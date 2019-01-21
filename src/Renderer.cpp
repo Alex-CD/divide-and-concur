@@ -44,14 +44,17 @@ void Renderer::start(){
 int Renderer::instantiateWindow() {
 
   /* Initialize the library */
-  if (!glfwInit())
+  if (!glfwInit()) {
+    *this->isTerminating = true;
     return -1;
+  }
 
 
   /* Create a windowed mode window and its OpenGL context */
   window = glfwCreateWindow(400, 400, "Divide and Concur", nullptr, nullptr);
 
   if (!window) {
+    *this->isTerminating = true;
     glfwTerminate();
     return -1;
   }
@@ -92,5 +95,6 @@ void Renderer::renderLoop(){
 
   }
 
+  *this->isTerminating = true;
   glfwTerminate();
 }
