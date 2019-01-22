@@ -17,7 +17,7 @@ class SceneObject {
   void setPos(float xPos, float yPos, float zPos);
   void translate(float xDistance, float yDistance, float zDistance);
   void setTransform(float xTransform, float yTransform, float zTransform);
-  void transformByFactor(float xFactor, float yFactor, float zFactor);
+  void transform(float xFactor, float yFactor, float zFactor);
   void scale(float scaleFactor);
 };
 
