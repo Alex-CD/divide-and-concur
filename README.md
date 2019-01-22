@@ -72,7 +72,7 @@ There are pre-compiled versions of GLFW for windows available, though you'll hav
 
 An OpenGL maths utility used by the rendering module to calculate complicated stuff like perspective and field of view.
 
-You'll have to get a 
+You'll have to get a copy from the [GLM site](https://glm.g-truc.net/0.9.9/index.html).
 
 
 
