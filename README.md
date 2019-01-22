@@ -17,6 +17,20 @@ doxygen will then spit out HTML and LaTeX documentation in docs/ .
 
 ### Installing dependencies
 
+By the end of this section, your source folder should look something like this
+
+
+```
+docs
+include/
+  glad/
+  GLFW/
+  gml/
+  KHR/
+src/
+tests/
+...
+```
 ##### OpenGL:
 
 Depending on what drivers are installed, you should already have this installed.
@@ -54,6 +68,17 @@ this will place a compiled version of the library into your libs folder :)
 
 There are pre-compiled versions of GLFW for windows available, though you'll have to modify some of the linux-specific dependencies in cmakelists to get it to compile.
 
+##### GLM (v0.9.9.3):
+
+An OpenGL maths utility used by the rendering module to calculate complicated stuff like perspective and field of view.
+
+You'll have to get a 
+
+
+
+##### GLAD / KHR
+
+Generate a version of the glad loader through their [web form](https://glad.dav1d.de/), and drop it into the includes directory.
 
 ### Compiling
 
