@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project(DAC CXX)
 
 
-add_executable(dac src/Main.cpp src/Core.cpp src/Renderer.cpp src/InputHandler.cpp src/AudioHandler.cpp src/GameLogic.cpp src/SceneObject.cpp src/SceneObject.h)
+add_executable(dac src/Main.cpp src/Core.cpp src/Renderer.cpp src/InputHandler.cpp src/AudioHandler.cpp src/GameLogic.cpp src/Object.cpp src/Object.h src/renderables/Button.cpp src/renderables/Button.h src/renderables/Bitmap.cpp src/renderables/Bitmap.h src/renderables/None.cpp src/renderables/None.h src/renderables/ScreenObject.cpp src/renderables/ScreenObject.h src/renderables/GameWorldObject.cpp src/renderables/GameWorldObject.h src/renderables/InvisibleObject.cpp src/renderables/InvisibleObject.h src/renderables/Cursor.cpp src/renderables/Cursor.h src/renderables/Text.cpp src/renderables/Text.h src/renderables/Vector.cpp src/renderables/Vector.h)
 add_executable(dactest tests/Tests.cpp tests/CoreTests.cpp tests/RendererTests.cpp tests/GameLogicTests.cpp src/Core.cpp src/Renderer.cpp src/InputHandler.cpp src/AudioHandler.cpp src/GameLogic.cpp tests/AudioHandlerTests.cpp)
 
 include_directories(include/)

@@ -2,7 +2,7 @@
 // Created by alex on 21/01/19.
 //
 
-#include "SceneObject.h"
+#include "Object.h"
 
 /**
  * 
