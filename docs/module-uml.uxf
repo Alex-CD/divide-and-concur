@@ -1,13 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.3.0">
-  <zoom_level>10</zoom_level>
+<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>110</x>
-      <y>110</y>
-      <w>1390</w>
-      <h>680</h>
+      <x>360</x>
+      <y>656</y>
+      <w>1112</w>
+      <h>568</h>
     </coordinates>
     <panel_attributes>dac</panel_attributes>
     <additional_attributes/>
@@ -15,10 +14,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>680</y>
-      <w>230</w>
-      <h>90</h>
+      <x>432</x>
+      <y>1128</y>
+      <w>184</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>&lt;&lt;singleton&gt;&gt;
 Main.cpp
@@ -29,10 +28,10 @@ Instantiates games, and persists.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>760</y>
-      <w>100</w>
-      <h>110</h>
+      <x>504</x>
+      <y>1192</y>
+      <w>80</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
  Entry point</panel_attributes>
@@ -41,25 +40,20 @@ Instantiates games, and persists.</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
-      <y>470</y>
-      <w>220</w>
-      <h>260</h>
+      <x>784</x>
+      <y>960</y>
+      <w>176</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
 core.cpp
 --
 
-- sceneObjects[]
-- sceneObjectsMutex
-
-- gameObjects[]
-- gameObjectsMutex
+- Objects[]
 
 - audioQueue[]
 - audioQueueMutex
 
-- audioQueue
 - networkQueue
 </panel_attributes>
     <additional_attributes/>
@@ -67,10 +61,10 @@ core.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>610</y>
-      <w>150</w>
-      <h>90</h>
+      <x>504</x>
+      <y>1072</y>
+      <w>128</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Instantiates games</panel_attributes>
@@ -79,10 +73,10 @@ Instantiates games</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
-      <y>490</y>
-      <w>220</w>
-      <h>110</h>
+      <x>424</x>
+      <y>976</y>
+      <w>176</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>test-game.cpp
 --
@@ -92,10 +86,10 @@ Instantiates games</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
-      <y>360</y>
-      <w>220</w>
-      <h>110</h>
+      <x>424</x>
+      <y>872</y>
+      <w>176</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>chessGame.cpp
 --
@@ -106,10 +100,10 @@ Instantiates games</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>380</x>
-      <y>440</y>
-      <w>260</w>
-      <h>100</h>
+      <x>592</x>
+      <y>936</y>
+      <w>208</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 Extends</panel_attributes>
@@ -118,10 +112,10 @@ Extends</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>380</x>
-      <y>560</y>
-      <w>260</w>
-      <h>40</h>
+      <x>592</x>
+      <y>1032</y>
+      <w>208</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 Extends</panel_attributes>
@@ -130,46 +124,44 @@ Extends</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>870</x>
-      <y>290</y>
-      <w>150</w>
-      <h>90</h>
+      <x>984</x>
+      <y>816</y>
+      <w>120</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 renderer.cpp
--
--sceneObjects*
--sceneObjectsMuted*</panel_attributes>
+--
+-objects*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>870</x>
-      <y>150</y>
-      <w>150</w>
-      <h>130</h>
+      <x>984</x>
+      <y>704</y>
+      <w>120</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
 gameLogic.cpp
 --
-- gameObjects*
-- audioQueue*
-- sceneObjects*
-</panel_attributes>
+- objects*
+- audioQueue*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>500</x>
-      <y>280</y>
-      <w>160</w>
-      <h>90</h>
+      <x>672</x>
+      <y>792</y>
+      <w>144</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>&lt;&lt;consumer&gt;&gt; &lt;&lt;abstract&gt;&gt;
 audioHandler.cpp
--
+--
+
 - audioQueue*
 - audioQueueMutex*</panel_attributes>
     <additional_attributes/>
@@ -177,10 +169,10 @@ audioHandler.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>370</y>
-      <w>90</w>
-      <h>120</h>
+      <x>944</x>
+      <y>880</y>
+      <w>72</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;100.0</additional_attributes>
@@ -188,10 +180,10 @@ audioHandler.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>360</y>
-      <w>90</w>
-      <h>130</h>
+      <x>744</x>
+      <y>872</y>
+      <w>72</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -200,10 +192,10 @@ audioHandler.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
-      <y>180</y>
-      <w>270</w>
-      <h>330</h>
+      <x>952</x>
+      <y>728</y>
+      <w>216</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -212,10 +204,10 @@ audioHandler.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>140</x>
-      <y>300</y>
-      <w>280</w>
-      <h>320</h>
+      <x>400</x>
+      <y>824</y>
+      <w>224</w>
+      <h>256</h>
     </coordinates>
     <panel_attributes>games</panel_attributes>
     <additional_attributes/>
@@ -223,55 +215,24 @@ audioHandler.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>930</x>
-      <y>610</y>
-      <w>130</w>
-      <h>110</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;abstract&gt;&gt;
-sceneObject.cpp
---
-
--XPos
--YPos
--ZPos
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>830</x>
-      <y>620</y>
+      <x>824</x>
+      <y>808</y>
       <w>120</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-</panel_attributes>
-    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>670</x>
-      <y>280</y>
-      <w>150</w>
-      <h>90</h>
+      <h>72</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 networkHandler.cpp
 --
-- gameObjects*
-- gameObjectsMuted*</panel_attributes>
+- objects*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1170</x>
-      <y>490</y>
-      <w>130</w>
-      <h>110</h>
+      <x>1224</x>
+      <y>976</y>
+      <w>104</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>chessPiece.cpp
 --
@@ -281,25 +242,30 @@ networkHandler.cpp
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>930</x>
-      <y>490</y>
-      <w>130</w>
-      <h>110</h>
+      <x>1032</x>
+      <y>976</y>
+      <w>144</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
-gameObject.cpp
+Object.cpp
 --
 
-- sceneObject*</panel_attributes>
+-XPos
+-YPos
+-ZPos
+
+-Mutex
+-Draw()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
-      <y>540</y>
-      <w>120</w>
-      <h>40</h>
+      <x>952</x>
+      <y>1016</y>
+      <w>96</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -308,10 +274,10 @@ gameObject.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>680</x>
-      <y>360</y>
-      <w>30</w>
-      <h>130</h>
+      <x>832</x>
+      <y>872</y>
+      <w>24</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
@@ -320,22 +286,22 @@ gameObject.cpp
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>540</y>
-      <w>140</w>
-      <h>40</h>
+      <x>1168</x>
+      <y>1016</y>
+      <w>72</w>
+      <h>32</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=-&gt;&gt;
 Extends</panel_attributes>
-    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1150</x>
-      <y>450</y>
-      <w>170</w>
-      <h>170</h>
+      <x>1208</x>
+      <y>944</y>
+      <w>136</w>
+      <h>136</h>
     </coordinates>
     <panel_attributes>example</panel_attributes>
     <additional_attributes/>
@@ -343,30 +309,183 @@ Extends</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1110</x>
-      <y>160</y>
-      <w>150</w>
-      <h>130</h>
+      <x>1176</x>
+      <y>712</y>
+      <w>120</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
 InputHandler.cpp
 --
-- gameObjects*
-- audioQueue*
-- sceneObjects*
-(+ semaphores)</panel_attributes>
+- objects*
+- audioQueue*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
-      <y>280</y>
-      <w>380</w>
-      <h>250</h>
+      <x>952</x>
+      <y>808</y>
+      <w>304</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
     <additional_attributes>360.0;10.0;360.0;120.0;10.0;230.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>664</x>
+      <y>152</y>
+      <w>144</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract, polymorphic&gt;&gt;
+Object
+--
+-Draw()
+-XPos
+-YPos
+-ZPos
+
+-Mutex</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>344</x>
+      <y>392</y>
+      <w>144</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>
+Textured
+--
+- Draw()
+- Texture</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>664</x>
+      <y>392</y>
+      <w>144</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>
+Vector
+--
+- Draw()
+- Lines[,]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>392</y>
+      <w>144</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>
+Text
+--
+- Draw()
+- Text
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>448</x>
+      <y>264</y>
+      <w>232</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+is a</panel_attributes>
+    <additional_attributes>10.0;160.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>264</y>
+      <w>136</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+is a</panel_attributes>
+    <additional_attributes>10.0;160.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>832</x>
+      <y>392</y>
+      <w>144</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>
+Button
+--
+- Draw()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>768</x>
+      <y>264</y>
+      <w>168</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+is a</panel_attributes>
+    <additional_attributes>190.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>736</x>
+      <y>264</y>
+      <w>40</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+is a</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>984</x>
+      <y>392</y>
+      <w>144</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>
+None
+--
+- Draw()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>264</y>
+      <w>272</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+is a</panel_attributes>
+    <additional_attributes>320.0;160.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
