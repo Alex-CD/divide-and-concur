@@ -19,8 +19,11 @@ class Renderer {
   void start();
 
  private:
+  GLuint vertexShader, fragmentShader, vertexBuffer;
+  string loadShader(string sourceFile);
   GLFWwindow *window;
-  int instantiateWindow();
+  int initWindow();
+  void initGL();
   void renderLoop();
   bool *isTerminating;
 };

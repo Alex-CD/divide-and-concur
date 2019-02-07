@@ -2,12 +2,13 @@
 // Created by Alex on 09/11/2018.
 //
 
-
 #include <stdint.h>
 #include <string>
 #include <iostream>
 #include <glad.c>
+#include <fstream>
 #include <GLFW/glfw3.h>
+#include <sstream>
 
 #include "Renderer.h"
 
@@ -32,16 +33,68 @@ void *Renderer::threadEntry(void *param){
  * Create a new thread on threadEntry if you need multithreading.1
  */
 void Renderer::start(){
-  instantiateWindow();
+
+
+  string shader = loadShader("FragmentShader.fsh");
+
+  initWindow();
+
+  initGL();
+
   renderLoop();
 }
 
 /**
+ *
+ * @param sourceFile
+ * @return
+ */
+string Renderer::loadShader(string sourceFile){
+  ifstream fileStream;
+  string path = "shaders/" + sourceFile;
+
+  fileStream.open(path);
+
+  if (!fileStream.good()){
+    return "fail!";
+  }
+  std::stringstream streamBuffer;
+
+  streamBuffer << fileStream.rdbuf();
+  fileStream.close();
+
+  cout << streamBuffer.str();
+
+  return streamBuffer.str();
+};
+
+void Renderer::initGL(){
+
+  string shader = loadShader("FragmentShader.fsh");
+  glfwSwapInterval(1);
+
+  glGenBuffers(1, &this->vertexBuffer);
+
+  glBufferData(GL_ARRAY_BUFFER, 10000, nullptr, GL_DYNAMIC_DRAW);
+
+
+  this->vertexShader = glCreateShader(GL_VERTEX_SHADER);
+  string vertex_src = loadShader("VertexShader.vsh");
+
+
+  this->fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+  string fragment_src = loadShader("FragmentShader.fsh");
+
+
+}
+
+/**
+ *
  * Built on GLFW example docs (https://www.glfw.org/docs/latest/window_guide.html)
  * Internal method, instantiates an OpenGL window.
  * @returns status code, indicating success of window instantiation.
  */
-int Renderer::instantiateWindow() {
+int Renderer::initWindow() {
 
   /* Initialize the library */
   if (!glfwInit()) {
@@ -82,16 +135,23 @@ int Renderer::instantiateWindow() {
  */
 void Renderer::renderLoop(){
   while(!glfwWindowShouldClose(this->window) || !isTerminating) {
-    // TODO draw objects into back frame buffer
 
-    /* Render here */
     glClear(GL_COLOR_BUFFER_BIT);
+
+    float vertices[] = {
+        -0.5f, -0.5f, 0.0f,
+        0.5f, -0.5f, 0.0f,
+        0.0f,  0.5f, 0.0f
+    };
+
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);
 
-    /* Poll for and process events */
+
     glfwPollEvents();
+    // glfwWaitEvents();
+    // Pauses program until input (useful for debug)
 
   }
 

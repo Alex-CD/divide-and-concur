@@ -9,5 +9,9 @@ add_executable(dactest tests/Tests.cpp tests/CoreTests.cpp tests/RendererTests.c
 include_directories(include/)
 include_directories(src/)
 
+
+configure_file(src/shaders/FragmentShader.fsh shaders/FragmentShader.fsh COPYONLY)
+configure_file(src/shaders/VertexShader.vsh shaders/VertexShader.vsh COPYONLY)
+
 target_link_libraries(dac GL GLU glfw3 X11 Xxf86vm Xrandr pthread Xi dl Xcursor Xinerama)
 target_link_libraries(dactest GL GLU glfw3 X11 Xxf86vm Xrandr pthread Xi dl Xcursor Xinerama)
