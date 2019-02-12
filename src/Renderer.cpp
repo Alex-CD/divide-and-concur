@@ -34,9 +34,6 @@ void *Renderer::threadEntry(void *param){
  */
 void Renderer::start(){
 
-
-  string shader = loadShader("FragmentShader.fsh");
-
   initWindow();
 
   initGL();
@@ -63,28 +60,40 @@ string Renderer::loadShader(string sourceFile){
   streamBuffer << fileStream.rdbuf();
   fileStream.close();
 
-  cout << streamBuffer.str();
-
   return streamBuffer.str();
 };
 
 void Renderer::initGL(){
-
-  string shader = loadShader("FragmentShader.fsh");
   glfwSwapInterval(1);
+
+  this->shaderProgram = glCreateProgram();
 
   glGenBuffers(1, &this->vertexBuffer);
 
   glBufferData(GL_ARRAY_BUFFER, 10000, nullptr, GL_DYNAMIC_DRAW);
 
 
-  this->vertexShader = glCreateShader(GL_VERTEX_SHADER);
-  string vertex_src = loadShader("VertexShader.vsh");
+  GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+  const char* vertex_src = loadShader("VertexShader.vsh").c_str();
+  glShaderSource(vertexShader, 1, &vertex_src, nullptr);
+  glCompileShader(vertexShader);
+  glAttachShader(vertexShader, GL_VERTEX_SHADER);
 
+  GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+  const char* fragment_src = loadShader("FragmentShader.fsh").c_str();
+  glShaderSource(fragmentShader, 1, &fragment_src, nullptr);
+  glCompileShader(fragmentShader);
+  glAttachShader(fragmentShader, GL_FRAGMENT_SHADER);
 
-  this->fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-  string fragment_src = loadShader("FragmentShader.fsh");
+  GLint linkSuccess;
+  glad_glGetProgramiv(this->shaderProgram, GL_LINK_STATUS, &linkSuccess);
 
+  if(!linkSuccess) {
+    cout << "failure to lin shaders";
+    *this->isTerminating = true;
+  }
+  glLinkProgram(this->shaderProgram);
+  glUseProgram(this->shaderProgram);
 
 }
 
@@ -124,6 +133,7 @@ int Renderer::initWindow() {
   }
 
 
+
   return 0;
 }
 
@@ -134,7 +144,7 @@ int Renderer::initWindow() {
  * Continues until the window closes or the
  */
 void Renderer::renderLoop(){
-  while(!glfwWindowShouldClose(this->window) || !isTerminating) {
+  while(!glfwWindowShouldClose(this->window) && !isTerminating) {
 
     glClear(GL_COLOR_BUFFER_BIT);
 
