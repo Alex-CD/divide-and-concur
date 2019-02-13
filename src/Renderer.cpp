@@ -6,10 +6,9 @@
 #include <string>
 #include <iostream>
 #include <glad.c>
-#include <fstream>
 #include <GLFW/glfw3.h>
-#include <sstream>
 
+#include "FileHelper.h"
 #include "Renderer.h"
 
 
@@ -35,7 +34,6 @@ void *Renderer::threadEntry(void *param){
 void Renderer::start(){
 
   initWindow();
-
   initGL();
 
   const GLubyte *ver = glGetString( GL_SHADING_LANGUAGE_VERSION);
@@ -48,10 +46,7 @@ void Renderer::start(){
  * @param toSave
  */
 void Renderer::saveLog(char *toSave, string filename){
-  ofstream fileStream;
-  fileStream.open(filename + ".log", fstream::out);
-  fileStream.write(toSave, 512);
-  fileStream.close();
+  FileHelper::saveString(toSave, "logs/" + filename);
 };
 
 /**
@@ -60,24 +55,13 @@ void Renderer::saveLog(char *toSave, string filename){
  * @return
  */
 string Renderer::loadShader(string sourceFile){
-  ifstream fileStream;
-  string path = "shaders/" + sourceFile;
-
-  fileStream.open(path);
-
-  if (!fileStream.good()){
-    return "fail!";
-  }
-
-  std::stringstream streamBuffer;
-
-  streamBuffer << fileStream.rdbuf();
-  fileStream.close();
-
-  return streamBuffer.str();
-
+  return FileHelper::loadString("shaders/" + sourceFile);
 };
 
+
+/**
+ *
+ */
 void Renderer::initGL(){
   glfwSwapInterval(1);
 
