@@ -38,8 +38,21 @@ void Renderer::start(){
 
   initGL();
 
+  const GLubyte *ver = glGetString( GL_SHADING_LANGUAGE_VERSION);
+
   renderLoop();
 }
+
+/**
+ *
+ * @param toSave
+ */
+void Renderer::saveLog(char *toSave, string filename){
+  ofstream fileStream;
+  fileStream.open(filename + ".log", fstream::out);
+  fileStream.write(toSave, 512);
+  fileStream.close();
+};
 
 /**
  *
@@ -55,44 +68,82 @@ string Renderer::loadShader(string sourceFile){
   if (!fileStream.good()){
     return "fail!";
   }
+
   std::stringstream streamBuffer;
 
   streamBuffer << fileStream.rdbuf();
   fileStream.close();
 
   return streamBuffer.str();
+
 };
 
 void Renderer::initGL(){
   glfwSwapInterval(1);
 
+
   this->shaderProgram = glCreateProgram();
 
   glGenBuffers(1, &this->vertexBuffer);
-
   glBufferData(GL_ARRAY_BUFFER, 10000, nullptr, GL_DYNAMIC_DRAW);
 
 
+  // Loading and compiling vertex shader (then logging)
   GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
   const char* vertex_src = loadShader("VertexShader.vsh").c_str();
   glShaderSource(vertexShader, 1, &vertex_src, nullptr);
   glCompileShader(vertexShader);
-  glAttachShader(vertexShader, GL_VERTEX_SHADER);
+  glAttachShader(this->shaderProgram, vertexShader);
 
+  GLint operationSuccess;
+  glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &operationSuccess);
+
+
+  if(!operationSuccess)
+  {
+    cout << vertex_src;
+    char* logText = new char[512];
+    memset(logText, '\0', 512);
+    glGetShaderInfoLog(vertexShader, 512, nullptr, logText);
+    saveLog(logText, "VertexCompile");
+    *this->isTerminating = true;
+  };
+
+
+  // Loading and compiling fragment shader (then logging)
   GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
   const char* fragment_src = loadShader("FragmentShader.fsh").c_str();
   glShaderSource(fragmentShader, 1, &fragment_src, nullptr);
   glCompileShader(fragmentShader);
-  glAttachShader(fragmentShader, GL_FRAGMENT_SHADER);
+  glAttachShader(this->shaderProgram, fragmentShader);
 
-  GLint linkSuccess;
-  glad_glGetProgramiv(this->shaderProgram, GL_LINK_STATUS, &linkSuccess);
 
-  if(!linkSuccess) {
-    cout << "failure to lin shaders";
+  glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &operationSuccess);
+
+  if(!operationSuccess)
+  {
+    char* logText = new char[512];
+    memset(logText, '\0', 512);
+    glGetShaderInfoLog(fragmentShader, 512, nullptr, logText);
+    saveLog(logText, "FragmentCompile");
+    *this->isTerminating = true;
+  };
+
+
+  // Attaching shaders to shader program (then logging)
+  glLinkProgram(this->shaderProgram);
+  glad_glGetProgramiv(this->shaderProgram, GL_LINK_STATUS, &operationSuccess);
+
+
+  if(!operationSuccess) {
+    char* logText = new char[512];
+    memset(logText, '\0', 512);
+
+    glGetProgramInfoLog(shaderProgram, 512, nullptr, logText);
+    saveLog(logText, "ShadersLink");
     *this->isTerminating = true;
   }
-  glLinkProgram(this->shaderProgram);
+
   glUseProgram(this->shaderProgram);
 
 }
@@ -121,8 +172,6 @@ int Renderer::initWindow() {
     return -1;
   }
 
-
-
   /* Make the window's context current */
   glfwMakeContextCurrent(window);
 
@@ -131,8 +180,6 @@ int Renderer::initWindow() {
     printf("Something went wrong!\n");
     exit(-1);
   }
-
-
 
   return 0;
 }

@@ -19,13 +19,13 @@ class Renderer {
   void start();
 
  private:
-
   GLuint shaderProgram, vertexBuffer;
   string loadShader(string sourceFile);
   GLFWwindow *window;
   int initWindow();
   void initGL();
   void renderLoop();
+  void saveLog(char* toSave, string filename);
   bool *isTerminating;
 };
 
