@@ -35,9 +35,6 @@ void Renderer::start(){
 
   initWindow();
   initGL();
-
-  const GLubyte *ver = glGetString( GL_SHADING_LANGUAGE_VERSION);
-
   renderLoop();
 }
 
@@ -46,7 +43,7 @@ void Renderer::start(){
  * @param toSave
  */
 void Renderer::saveLog(char *toSave, string filename){
-  FileHelper::saveString(toSave, "logs/" + filename);
+  FileHelper::saveString(toSave, filename + ".log");
 };
 
 /**
@@ -74,8 +71,12 @@ void Renderer::initGL(){
 
   // Loading and compiling vertex shader (then logging)
   GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-  const char* vertex_src = loadShader("VertexShader.vsh").c_str();
-  glShaderSource(vertexShader, 1, &vertex_src, nullptr);
+
+
+  string vertex_src = loadShader("VertexShader.vsh");
+  const char* vertex_src_c = vertex_src.c_str();
+
+  glShaderSource(vertexShader, 1, &vertex_src_c, nullptr);
   glCompileShader(vertexShader);
   glAttachShader(this->shaderProgram, vertexShader);
 
@@ -174,21 +175,12 @@ int Renderer::initWindow() {
  * Internal method, The main render loop of the application.
  * Continues until the window closes or the
  */
-void Renderer::renderLoop(){
-  while(!glfwWindowShouldClose(this->window) && !isTerminating) {
+void Renderer::renderLoop() {
 
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    float vertices[] = {
-        -0.5f, -0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-        0.0f,  0.5f, 0.0f
-    };
-
+  while (!glfwWindowShouldClose(this->window) && !*this->isTerminating) {
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);
-
 
     glfwPollEvents();
     // glfwWaitEvents();
