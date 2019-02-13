@@ -27,7 +27,14 @@ TEST_CASE("Saving text file", "[Smoke]"){
                     "Animi placeat est est et deserunt.\n";
 
 
-  FileHelper::saveString("WrittenFile.txt", testText);
+  FileHelper::saveString(testText, "WrittenFile.txt");
 
   REQUIRE( FileHelper::loadString("WrittenFile.txt") == testText );
+}
+
+TEST_CASE("Loading shader", "[Smoke]"){
+
+  string text = FileHelper::loadString("shaders/FragmentShader.fsh");
+
+  REQUIRE( FileHelper::loadString("WrittenFile.txt") != "unable to read file!" );
 }
