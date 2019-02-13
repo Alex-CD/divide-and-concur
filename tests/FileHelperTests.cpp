@@ -9,7 +9,7 @@ using namespace std;
 
 
 TEST_CASE("Loading text file", "[Smoke]"){
-  string loadedText = FileHelper::loadString("TestFile.txt");
+  string loadedText = FileHelper::loadString("test/TestFile.txt");
 
   string testText = "Non officia consequatur voluptatem dolorum aut.\n"
                     "Ut est quis eum fugiat qui explicabo rerum pariatur.\n"
@@ -27,14 +27,14 @@ TEST_CASE("Saving text file", "[Smoke]"){
                     "Animi placeat est est et deserunt.\n";
 
 
-  FileHelper::saveString(testText, "WrittenFile.txt");
+  FileHelper::saveString(testText, "test/WrittenFile.txt");
 
-  REQUIRE( FileHelper::loadString("WrittenFile.txt") == testText );
+  REQUIRE( FileHelper::loadString("test/WrittenFile.txt") == testText );
 }
 
 TEST_CASE("Loading shader", "[Smoke]"){
 
   string text = FileHelper::loadString("shaders/FragmentShader.fsh");
 
-  REQUIRE( FileHelper::loadString("WrittenFile.txt") != "unable to read file!" );
+  REQUIRE( text != "unable to read file!" );
 }
