@@ -12,6 +12,10 @@
 #include "Renderer.h"
 
 
+/**
+ *
+ * @param isTerminating
+ */
 Renderer::Renderer(bool *isTerminating) {
   this->isTerminating = isTerminating;
 }
@@ -46,6 +50,7 @@ void Renderer::saveLog(char *toSave, string filename){
   FileHelper::saveString(toSave, filename + ".log");
 };
 
+
 /**
  *
  * @param sourceFile
@@ -54,6 +59,20 @@ void Renderer::saveLog(char *toSave, string filename){
 string Renderer::loadShader(string sourceFile){
   return FileHelper::loadString("shaders/" + sourceFile);
 };
+
+
+/**
+ * Callback for the GL resize window functions.
+ * Can't be a member function because it would have to be static
+ * (and wouldn't match the callback signature).
+ * @param window The GLFW window to resize.
+ * @param width The window width, in screen coords (not necessarily px).
+ * @param heightThe window width, in screen coords (not necessarily px).
+ */
+void windowResizeCallback(GLFWwindow* window, int width, int height)
+{
+  glViewport(0, 0, width, height);
+}
 
 
 /**
@@ -129,6 +148,9 @@ void Renderer::initGL(){
     *this->isTerminating = true;
   }
 
+
+  glfwSetFramebufferSizeCallback(this->window, windowResizeCallback);
+
   glUseProgram(this->shaderProgram);
 
 }
@@ -170,6 +192,9 @@ int Renderer::initWindow() {
 }
 
 
+
+
+
 /**
  * Built on GLFW docs ( https://www.glfw.org/docs/latest/window_guide.html )
  * Internal method, The main render loop of the application.
@@ -191,3 +216,6 @@ void Renderer::renderLoop() {
   *this->isTerminating = true;
   glfwTerminate();
 }
+
+
+

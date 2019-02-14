@@ -22,9 +22,11 @@ class Renderer {
   GLuint shaderProgram, vertexBuffer;
   string loadShader(string sourceFile);
   GLFWwindow *window;
+
   int initWindow();
   void initGL();
   void renderLoop();
+  void window_size_callback(GLFWwindow* window, int width, int height);
   void saveLog(char* toSave, string filename);
   bool *isTerminating;
 };
