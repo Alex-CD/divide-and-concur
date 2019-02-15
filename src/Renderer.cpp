@@ -116,8 +116,11 @@ void Renderer::initGL(){
 
   // Loading and compiling fragment shader (then logging)
   GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-  const char* fragment_src = loadShader("FragmentShader.fsh").c_str();
-  glShaderSource(fragmentShader, 1, &fragment_src, nullptr);
+  string fragment_src = loadShader("FragmentShader.fsh");
+  const char* fragment_src_c = fragment_src.c_str();
+
+
+  glShaderSource(fragmentShader, 1, &fragment_src_c, nullptr);
   glCompileShader(fragmentShader);
   glAttachShader(this->shaderProgram, fragmentShader);
 
@@ -142,7 +145,6 @@ void Renderer::initGL(){
   if(!operationSuccess) {
     char* logText = new char[512];
     memset(logText, '\0', 512);
-
     glGetProgramInfoLog(shaderProgram, 512, nullptr, logText);
     saveLog(logText, "ShadersLink");
     *this->isTerminating = true;
@@ -150,6 +152,9 @@ void Renderer::initGL(){
 
 
   glfwSetFramebufferSizeCallback(this->window, windowResizeCallback);
+
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+  glEnableVertexAttribArray(0);
 
   glUseProgram(this->shaderProgram);
 
@@ -202,12 +207,42 @@ int Renderer::initWindow() {
  */
 void Renderer::renderLoop() {
 
+
+  unsigned int vertexBufferObjects;
+  glGenBuffers(1, &vertexBufferObjects);
+  glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjects);
+
+
+  unsigned int VAO;
+  glGenVertexArrays(1, &VAO);
+  glBindVertexArray(VAO);
+
+
+
+  float vertices[] = {
+      -0.5f, -0.5f, 0.0f,
+      0.5f, -0.5f, 0.0f,
+      0.0f,  0.5f, 0.0f
+  };
+
+
   while (!glfwWindowShouldClose(this->window) && !*this->isTerminating) {
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
+
+
+
+
+
+
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);
 
+
     glfwPollEvents();
+
+
     // glfwWaitEvents();
     // Pauses program until input (useful for debug)
 
