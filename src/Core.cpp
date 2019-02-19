@@ -50,7 +50,7 @@ void Core::start(){
  * (Components should already be initialised!)
  */
 void Core::startComponents(){
-  this->renderer = new Renderer(&this->isTerminating, this->);
+  this->renderer = new Renderer(&this->isTerminating, &this->maxObjects);
   this->audioHandler = new AudioHandler(&this->isTerminating);
   this->gameLogic = new GameLogic(&this->isTerminating);
 
