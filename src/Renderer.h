@@ -14,9 +14,11 @@ using namespace std;
 
 class Renderer {
  public:
-  explicit Renderer(bool *isTerminating);
+  explicit Renderer(bool *isTerminating, int *maxObjects);
   static void *threadEntry(void *param);
   void start();
+  void showCursor();
+  void hideCursor();
 
  private:
   GLuint shaderProgram, vertexBuffer;
@@ -26,9 +28,9 @@ class Renderer {
   int initWindow();
   void initGL();
   void renderLoop();
-  void window_size_callback(GLFWwindow* window, int width, int height);
   void saveLog(char* toSave, string filename);
   bool *isTerminating;
+  int *maxObjects;
 };
 
 #endif //DAC_RENDERER_H

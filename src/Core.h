@@ -24,6 +24,8 @@ class Core {
   int getState();
   static void *threadEntry(void *param);
   void start();
+  int maxObjects;
+
 
  private:
   bool isTerminating;

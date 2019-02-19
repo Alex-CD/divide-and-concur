@@ -5,7 +5,7 @@
 #ifndef DAC_SCENEOBJECT_H
 #define DAC_SCENEOBJECT_H
 
-class SceneObject {
+class Object {
  private:
   float xPos, yPos, zPos;
   float xSize, ySize, zSize;

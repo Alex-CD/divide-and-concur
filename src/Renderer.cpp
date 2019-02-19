@@ -16,8 +16,9 @@
  *
  * @param isTerminating
  */
-Renderer::Renderer(bool *isTerminating) {
+Renderer::Renderer(bool *isTerminating, int *maxObjects) {
   this->isTerminating = isTerminating;
+  this->maxObjects = maxObjects;
 }
 
 /**
@@ -40,6 +41,20 @@ void Renderer::start(){
   initWindow();
   initGL();
   renderLoop();
+}
+
+/**
+ *
+ */
+void Renderer::hideCursor(){
+  glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+}
+
+/**
+ *
+ */
+void Renderer::showCursor(){
+  glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL;
 }
 
 /**
@@ -206,23 +221,26 @@ int Renderer::initWindow() {
  */
 void Renderer::renderLoop() {
 
-
-  unsigned int vertexBufferObjects;
-  glGenBuffers(1, &vertexBufferObjects);
-  glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjects);
-
-
-  unsigned int VAO;
-  glGenVertexArrays(1, &VAO);
-  glBindVertexArray(VAO);
-
-
-
   float vertices[] = {
       -1.0f, -1.0f, 0.0f,
       1.0f, 1.0f, 0.0f,
+      -1.0f,  1.0f, 0.0f,
       -1.0f,  1.0f, 0.0f
   };
+
+
+
+  // Contains all of the vertex buffer objects
+  unsigned int vertexBufferObjects;
+  glGenBuffers(1, &vertexBufferObjects);
+  glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjects);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
+
+  unsigned int VAO;
+  glGenVertexArrays(1, &VAO);
+  glEnableVertexAttribArray(VAO);
+
+
 
 
   glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -235,8 +253,7 @@ void Renderer::renderLoop() {
 
   while (!glfwWindowShouldClose(this->window) && !*this->isTerminating) {
     glClear(GL_COLOR_BUFFER_BIT);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawArrays(GL_TRIANGLES, 0, 4);
 
 
     /* Swap front and back buffers */

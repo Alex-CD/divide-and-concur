@@ -14,12 +14,13 @@
 /**
  * Default constructor
  */
-Core::Core(){
+Core::Core(GameLogic gamelogic, ){
   this->renderer = nullptr;
   this->audioHandler = nullptr;
   this->inputHandler = nullptr;
   this->gameLogic = nullptr;
   this->isTerminating = false;
+  this->maxObjects = 512;
 }
 
 /**
@@ -50,7 +51,7 @@ void Core::start(){
  * (Components should already be initialised!)
  */
 void Core::startComponents(){
-  this->renderer = new Renderer(&this->isTerminating);
+  this->renderer = new Renderer(&this->isTerminating, this->);
   this->audioHandler = new AudioHandler(&this->isTerminating);
   this->gameLogic = new GameLogic(&this->isTerminating);
 

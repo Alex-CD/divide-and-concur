@@ -5,7 +5,7 @@
 #ifndef DAC_SCREENOBJECT_H
 #define DAC_SCREENOBJECT_H
 
-class ScreenObject {
+class Sprite {
 
 };
 
