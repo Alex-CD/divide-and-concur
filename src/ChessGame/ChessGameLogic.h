@@ -8,7 +8,9 @@
 #include <GameLogic.h>
 
 class ChessGameLogic: public GameLogic {
-
+ public:
+  explicit ChessGameLogic(bool *isTerminating);
+ private:
 };
 
 #endif //DAC_CHESSCORE_H

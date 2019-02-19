@@ -12,7 +12,6 @@
 #include "Renderer.h"
 #include "AudioHandler.h"
 #include "GameLogic.h"
-#include "InputHandler.h"
 
 
 using namespace std;
@@ -25,14 +24,12 @@ class Core {
   static void *threadEntry(void *param);
   void start();
   int maxObjects;
-
-
- private:
-  bool isTerminating;
   Renderer *renderer;
   GameLogic *gameLogic;
   AudioHandler *audioHandler;
-  InputHandler *inputHandler;
+  bool isTerminating;
+
+ private:
   pthread_t renderThread;
   pthread_t gameLogicThread;
   pthread_t audioHandlerThread;

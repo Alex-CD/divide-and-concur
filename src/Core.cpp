@@ -14,10 +14,9 @@
 /**
  * Default constructor
  */
-Core::Core(GameLogic gamelogic, ){
+Core::Core(){
   this->renderer = nullptr;
   this->audioHandler = nullptr;
-  this->inputHandler = nullptr;
   this->gameLogic = nullptr;
   this->isTerminating = false;
   this->maxObjects = 512;
@@ -76,8 +75,7 @@ void Core::disposeComponents(){
 int Core::getState(){
   return (this->renderer != nullptr)
       + (this->gameLogic != nullptr)
-      + (this->audioHandler != nullptr)
-      + (this->inputHandler != nullptr);
+      + (this->audioHandler != nullptr);
 }
 
 /**

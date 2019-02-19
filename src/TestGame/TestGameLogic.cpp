@@ -3,3 +3,6 @@
 //
 
 #include "TestGameLogic.h"
+
+TestGameLogic::TestGameLogic(bool *isTerminating):GameLogic(isTerminating) {
+}

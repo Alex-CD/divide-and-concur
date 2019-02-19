@@ -7,7 +7,9 @@
 
 #include <GameLogic.h>
 class TestGameLogic: public GameLogic {
-
+ public:
+  TestGameLogic(bool* isTerminating);
+ private:
 };
 
 #endif //DAC_TESTGAMELOGIC_H

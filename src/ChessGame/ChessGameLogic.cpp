@@ -4,3 +4,6 @@
 
 #include "ChessGameLogic.h"
 
+ChessGameLogic::ChessGameLogic(bool *isTerminating):GameLogic(isTerminating){
+
+}

@@ -8,6 +8,9 @@
 #include <pthread.h>
 #include "Core.h"
 
+#include <ChessGame/ChessGameLogic.h>
+#include <TestGame/TestGameLogic.h>
+
 using namespace std;
 
 /**
@@ -25,7 +28,6 @@ int main() {
 
 
   while(gamesCount < MAX_THREADS && keepGoing){
-
     pthread_create(&gamesThreads[gamesCount], nullptr, Core::threadEntry, &games[gamesCount]);
     cout << "\nPress enter to launch another game\n";
     cin >> keepGoing;

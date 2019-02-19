@@ -54,7 +54,7 @@ void Renderer::hideCursor(){
  *
  */
 void Renderer::showCursor(){
-  glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL;
+  glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 }
 
 /**
