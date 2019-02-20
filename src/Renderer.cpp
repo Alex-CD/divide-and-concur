@@ -26,7 +26,7 @@ Renderer::Renderer(bool *isTerminating, int *maxObjects) {
  * Calls start()
  */
 void *Renderer::threadEntry(void *param){
-  auto *thisRenderer = (Renderer*)param;
+  Renderer* thisRenderer = (Renderer *)param;
   thisRenderer->start();
   return nullptr;
 }
@@ -90,22 +90,33 @@ void windowResizeCallback(GLFWwindow* window, int width, int height)
 }
 
 
-/**
- *
- */
-void Renderer::initGL(){
-  glfwSwapInterval(1);
+void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
+
+  glGenBuffers(*this->maxObjects, VBO);
+  glGenVertexArrays(*this->maxObjects, VAO);
+
+  // Bind a VBO to each VAO.
+  for (int object = 0; object < *maxObjects; object++){
+    glBindVertexArray(VAO[object]);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO[object]);
+
+    // Attaching buffer to VBO.
+    glEnableClientState(GL_ARRAY_BUFFER);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+    glEnableVertexAttribArray(VAO[object]);
+
+    //Unbind array
+    glBindVertexArray(0);
+  }
+}
 
 
+void Renderer::initShaders(){
   this->shaderProgram = glCreateProgram();
-
-  glGenBuffers(1, &this->vertexBuffer);
-  glBufferData(GL_ARRAY_BUFFER, 10000, nullptr, GL_DYNAMIC_DRAW);
-
 
   // Loading and compiling vertex shader (then logging)
   GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-
 
   string vertex_src = loadShader("VertexShader.vsh");
   const char* vertex_src_c = vertex_src.c_str();
@@ -165,12 +176,19 @@ void Renderer::initGL(){
     *this->isTerminating = true;
   }
 
+}
 
+/**
+ *
+ */
+void Renderer::initGL(){
+
+  initShaders();
+
+  // openGL settings
+  glfwSwapInterval(1);
   glfwSetFramebufferSizeCallback(this->window, windowResizeCallback);
-
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-  glEnableVertexAttribArray(0);
-
+  glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
 }
 
@@ -211,50 +229,32 @@ int Renderer::initWindow() {
 }
 
 
-
-
-
 /**
  * Built on GLFW docs ( https://www.glfw.org/docs/latest/window_guide.html )
  * Internal method, The main render loop of the application.
  * Continues until the window closes or the
  */
 void Renderer::renderLoop() {
+  GLuint VAO [*this->maxObjects];
+  GLuint VBO [*this->maxObjects];
 
-  float vertices[] = {
-      -1.0f, -1.0f, 0.0f,
-      1.0f, 1.0f, 0.0f,
-      -1.0f,  1.0f, 0.0f,
-      -1.0f,  1.0f, 0.0f
-  };
-
-
+  initBuffers(VAO, VBO);
 
   // Contains all of the vertex buffer objects
-  unsigned int vertexBufferObjects;
-  glGenBuffers(1, &vertexBufferObjects);
-  glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjects);
-  glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
-
-  unsigned int VAO;
-  glGenVertexArrays(1, &VAO);
-  glEnableVertexAttribArray(VAO);
-
-
-
-
-  glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-  glEnableVertexAttribArray(0);
-
 
   glUseProgram(this->shaderProgram);
 
   while (!glfwWindowShouldClose(this->window) && !*this->isTerminating) {
     glClear(GL_COLOR_BUFFER_BIT);
-    glDrawArrays(GL_TRIANGLES, 0, 4);
 
+    updateBuffers(VAO);
+
+    for(int i = 0; i < *maxObjects; i++) {
+      glBindVertexArray(VAO[i]);
+      //glBindBuffer(VAO[0])
+      glDrawArrays(GL_TRIANGLES, 0, 4);
+      glBindVertexArray(0);
+    }
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);
@@ -273,4 +273,19 @@ void Renderer::renderLoop() {
 }
 
 
+void Renderer::updateBuffers(GLuint* VAO){
+  float vertices[] = {
+      -1.0f, -1.0f, 1.0f,
+      1.0f, 1.0f, 0.0f,
+      -1.0f,  1.0f, 0.0f,
+      -1.0f,  1.0f, 0.0f
+  };
 
+  for(int i = 0; i < *this->maxObjects; i++){
+    glBindVertexArray(VAO[i]);
+    // Rewrite entire buffer (without assigning new one (quick and dirty!).
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
+  }
+
+  glBindVertexArray(0);
+}

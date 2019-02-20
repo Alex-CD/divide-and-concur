@@ -21,16 +21,20 @@ class Renderer {
   void hideCursor();
 
  private:
-  GLuint shaderProgram, vertexBuffer;
+  GLuint shaderProgram;
   string loadShader(string sourceFile);
   GLFWwindow *window;
 
   int initWindow();
   void initGL();
+  void initShaders();
+  void initBuffers(GLuint* VAO, GLuint* VBO);
   void renderLoop();
+  void updateBuffers(GLuint* VAO);
   void saveLog(char* toSave, string filename);
   bool *isTerminating;
   int *maxObjects;
+
 };
 
 #endif //DAC_RENDERER_H
