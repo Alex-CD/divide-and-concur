@@ -89,22 +89,36 @@ void windowResizeCallback(GLFWwindow* window, int width, int height)
   glViewport(0, 0, width, height);
 }
 
-
+/**
+ *
+ * @param VAO
+ * @param VBO
+ */
 void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
 
+  float vertices[] = {
+      -1.0f, -0.0f, 1.0f,
+      1.0f, 1.0f, 0.0f,
+      -1.0f,  1.0f, 0.0f,
+  };
+
+
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
   glGenBuffers(*this->maxObjects, VBO);
   glGenVertexArrays(*this->maxObjects, VAO);
 
   // Bind a VBO to each VAO.
   for (int i = 0; i < *maxObjects; i++){
     glBindVertexArray(VAO[i]);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-    glEnableVertexAttribArray(VAO[i]);
-
     glBindBuffer(GL_ARRAY_BUFFER, VBO[i]);
 
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
+
+    glEnableVertexAttribArray(0);
     glBindVertexArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
   }
 
 }
@@ -232,40 +246,37 @@ int Renderer::initWindow() {
  * Continues until the window closes or the
  */
 void Renderer::renderLoop() {
-  GLuint VAO [*this->maxObjects];
-  GLuint VBO [*this->maxObjects];
+  unsigned int VAO[*this->maxObjects];
+  unsigned int VBO[*this->maxObjects];
 
   initBuffers(VAO, VBO);
 
   float vertices[] = {
       -1.0f, -1.0f, 1.0f,
-       1.0f, 1.0f, 0.0f,
+      1.0f, 1.0f, 0.0f,
       -1.0f,  1.0f, 0.0f,
-      -1.0f,  1.0f, 0.0f
   };
 
   // Contains all of the vertex buffer objects
 
   glUseProgram(this->shaderProgram);
 
+
   while (!glfwWindowShouldClose(this->window) && !*this->isTerminating) {
     glClear(GL_COLOR_BUFFER_BIT);
 
+    // Draw all objects
     for(int i = 0; i < *this->maxObjects; i++) {
       glBindVertexArray(VAO[i]);
-
+      glBindBuffer(GL_ARRAY_BUFFER, VBO[i]);
       glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
       glDrawArrays(GL_TRIANGLES, 0, 3);
-
     }
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);
-
-
     glfwPollEvents();
-
 
   }
 
