@@ -30,7 +30,6 @@ class Renderer {
   void initShaders();
   void initBuffers(GLuint* VAO, GLuint* VBO);
   void renderLoop();
-  void updateBuffers(GLuint* VAO);
   void saveLog(char* toSave, string filename);
   bool *isTerminating;
   int *maxObjects;

@@ -19,7 +19,7 @@ Core::Core(){
   this->audioHandler = nullptr;
   this->gameLogic = nullptr;
   this->isTerminating = false;
-  this->maxObjects = 512;
+  this->maxObjects = 20;
 }
 
 /**

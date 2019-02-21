@@ -96,19 +96,17 @@ void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
   glGenVertexArrays(*this->maxObjects, VAO);
 
   // Bind a VBO to each VAO.
-  for (int object = 0; object < *maxObjects; object++){
-    glBindVertexArray(VAO[object]);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO[object]);
-
-    // Attaching buffer to VBO.
-    glEnableClientState(GL_ARRAY_BUFFER);
+  for (int i = 0; i < *maxObjects; i++){
+    glBindVertexArray(VAO[i]);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-    glEnableVertexAttribArray(VAO[object]);
+    glEnableVertexAttribArray(VAO[i]);
 
-    //Unbind array
+    glBindBuffer(GL_ARRAY_BUFFER, VBO[i]);
+
     glBindVertexArray(0);
   }
+
 }
 
 
@@ -175,7 +173,6 @@ void Renderer::initShaders(){
     saveLog(logText, "ShadersLink");
     *this->isTerminating = true;
   }
-
 }
 
 /**
@@ -240,6 +237,13 @@ void Renderer::renderLoop() {
 
   initBuffers(VAO, VBO);
 
+  float vertices[] = {
+      -1.0f, -1.0f, 1.0f,
+       1.0f, 1.0f, 0.0f,
+      -1.0f,  1.0f, 0.0f,
+      -1.0f,  1.0f, 0.0f
+  };
+
   // Contains all of the vertex buffer objects
 
   glUseProgram(this->shaderProgram);
@@ -247,13 +251,13 @@ void Renderer::renderLoop() {
   while (!glfwWindowShouldClose(this->window) && !*this->isTerminating) {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    updateBuffers(VAO);
-
-    for(int i = 0; i < *maxObjects; i++) {
+    for(int i = 0; i < *this->maxObjects; i++) {
       glBindVertexArray(VAO[i]);
-      //glBindBuffer(VAO[0])
-      glDrawArrays(GL_TRIANGLES, 0, 4);
-      glBindVertexArray(0);
+
+      glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
+
+      glDrawArrays(GL_TRIANGLES, 0, 3);
+
     }
 
     /* Swap front and back buffers */
@@ -263,29 +267,8 @@ void Renderer::renderLoop() {
     glfwPollEvents();
 
 
-    // glfwWaitEvents();
-    // Pauses program until input (useful for debug)
-
   }
 
   *this->isTerminating = true;
   glfwTerminate();
-}
-
-
-void Renderer::updateBuffers(GLuint* VAO){
-  float vertices[] = {
-      -1.0f, -1.0f, 1.0f,
-      1.0f, 1.0f, 0.0f,
-      -1.0f,  1.0f, 0.0f,
-      -1.0f,  1.0f, 0.0f
-  };
-
-  for(int i = 0; i < *this->maxObjects; i++){
-    glBindVertexArray(VAO[i]);
-    // Rewrite entire buffer (without assigning new one (quick and dirty!).
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
-  }
-
-  glBindVertexArray(0);
 }
