@@ -5,7 +5,9 @@
 #ifndef DAC_VECTOR_H
 #define DAC_VECTOR_H
 
-class Vector {
+#include "WorldObject.h"
+
+class Vector : WorldObject {
 
 };
 

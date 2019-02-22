@@ -352,7 +352,7 @@ Object
       <w>144</w>
       <h>112</h>
     </coordinates>
-    <panel_attributes>VectorShape
+    <panel_attributes>Vector
 --
 - Draw()
 - vertices[,]</panel_attributes>
