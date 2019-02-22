@@ -14,6 +14,8 @@
 #include "GameLogic.h"
 
 #include "renderables/Object.h"
+#include "renderables/DoubleLinkedObject.h"
+
 
 using namespace std;
 
@@ -28,8 +30,9 @@ class Core {
   Renderer *renderer;
   GameLogic *gameLogic;
   AudioHandler *audioHandler;
+  DoubleLinkedObject* objectsHead;
   bool isTerminating;
-  
+
 
  private:
   pthread_t renderThread;

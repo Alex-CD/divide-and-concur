@@ -5,7 +5,9 @@
 #ifndef DAC_BITMAP_H
 #define DAC_BITMAP_H
 
-class Bitmap {
+#include "WorldObject.h"
+
+class TexturedShape: public WorldObject{
 
 };
 

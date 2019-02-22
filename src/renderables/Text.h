@@ -5,7 +5,8 @@
 #ifndef DAC_TEXT_H
 #define DAC_TEXT_H
 
-class Text {
+#include "ScreenObject.h"
+class Text: public ScreenObject {
 
 };
 

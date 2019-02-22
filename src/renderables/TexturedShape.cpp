@@ -2,4 +2,4 @@
 // Created by alex on 28/01/19.
 //
 
-#include "GameWorldObject.h"
+#include "TexturedShape.h"

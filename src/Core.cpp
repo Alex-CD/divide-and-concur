@@ -20,6 +20,7 @@ Core::Core(){
   this->gameLogic = nullptr;
   this->isTerminating = false;
   this->maxObjects = 5;
+  this->objectsHead = nullptr;
 }
 
 /**
@@ -58,7 +59,6 @@ void Core::startComponents(){
   pthread_create(&this->audioHandlerThread, nullptr, AudioHandler::threadEntry, this->audioHandler);
   pthread_create(&this->gameLogicThread, nullptr, GameLogic::threadEntry, this->gameLogic);
 }
-
 
 void Core::disposeComponents(){
   delete this->renderer;

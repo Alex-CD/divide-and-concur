@@ -1,13 +1,13 @@
 //
-// Created by alex on 28/01/19.
+// Created by alex on 22/02/19.
 //
 
 #ifndef DAC_SCREENOBJECT_H
 #define DAC_SCREENOBJECT_H
 
-#include "WorldObject.h"
+#include "Object.h"
 
-class Sprite: public WorldObject{
+class ScreenObject:public Object{
 
 };
 

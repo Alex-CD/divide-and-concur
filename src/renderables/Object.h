@@ -5,8 +5,10 @@
 #ifndef DAC_OBJECT_H
 #define DAC_OBJECT_H
 
+#include <GL/gl.h>
 class Object {
-
+ public:
+  void draw();
 };
 
 #endif //DAC_OBJECT_H
