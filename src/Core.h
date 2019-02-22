@@ -13,6 +13,7 @@
 #include "AudioHandler.h"
 #include "GameLogic.h"
 
+#include "renderables/Object.h"
 
 using namespace std;
 
@@ -28,12 +29,12 @@ class Core {
   GameLogic *gameLogic;
   AudioHandler *audioHandler;
   bool isTerminating;
+  
 
  private:
   pthread_t renderThread;
   pthread_t gameLogicThread;
   pthread_t audioHandlerThread;
-  //pthread_t inputHandlerThread;
   void startComponents();
   void disposeComponents();
 };

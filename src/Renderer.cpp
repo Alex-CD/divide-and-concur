@@ -96,10 +96,12 @@ void windowResizeCallback(GLFWwindow* window, int width, int height)
  */
 void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
 
+
+  // Empty data
   float vertices[] = {
-      -1.0f, -0.0f, 1.0f,
-      1.0f, 1.0f, 0.0f,
-      -1.0f,  1.0f, 0.0f,
+      0.0f, 0.0f, 0.0f,
+      0.0f, 0.0f, 0.0f,
+      0.0f,  0.0f, 0.0f,
   };
 
 
@@ -115,7 +117,10 @@ void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
+    //Enable attribute 0 of vertexarray
     glEnableVertexAttribArray(0);
+
+    // Unbind vertex array and buffer
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -246,10 +251,12 @@ int Renderer::initWindow() {
  * Continues until the window closes or the
  */
 void Renderer::renderLoop() {
+
   unsigned int VAO[*this->maxObjects];
   unsigned int VBO[*this->maxObjects];
 
   initBuffers(VAO, VBO);
+
 
   float vertices[] = {
       -1.0f, -1.0f, 1.0f,
@@ -257,10 +264,8 @@ void Renderer::renderLoop() {
       -1.0f,  1.0f, 0.0f,
   };
 
-  // Contains all of the vertex buffer objects
 
   glUseProgram(this->shaderProgram);
-
 
   while (!glfwWindowShouldClose(this->window) && !*this->isTerminating) {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -269,7 +274,7 @@ void Renderer::renderLoop() {
     for(int i = 0; i < *this->maxObjects; i++) {
       glBindVertexArray(VAO[i]);
       glBindBuffer(GL_ARRAY_BUFFER, VBO[i]);
-      glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
+      glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
 
       glDrawArrays(GL_TRIANGLES, 0, 3);
     }
