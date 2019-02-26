@@ -12,12 +12,9 @@ class GameLogic {
   explicit GameLogic(bool *isTerminating, DoubleLinkedObject* objects);
   void start();
   static void *threadEntry(void *param);
-
- private:
-  bool *isTerminating;
-  void logicLoop();
   DoubleLinkedObject *objects;
-
+  bool *isTerminating;
+  virtual void logicLoop() = 0;
 };
 
 #endif //DAC_GAMELOGIC_H

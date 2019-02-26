@@ -10,6 +10,7 @@
 class ChessGameLogic: public GameLogic {
  public:
   explicit ChessGameLogic(bool *isTerminating, DoubleLinkedObject *objects);
+  void logicLoop();
  private:
 };
 

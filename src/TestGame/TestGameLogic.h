@@ -8,6 +8,7 @@
 #include <GameLogic.h>
 class TestGameLogic: public GameLogic {
  public:
+  void logicLoop(); // override
   TestGameLogic(bool* isTerminating, DoubleLinkedObject *objects);
  private:
 };

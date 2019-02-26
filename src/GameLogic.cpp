@@ -24,11 +24,3 @@ void GameLogic::start() {
 
   this->logicLoop();
 }
-
-
-
-void GameLogic::logicLoop() {
-  while(!isTerminating){
-    //TODO game logic
-  }
-}
