@@ -3,3 +3,8 @@
 //
 
 #include "TexturedShape.h"
+
+
+TexturedShape::TexturedShape(float xPos, float yPos, float zPos):WorldObject(xPos, yPos, zPos) {
+
+}

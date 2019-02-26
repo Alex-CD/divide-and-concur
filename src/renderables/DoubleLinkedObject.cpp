@@ -8,8 +8,8 @@
 /**
  * Constructor.
  */
-DoubleLinkedObject::DoubleLinkedObject(Object object) {
-  this->object = &object;
+DoubleLinkedObject::DoubleLinkedObject(Object* object) {
+  this->object = object;
 }
 
 /**

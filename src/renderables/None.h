@@ -5,7 +5,9 @@
 #ifndef DAC_NONE_H
 #define DAC_NONE_H
 
-class None {
+#include "Object.h"
+
+class None:public Object {
 
 };
 

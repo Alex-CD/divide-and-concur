@@ -7,8 +7,9 @@
 
 #include "WorldObject.h"
 
-class TexturedShape: public WorldObject{
-
+class TexturedShape:public WorldObject{
+ public:
+  TexturedShape(float xPos, float yPos, float zPos);
 };
 
 #endif //DAC_BITMAP_H

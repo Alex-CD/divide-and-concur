@@ -10,7 +10,7 @@
 class DoubleLinkedObject {
  public:
   Object* object;
-  explicit DoubleLinkedObject(Object object);
+  explicit DoubleLinkedObject(Object* object);
   void remove();
   void insertAfter(DoubleLinkedObject* object);
   void insertBefore(DoubleLinkedObject* object);

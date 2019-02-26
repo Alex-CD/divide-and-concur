@@ -7,8 +7,9 @@
 
 #include "WorldObject.h"
 
-class Vector : WorldObject {
-
+class Vector : public WorldObject {
+ public:
+  Vector(float xPos, float yPos, float zPos);
 };
 
 #endif //DAC_VECTOR_H
