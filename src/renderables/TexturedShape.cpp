@@ -5,6 +5,6 @@
 #include "TexturedShape.h"
 
 
-TexturedShape::TexturedShape(float xPos, float yPos, float zPos):WorldObject(xPos, yPos, zPos) {
+TexturedShape::TexturedShape(float xPos, float yPos, float zPos, string id):WorldObject(xPos, yPos, zPos, id) {
 
 }

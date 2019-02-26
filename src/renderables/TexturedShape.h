@@ -9,7 +9,7 @@
 
 class TexturedShape:public WorldObject{
  public:
-  TexturedShape(float xPos, float yPos, float zPos);
+  TexturedShape(float xPos, float yPos, float zPos, string id);
 };
 
 #endif //DAC_BITMAP_H

@@ -27,6 +27,8 @@ void DoubleLinkedObject::insertAfter(DoubleLinkedObject* object) {
   object->lastObject = this;
 }
 
+DoubleLinkedObject::
+
 /**
  *
  * @param object
@@ -35,13 +37,23 @@ void DoubleLinkedObject::insertBefore(DoubleLinkedObject* object){
   this->lastObject->insertAfter(object);
 }
 
+Object* DoubleLinkedObject::getObjectById(string id) {
+  if(this->object->id == id){
+    return this->object;
+  } else if(this->nextObject == nullptr){
+    return nullptr; // YA DONE MESSED UP
+  } else {
+    this->nextObject->getObjectById(id);
+  }
+}
+
 /**
  *
  * @param n
  * @return
  */
-DoubleLinkedObject* DoubleLinkedObject::getNthElement(int n) {
-  return getNthElementRecurse(n, 0);
+Object* DoubleLinkedObject::getNthElement(int n) {
+  return getNthElementRecurse(n, 0)->object;
 }
 
 

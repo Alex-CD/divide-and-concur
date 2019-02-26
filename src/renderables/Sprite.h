@@ -7,7 +7,7 @@
 
 #include "WorldObject.h"
 
-class Sprite: public WorldObject{
+class Sprite: public WorldObject {
 
 };
 

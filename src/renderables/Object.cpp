@@ -4,3 +4,7 @@
 
 #include "Object.h"
 
+
+Object::Object(string id) {
+  this->id = id;
+}

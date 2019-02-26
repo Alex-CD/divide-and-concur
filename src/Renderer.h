@@ -10,11 +10,13 @@
 #include <pthread.h>
 #include <GLFW/glfw3.h>
 
+#include "renderables/DoubleLinkedObject.h"
+
 using namespace std;
 
 class Renderer {
  public:
-  explicit Renderer(bool *isTerminating, int *maxObjects);
+  explicit Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *objects);
   static void *threadEntry(void *param);
   void start();
   void showCursor();
@@ -31,8 +33,10 @@ class Renderer {
   void initBuffers(GLuint* VAO, GLuint* VBO);
   void renderLoop();
   void saveLog(char* toSave, string filename);
+  void updateBuffers(unsigned int VAO[], unsigned int VBO[]);
   bool *isTerminating;
   int *maxObjects;
+  DoubleLinkedObject *objects;
 
 };
 

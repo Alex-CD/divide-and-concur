@@ -10,7 +10,7 @@
  * @param ySize Diameter of the object in the y plane.
  * @param zSize Diameter of the object in the z plane.
  */
-WorldObject::WorldObject(float xSize, float ySize, float zSize){
+WorldObject::WorldObject(float xSize, float ySize, float zSize, string id):Object(id){
   this->xPos = 0.f;
   this->yPos = 0.f;
   this->zPos = 0.f;
@@ -80,4 +80,18 @@ void WorldObject::transform(float xFactor, float yFactor, float zFactor) {
   this->xTransform *= xFactor;
   this->yTransform *= yFactor;
   this->zTransform *= zFactor;
+}
+
+/**
+ *
+ * @param xScale
+ * @param yScale
+ * @param zScale
+ */
+void WorldObject::scale(float xScale, float yScale, float zScale){
+
+}
+
+void WorldObject::generateVertices(float *buffer) {
+  // TODO
 }

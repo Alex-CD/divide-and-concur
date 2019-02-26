@@ -9,7 +9,7 @@
 
 class Vector : public WorldObject {
  public:
-  Vector(float xPos, float yPos, float zPos);
+  Vector(float xPos, float yPos, float zPos, string id);
 };
 
 #endif //DAC_VECTOR_H

@@ -10,6 +10,7 @@
 
 #include "FileHelper.h"
 #include "Renderer.h"
+#include "renderables/DoubleLinkedObject.h"
 
 
 
@@ -17,9 +18,10 @@
  *
  * @param isTerminating
  */
-Renderer::Renderer(bool *isTerminating, int *maxObjects) {
+Renderer::Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *objects) {
   this->isTerminating = isTerminating;
   this->maxObjects = maxObjects;
+  this->objects = objects;
 }
 
 /**
@@ -129,7 +131,9 @@ void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
 
 }
 
-
+/**
+ *
+ */
 void Renderer::initShaders(){
   this->shaderProgram = glCreateProgram();
 
@@ -258,7 +262,6 @@ void Renderer::renderLoop() {
 
   initBuffers(VAO, VBO);
 
-
   float vertices[] = {
       -1.0f, -1.0f, 1.0f,
       1.0f, 1.0f, 0.0f,
@@ -270,6 +273,9 @@ void Renderer::renderLoop() {
 
   while (!glfwWindowShouldClose(this->window) && !*this->isTerminating) {
     glClear(GL_COLOR_BUFFER_BIT);
+
+    //Update buffers
+    //updateBuffers(VAO, VBO);
 
     // Draw all objects
     for(int i = 0; i < *this->maxObjects; i++) {
@@ -288,4 +294,21 @@ void Renderer::renderLoop() {
 
   *this->isTerminating = true;
   glfwTerminate();
+}
+
+/**
+ *
+ * @param VAO
+ * @param VBO
+ */
+void Renderer::updateBuffers(unsigned int VAO[], unsigned int VBO[]){
+  DoubleLinkedObject *currObject = this->objects;
+  int i = 0;
+
+  while(currObject->nextObject != nullptr){
+    glBindVertexArray(VAO[i]);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO[i]);
+    //glBufferData(GL_ARRAY_BUFFER, 0, sizeof(currObject->object), );
+    i += 1;
+  }
 }
