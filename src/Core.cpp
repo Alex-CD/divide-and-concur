@@ -53,7 +53,6 @@ void Core::start(){
 void Core::startComponents(){
   this->renderer = new Renderer(&this->isTerminating, &this->maxObjects);
   this->audioHandler = new AudioHandler(&this->isTerminating);
-  this->gameLogic = new GameLogic(&this->isTerminating);
 
   pthread_create(&this->renderThread, nullptr, Renderer::threadEntry, this->renderer);
   pthread_create(&this->audioHandlerThread, nullptr, AudioHandler::threadEntry, this->audioHandler);

@@ -4,5 +4,7 @@
 
 #include "TestGameLogic.h"
 
-TestGameLogic::TestGameLogic(bool *isTerminating):GameLogic(isTerminating) {
+TestGameLogic::TestGameLogic(bool *isTerminating, DoubleLinkedObject *objects):GameLogic(isTerminating, objects) {
+
+
 }

@@ -7,5 +7,5 @@
 #include "TestGameLogic.h"
 
 TestGameCore::TestGameCore():Core(){
-  this->gameLogic = new TestGameLogic(&isTerminating);
+  this->gameLogic = new TestGameLogic(&isTerminating, this->objectsHead);
 }

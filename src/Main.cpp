@@ -10,6 +10,7 @@
 
 #include <ChessGame/ChessGameLogic.h>
 #include <TestGame/TestGameLogic.h>
+#include <TestGame/TestGameCore.h>
 
 using namespace std;
 
@@ -21,19 +22,16 @@ int main() {
   const int MAX_THREADS = 15;
 
   cout << "Welcome to divide and concur, a concurrency-based gamelogic environment for the modern era.";
-  auto *games = new Core[MAX_THREADS];
-  auto *gamesThreads = new pthread_t[MAX_THREADS];
+  auto *game = new TestGameCore();
+  auto *gamesThread = new pthread_t();
   int gamesCount = 0;
   bool keepGoing = true;
 
+  pthread_create(gamesThread, nullptr, Core::threadEntry, game);
+  cout << "\nPress enter to launch another game\n";
 
-  while(gamesCount < MAX_THREADS && keepGoing){
-    pthread_create(&gamesThreads[gamesCount], nullptr, Core::threadEntry, &games[gamesCount]);
-    cout << "\nPress enter to launch another game\n";
-    cin >> keepGoing;
-    gamesCount += 1;
-  }
-
-  return 0;
+  //do nothing
+  while(true){}
 }
+
 

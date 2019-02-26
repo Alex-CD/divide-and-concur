@@ -8,7 +8,7 @@
 #include <GameLogic.h>
 class TestGameLogic: public GameLogic {
  public:
-  TestGameLogic(bool* isTerminating);
+  TestGameLogic(bool* isTerminating, DoubleLinkedObject *objects);
  private:
 };
 

@@ -98,7 +98,7 @@ void windowResizeCallback(GLFWwindow* window, int width, int height)
 void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
 
 
-  // Empty data
+  // Empty data to init
   float vertices[] = {
       0.0f, 0.0f, 0.0f,
       0.0f, 0.0f, 0.0f,

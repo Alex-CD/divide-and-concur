@@ -3,10 +3,12 @@
 //
 
 #include "GameLogic.h"
+#include "renderables/DoubleLinkedObject.h"
 
 
-GameLogic::GameLogic(bool *isTerminating){
+GameLogic::GameLogic(bool *isTerminating, DoubleLinkedObject* objects){
   this->isTerminating = isTerminating;
+  this->objects = objects;
 }
 
 void* GameLogic::threadEntry(void *param) {

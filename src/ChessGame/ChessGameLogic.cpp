@@ -4,6 +4,6 @@
 
 #include "ChessGameLogic.h"
 
-ChessGameLogic::ChessGameLogic(bool *isTerminating):GameLogic(isTerminating){
+ChessGameLogic::ChessGameLogic(bool *isTerminating, DoubleLinkedObject *objects):GameLogic(isTerminating, objects){
 
 }

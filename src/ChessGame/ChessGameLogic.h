@@ -9,7 +9,7 @@
 
 class ChessGameLogic: public GameLogic {
  public:
-  explicit ChessGameLogic(bool *isTerminating);
+  explicit ChessGameLogic(bool *isTerminating, DoubleLinkedObject *objects);
  private:
 };
 
