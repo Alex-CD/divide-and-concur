@@ -9,6 +9,7 @@
 #include <pthread.h>
 
 #include "Core.h"
+#include "renderables/None.h"
 
 
 /**
@@ -20,7 +21,7 @@ Core::Core(){
   this->gameLogic = nullptr;
   this->isTerminating = false;
   this->maxObjects = 5;
-  this->objectsHead = nullptr;
+  this->objectsHead = new DoubleLinkedObject(new None());
 }
 
 /**

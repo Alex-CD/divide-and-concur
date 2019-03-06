@@ -10,6 +10,7 @@
 class Vector : public WorldObject {
  public:
   Vector(float xPos, float yPos, float zPos, string id);
+  void generateVertices(float *vertices);
 };
 
 #endif //DAC_VECTOR_H

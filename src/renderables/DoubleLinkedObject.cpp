@@ -27,8 +27,6 @@ void DoubleLinkedObject::insertAfter(DoubleLinkedObject* object) {
   object->lastObject = this;
 }
 
-DoubleLinkedObject::
-
 /**
  *
  * @param object

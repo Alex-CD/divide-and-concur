@@ -262,11 +262,6 @@ void Renderer::renderLoop() {
 
   initBuffers(VAO, VBO);
 
-  float vertices[] = {
-      -1.0f, -1.0f, 1.0f,
-      1.0f, 1.0f, 0.0f,
-      -1.0f,  1.0f, 0.0f,
-  };
 
 
   glUseProgram(this->shaderProgram);
@@ -275,14 +270,12 @@ void Renderer::renderLoop() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     //Update buffers
-    //updateBuffers(VAO, VBO);
+    updateBuffers(VAO, VBO);
 
     // Draw all objects
     for(int i = 0; i < *this->maxObjects; i++) {
       glBindVertexArray(VAO[i]);
       glBindBuffer(GL_ARRAY_BUFFER, VBO[i]);
-      glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-
       glDrawArrays(GL_TRIANGLES, 0, 3);
     }
 
@@ -301,14 +294,27 @@ void Renderer::renderLoop() {
  * @param VAO
  * @param VBO
  */
-void Renderer::updateBuffers(unsigned int VAO[], unsigned int VBO[]){
+void Renderer::updateBuffers(GLuint* VAO, GLuint* VBO){
   DoubleLinkedObject *currObject = this->objects;
+  float buffer[] = {
+      0.0f, 0.0f, 0.0f,
+      0.0f, 0.0f, 0.0f,
+      0.0f,  0.0f, 0.0f,
+  };
+
   int i = 0;
 
-  while(currObject->nextObject != nullptr){
+  while(currObject != nullptr){
+    currObject->object->generateVertices(buffer);
     glBindVertexArray(VAO[i]);
     glBindBuffer(GL_ARRAY_BUFFER, VBO[i]);
-    //glBufferData(GL_ARRAY_BUFFER, 0, sizeof(currObject->object), );
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*currObject->object->bufferSize, buffer);
     i += 1;
+
+    currObject = currObject->nextObject;
   }
+
+  //Cleanup
+  glBindVertexArray(0);
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
