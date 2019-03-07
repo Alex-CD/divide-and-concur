@@ -16,22 +16,26 @@ DoubleLinkedObject::DoubleLinkedObject(Object* object) {
  * Inserts the given doublelinked object after this object.
  * @param DoubleLinkedObject* to insert
  */
-void DoubleLinkedObject::insertAfter(DoubleLinkedObject* object) {
+void DoubleLinkedObject::insertAfter(Object *object) {
+  DoubleLinkedObject *oldNextObject = this->nextObject;
+  this->nextObject = new DoubleLinkedObject(object);
 
-  if(this->nextObject != nullptr){
-    object->nextObject = this->nextObject;
-    this->nextObject->lastObject = object;
+  if(oldNextObject != nullptr){
+
+    this->nextObject->lastObject = this;
+    this->nextObject->nextObject = oldNextObject;
+    oldNextObject->lastObject = this->nextObject;
   }
-
-  this->nextObject = object;
-  object->lastObject = this;
+  else {
+    this->nextObject->lastObject = this;
+  }
 }
 
 /**
  *
  * @param object
  */
-void DoubleLinkedObject::insertBefore(DoubleLinkedObject* object){
+void DoubleLinkedObject::insertBefore(Object* object){
   this->lastObject->insertAfter(object);
 }
 
@@ -42,6 +46,22 @@ Object* DoubleLinkedObject::getObjectById(string id) {
     return nullptr; // YA DONE MESSED UP
   } else {
     this->nextObject->getObjectById(id);
+  }
+
+  return nullptr;
+}
+
+/**
+ * Adds the given object to the end of the object queue.
+ * @param object
+ */
+void DoubleLinkedObject::addObject(Object *object) {
+
+  if(this->nextObject != nullptr){
+    this->nextObject->addObject(object);
+  }
+  else {
+    this->insertAfter(object);
   }
 }
 

@@ -12,9 +12,10 @@ class DoubleLinkedObject {
   Object* object;
   explicit DoubleLinkedObject(Object* object);
   void remove();
-  void insertAfter(DoubleLinkedObject* object);
-  void insertBefore(DoubleLinkedObject* object);
+  void insertAfter(Object *object);
+  void insertBefore(Object *object);
   void disposeOfList();
+  void addObject(Object *object);
   Object* getNthElement(int n);
   Object* getObjectById(string id);
   DoubleLinkedObject* nextObject;
