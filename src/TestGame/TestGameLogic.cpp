@@ -10,6 +10,8 @@
 
 TestGameLogic::TestGameLogic(bool *isTerminating, DoubleLinkedObject *objects):GameLogic(isTerminating, objects) {
   this->objects->insertAfter(new DoubleLinkedObject(new Vector(0.5f, 0.5f, 0.5f, "texturedshape")));
+  this->objects->nextObject->insertAfter(new DoubleLinkedObject(new Vector(0.5f, 0.5f, 0.5f, "texturedshape")));
+  this->objects->nextObject->object->setPos(0.25f, 0.75f, 0.0f);
 }
 
 void TestGameLogic::logicLoop(){

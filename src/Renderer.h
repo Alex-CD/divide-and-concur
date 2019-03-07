@@ -33,7 +33,6 @@ class Renderer {
   void initBuffers(GLuint* VAO, GLuint* VBO);
   void renderLoop();
   void saveLog(char* toSave, string filename);
-  void updateBuffers(unsigned int VAO[], unsigned int VBO[]);
   bool *isTerminating;
   int *maxObjects;
   DoubleLinkedObject *objects;

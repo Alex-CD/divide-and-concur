@@ -11,17 +11,17 @@
  * @param zSize Diameter of the object in the z plane.
  */
 WorldObject::WorldObject(float xSize, float ySize, float zSize, string id):Object(id){
-  this->xPos = 0.f;
-  this->yPos = 0.f;
-  this->zPos = 0.f;
+  this->xPos = 0.0f;
+  this->yPos = 0.0f;
+  this->zPos = 0.0f;
 
   this->xSize = xSize;
   this->ySize = ySize;
   this->zSize = zSize;
 
-  this->xTransform = 0.f;
-  this->yTransform = 0.f;
-  this->zTransform = 0.f;
+  this->xTransform = 0.0f;
+  this->yTransform = 0.0f;
+  this->zTransform = 0.0f;
 };
 
 /**

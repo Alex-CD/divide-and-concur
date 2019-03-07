@@ -267,54 +267,33 @@ void Renderer::renderLoop() {
   glUseProgram(this->shaderProgram);
 
   while (!glfwWindowShouldClose(this->window) && !*this->isTerminating) {
+
+    DoubleLinkedObject *currObject = this->objects;
+    float buffer[] = {
+        0.0f, 0.0f, 0.0f,
+        0.0f, 0.0f, 0.0f,
+        0.0f,  0.0f, 0.0f,
+    };
+
     glClear(GL_COLOR_BUFFER_BIT);
 
-    //Update buffers
-    updateBuffers(VAO, VBO);
-
-    // Draw all objects
-    for(int i = 0; i < *this->maxObjects; i++) {
-      glBindVertexArray(VAO[i]);
-      glBindBuffer(GL_ARRAY_BUFFER, VBO[i]);
+    int x = 0;
+    while(currObject != nullptr){
+      currObject->object->generateVertices(buffer);
+      glBindVertexArray(VAO[x]);
+      glBindBuffer(GL_ARRAY_BUFFER, VBO[x]);
+      glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(buffer), buffer);
       glDrawArrays(GL_TRIANGLES, 0, 3);
+
+      x += 1;
+      currObject = currObject->nextObject;
     }
 
     /* Swap front and back buffers */
     glfwSwapBuffers(window);
     glfwPollEvents();
-
   }
 
   *this->isTerminating = true;
   glfwTerminate();
-}
-
-/**
- *
- * @param VAO
- * @param VBO
- */
-void Renderer::updateBuffers(GLuint* VAO, GLuint* VBO){
-  DoubleLinkedObject *currObject = this->objects;
-  float buffer[] = {
-      0.0f, 0.0f, 0.0f,
-      0.0f, 0.0f, 0.0f,
-      0.0f,  0.0f, 0.0f,
-  };
-
-  int i = 0;
-
-  while(currObject != nullptr){
-    currObject->object->generateVertices(buffer);
-    glBindVertexArray(VAO[i]);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO[i]);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float)*currObject->object->bufferSize, buffer);
-    i += 1;
-
-    currObject = currObject->nextObject;
-  }
-
-  //Cleanup
-  glBindVertexArray(0);
-  glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
