@@ -31,6 +31,7 @@ class Core {
   GameLogic *gameLogic;
   AudioHandler *audioHandler;
   DoubleLinkedObject* objectsHead;
+  Mouse mouse;
   bool isTerminating;
 
 

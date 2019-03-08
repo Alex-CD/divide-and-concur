@@ -11,12 +11,13 @@
 #include <GLFW/glfw3.h>
 
 #include "renderables/DoubleLinkedObject.h"
+#include "Mouse.h"
 
 using namespace std;
 
 class Renderer {
  public:
-  explicit Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *objects);
+  explicit Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *objects, Mouse *mouse);
   static void *threadEntry(void *param);
   void start();
   void showCursor();
@@ -35,6 +36,7 @@ class Renderer {
   void saveLog(char* toSave, string filename);
   bool *isTerminating;
   int *maxObjects;
+  Mouse *mouse;
   DoubleLinkedObject *objects;
 
 };

@@ -6,9 +6,10 @@
 #include "renderables/DoubleLinkedObject.h"
 
 
-GameLogic::GameLogic(bool *isTerminating, DoubleLinkedObject* objects){
+GameLogic::GameLogic(bool *isTerminating, DoubleLinkedObject* objects, Mouse *mouse){
   this->isTerminating = isTerminating;
   this->objects = objects;
+  this->mouse = mouse;
 }
 
 void* GameLogic::threadEntry(void *param) {

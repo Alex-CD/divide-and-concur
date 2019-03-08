@@ -18,17 +18,21 @@
  *
  * @param isTerminating
  */
-Renderer::Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *objects) {
+Renderer::Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *objects, Mouse *mouse) {
   this->isTerminating = isTerminating;
   this->maxObjects = maxObjects;
   this->objects = objects;
+  this->mouse = mouse;
 }
+
+
 
 /**
  * For multithreading on this component, create a new thread on this method.
  * Calls start()
  */
 void *Renderer::threadEntry(void *param){
+  cout << "started!";
   Renderer* thisRenderer = (Renderer *)param;
   thisRenderer->start();
   return nullptr;
@@ -98,7 +102,6 @@ void windowResizeCallback(GLFWwindow* window, int width, int height)
  * @param VBO
  */
 void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
-
 
   // Empty data to init
   float vertices[] = {
@@ -204,6 +207,7 @@ void Renderer::initShaders(){
  */
 void Renderer::initGL(){
 
+
   initShaders();
 
   // openGL settings
@@ -238,13 +242,15 @@ int Renderer::initWindow() {
   }
 
   /* Make the window's context current */
-  glfwMakeContextCurrent(window);
+  glfwMakeContextCurrent(this->window);
 
 
   if (!gladLoadGL()) {
     printf("Something went wrong!\n");
     exit(-1);
   }
+
+  this->mouse->setMouseWindow(this->window);
 
   return 0;
 }
@@ -257,6 +263,8 @@ int Renderer::initWindow() {
  */
 void Renderer::renderLoop() {
 
+
+  // Init variables
   unsigned int VAO[*this->maxObjects];
   unsigned int VBO[*this->maxObjects];
 
@@ -264,24 +272,30 @@ void Renderer::renderLoop() {
 
 
 
+  float buffer[] = {
+      0.0f, 0.0f, 0.0f,
+      0.0f, 0.0f, 0.0f,
+      0.0f,  0.0f, 0.0f,
+  };
+
+
+  // Init shader program
   glUseProgram(this->shaderProgram);
 
-  while (!glfwWindowShouldClose(this->window) && !*this->isTerminating) {
 
+  // Render loop
+  while (!glfwWindowShouldClose(this->window) && !*this->isTerminating) {
     DoubleLinkedObject *currObject = this->objects;
-    float buffer[] = {
-        0.0f, 0.0f, 0.0f,
-        0.0f, 0.0f, 0.0f,
-        0.0f,  0.0f, 0.0f,
-    };
 
     glClear(GL_COLOR_BUFFER_BIT);
+    mouse->updateMouseState();
 
     int x = 0;
     while(currObject != nullptr){
       currObject->object->generateVertices(buffer);
       glBindVertexArray(VAO[x]);
       glBindBuffer(GL_ARRAY_BUFFER, VBO[x]);
+
       glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(buffer), buffer);
       glDrawArrays(GL_TRIANGLES, 0, 3);
 

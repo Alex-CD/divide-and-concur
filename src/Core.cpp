@@ -10,6 +10,7 @@
 
 #include "Core.h"
 #include "renderables/None.h"
+#include "Mouse.h"
 
 
 /**
@@ -21,7 +22,9 @@ Core::Core(){
   this->gameLogic = nullptr;
   this->isTerminating = false;
   this->maxObjects = 5;
+  this->mouse = Mouse();
   this->objectsHead = new DoubleLinkedObject(new None());
+
 }
 
 /**
@@ -52,7 +55,7 @@ void Core::start(){
  * (Components should already be initialised!)
  */
 void Core::startComponents(){
-  this->renderer = new Renderer(&this->isTerminating, &this->maxObjects, this->objectsHead);
+  this->renderer = new Renderer(&this->isTerminating, &this->maxObjects, this->objectsHead, &this->mouse);
   this->audioHandler = new AudioHandler(&this->isTerminating);
 
   pthread_create(&this->renderThread, nullptr, Renderer::threadEntry, this->renderer);

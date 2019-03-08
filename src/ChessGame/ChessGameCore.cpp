@@ -9,5 +9,5 @@
 
 
 ChessGameCore::ChessGameCore():Core(){
-  this->gameLogic = new ChessGameLogic(&isTerminating, this->objectsHead);
+  this->gameLogic = new ChessGameLogic(&isTerminating, this->objectsHead, &this->mouse);
 }

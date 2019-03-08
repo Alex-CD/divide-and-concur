@@ -9,7 +9,7 @@
 
 class ChessGameLogic: public GameLogic {
  public:
-  explicit ChessGameLogic(bool *isTerminating, DoubleLinkedObject *objects);
+  explicit ChessGameLogic(bool *isTerminating, DoubleLinkedObject *objects, Mouse *mouse);
   void logicLoop();
  private:
 };

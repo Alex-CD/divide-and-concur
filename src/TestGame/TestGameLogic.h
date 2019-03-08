@@ -9,7 +9,7 @@
 class TestGameLogic: public GameLogic {
  public:
   void logicLoop(); // override
-  TestGameLogic(bool* isTerminating, DoubleLinkedObject *objects);
+  TestGameLogic(bool* isTerminating, DoubleLinkedObject *objects, Mouse *mouse);
  private:
 };
 
