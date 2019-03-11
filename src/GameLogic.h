@@ -11,6 +11,7 @@
 class GameLogic {
  public:
   explicit GameLogic(bool *isTerminating, DoubleLinkedObject* objects, Mouse *mouse);
+  int clickRelToCenter(int relativeToTopLeft, int axisSize);
   void start();
   static void *threadEntry(void *param);
   DoubleLinkedObject *objects;

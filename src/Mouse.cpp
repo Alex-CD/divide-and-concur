@@ -16,11 +16,17 @@ Mouse::Mouse(){
   this->window = nullptr;
 }
 
+
 /**
  *
  */
-void Mouse::updateMouseState(){
-  glfwGetCursorPos(this->window, &this->xPos, &this->yPos);
+void Mouse::updateMouseState(int *xViewBoxSize, int *yViewBoxSize){
+  double xPosDouble, yPosDouble;
+
+  glfwGetCursorPos(this->window, &xPosDouble, &yPosDouble);
+
+  this->xPos = xPosDouble - (*xViewBoxSize / 2);
+  this->yPos = (*yViewBoxSize / 2) - yPosDouble;
 
   this->leftButtonIsDown = (glfwGetMouseButton(this->window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS);
   this->middleButtonIsDown = (glfwGetMouseButton(this->window, GLFW_MOUSE_BUTTON_MIDDLE) == GLFW_PRESS);

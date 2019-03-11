@@ -11,10 +11,11 @@ class Mouse {
  public:
   Mouse();
   GLFWwindow *window;
-  double xPos, yPos;
+  int xPos, yPos;
   bool leftButtonIsDown, rightButtonIsDown, middleButtonIsDown;
-  void updateMouseState();
+  void updateMouseState(int *xViewBoxSize, int *yViewBoxSize);
   void setMouseWindow(GLFWwindow *window);
+  int clickRelToCenter(int relativeToTopLeft, int axisSize);
 };
 
 

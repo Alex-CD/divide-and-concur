@@ -12,6 +12,7 @@ GameLogic::GameLogic(bool *isTerminating, DoubleLinkedObject* objects, Mouse *mo
   this->mouse = mouse;
 }
 
+
 void* GameLogic::threadEntry(void *param) {
   auto *thisGameLogic = (GameLogic*)param;
 

@@ -30,7 +30,7 @@ WorldObject::WorldObject(float xSize, float ySize, float zSize, string id):Objec
  * @param yPos
  * @param zPos
  */
-void WorldObject::setPos(float xPos, float yPos, float zPos) {
+void WorldObject::setPos(int xPos, int yPos, int zPos) {
   this->xPos = xPos;
   this->yPos = yPos;
   this->zPos = zPos;

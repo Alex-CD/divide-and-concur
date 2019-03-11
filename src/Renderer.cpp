@@ -23,8 +23,10 @@ Renderer::Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *obj
   this->maxObjects = maxObjects;
   this->objects = objects;
   this->mouse = mouse;
-}
 
+  this->xViewportSizePx = 400;
+  this->yViewportSizePx = 400;
+}
 
 
 /**
@@ -33,7 +35,7 @@ Renderer::Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *obj
  */
 void *Renderer::threadEntry(void *param){
   cout << "started!";
-  Renderer* thisRenderer = (Renderer *)param;
+  auto thisRenderer = (Renderer *)param;
   thisRenderer->start();
   return nullptr;
 }
@@ -44,7 +46,6 @@ void *Renderer::threadEntry(void *param){
  * Create a new thread on threadEntry if you need multithreading.1
  */
 void Renderer::start(){
-
   initWindow();
   initGL();
   renderLoop();
@@ -115,8 +116,10 @@ void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
   glGenBuffers(*this->maxObjects, VBO);
   glGenVertexArrays(*this->maxObjects, VAO);
 
+
   // Bind a VBO to each VAO.
   for (int i = 0; i < *maxObjects; i++){
+
     glBindVertexArray(VAO[i]);
     glBindBuffer(GL_ARRAY_BUFFER, VBO[i]);
 
@@ -129,9 +132,7 @@ void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
     // Unbind vertex array and buffer
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-
   }
-
 }
 
 /**
@@ -288,11 +289,11 @@ void Renderer::renderLoop() {
     DoubleLinkedObject *currObject = this->objects;
 
     glClear(GL_COLOR_BUFFER_BIT);
-    mouse->updateMouseState();
+
 
     int x = 0;
     while(currObject != nullptr){
-      currObject->object->generateVertices(buffer);
+      currObject->object->generateVertices(buffer, this->xViewportSizePx, this->yViewportSizePx);
       glBindVertexArray(VAO[x]);
       glBindBuffer(GL_ARRAY_BUFFER, VBO[x]);
 
@@ -306,6 +307,8 @@ void Renderer::renderLoop() {
     /* Swap front and back buffers */
     glfwSwapBuffers(window);
     glfwPollEvents();
+    glfwGetWindowSize(this->window, &this->xViewportSizePx, &this->yViewportSizePx);
+    mouse->updateMouseState(&this->xViewportSizePx, &this->yViewportSizePx);
   }
 
   *this->isTerminating = true;

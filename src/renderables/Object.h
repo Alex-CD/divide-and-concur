@@ -16,8 +16,8 @@ class Object {
   float xSize, ySize, zSize;
   string id;
   GLuint bufferSize = 0;
-  virtual void generateVertices(float *buffer) = 0;
-  virtual void setPos(float xPos, float yPos, float zPos) = 0;
+  virtual void generateVertices(float *buffer, int xViewportSize, int yViewportSize) = 0;
+  virtual void setPos(int xPos, int yPos, int zPos) = 0;
   virtual void translate(float xDistance, float yDistance, float zDistance) = 0;
   virtual void setTransform(float xTransform, float yTransform, float zTransform) = 0;
   virtual void transform(float xFactor, float yFactor, float zFactor) = 0;

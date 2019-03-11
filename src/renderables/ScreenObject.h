@@ -9,8 +9,8 @@
 
 class ScreenObject:public Object{
  public:
-  ScreenObject(float xPos, float yPos, float xSize, float ySize, string id);
-  void generateVertices(float *buffer);
+  ScreenObject(int xPos, int yPos, int xSize, int ySize, string id);
+  void generateVertices(float *buffer, int xViewportSize, int yViewportSize);
   void setPos(float xPos, float yPos, float zPos);
   void translate(float xDistance, float yDistance, float zDistance);
   void setTransform(float xTransform, float yTransform, float zTransform);

@@ -7,4 +7,4 @@
 
 Object::Object(string id) {
   this->id = id;
-}
+};

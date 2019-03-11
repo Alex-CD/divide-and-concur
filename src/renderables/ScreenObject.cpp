@@ -5,14 +5,14 @@
 #include "ScreenObject.h"
 
 
-ScreenObject::ScreenObject(float xPos, float yPos, float xSize, float ySize, string id):Object(id){
+ScreenObject::ScreenObject(int xPos, int yPos, int xSize, int ySize, string id):Object(id){
   this->xPos = xPos;
   this->yPos = yPos;
   this->xSize = xSize;
   this->ySize = ySize;
 }
 
-void ScreenObject::generateVertices(float *buffer) {
+void ScreenObject::generateVertices(float *buffer, int xViewportSize, int yViewportSize) {
 
 }
 

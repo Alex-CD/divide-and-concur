@@ -36,6 +36,7 @@ class Renderer {
   void saveLog(char* toSave, string filename);
   bool *isTerminating;
   int *maxObjects;
+  int xViewportSizePx, yViewportSizePx;
   Mouse *mouse;
   DoubleLinkedObject *objects;
 
