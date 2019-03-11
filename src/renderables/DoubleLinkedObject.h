@@ -15,7 +15,7 @@ class DoubleLinkedObject {
   void insertAfter(Object *object);
   void insertBefore(Object *object);
   void disposeOfList();
-  void addObject(Object *object);
+  Object *addObject(Object *object);
   Object* getNthElement(int n);
   Object* getObjectById(string id);
   DoubleLinkedObject* nextObject;

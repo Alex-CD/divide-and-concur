@@ -55,13 +55,14 @@ Object* DoubleLinkedObject::getObjectById(string id) {
  * Adds the given object to the end of the object queue.
  * @param object
  */
-void DoubleLinkedObject::addObject(Object *object) {
+Object *DoubleLinkedObject::addObject(Object *object) {
 
   if(this->nextObject != nullptr){
-    this->nextObject->addObject(object);
+    return this->nextObject->addObject(object);
   }
   else {
     this->insertAfter(object);
+    return this->nextObject->object;
   }
 }
 

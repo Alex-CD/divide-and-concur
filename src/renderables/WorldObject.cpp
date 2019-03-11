@@ -19,9 +19,9 @@ WorldObject::WorldObject(float xSize, float ySize, float zSize, string id):Objec
   this->ySize = ySize;
   this->zSize = zSize;
 
-  this->xTransform = 0.0f;
-  this->yTransform = 0.0f;
-  this->zTransform = 0.0f;
+  this->xTransform = 1.0f;
+  this->yTransform = 1.0f;
+  this->zTransform = 1.0f;
 };
 
 /**
@@ -53,9 +53,9 @@ void WorldObject::translate(float xDistance, float yDistance, float zDistance) {
  * @param scaleFactor
  */
 void WorldObject::scale(float scaleFactor) {
-  this->xSize *= scaleFactor;
-  this->ySize *= scaleFactor;
-  this->zSize *= scaleFactor;
+  this->xTransform *= scaleFactor;
+  this->xTransform *= scaleFactor;
+  this->xTransform *= scaleFactor;
 }
 
 /**
@@ -71,7 +71,6 @@ void WorldObject::setTransform(float xTransform, float yTransform, float zTransf
 }
 
 /**
- *
  * @param xFactor
  * @param yFactor
  * @param zFactor

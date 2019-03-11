@@ -12,9 +12,8 @@ void Vector::generateVertices(float *vertices, int xViewportSize, int yViewportS
   float xCoef = 2.0f/xViewportSize;
   float yCoef = 2.0f/yViewportSize;
 
-  float xScreenSize = xSize * xCoef;
-  float yScreenSize = ySize * yCoef;
-
+  float xScreenSize = xSize * xCoef * xTransform;
+  float yScreenSize = ySize * yCoef * yTransform;
 
   //(this->xPos - (xSize/2);
   vertices[0] = (this->xPos*xCoef) - (xScreenSize/2);
@@ -28,16 +27,4 @@ void Vector::generateVertices(float *vertices, int xViewportSize, int yViewportS
   vertices[6] = (this->xPos*xCoef) + (xScreenSize/2);
   vertices[7] = (this->yPos*yCoef) - (yScreenSize/2);
   vertices[8] = 0.0f;
-
-  /*
-  vertices[0] = -1.0f;
-  vertices[1] = -1.0f;
-  vertices[2] = 0.0f;
-  vertices[3] =  1.0f;
-  vertices[4] = 1.0f;
-  vertices[5] =  0.0f;
-  vertices[6] = -1.0f;
-  vertices[7] = 1.0f;
-  vertices[8] = 0.0;
-  */
 }

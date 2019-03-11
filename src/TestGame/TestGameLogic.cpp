@@ -4,32 +4,31 @@
 #include "TestGameLogic.h"
 
 #include "stdlib.h"
-#include "time.h"
+#include <time.h>
 
 #include "renderables/None.h"
 #include "renderables/Vector.h"
 #include "renderables/TexturedShape.h"
 
 TestGameLogic::TestGameLogic(bool *isTerminating, DoubleLinkedObject *objects, Mouse *mouse):GameLogic(isTerminating, objects, mouse) {
-  this->objects->addObject(new Vector(50, 50, 0, "texturedshape"));
 }
 
 void TestGameLogic::logicLoop(){
 
   bool buttonStillDown = false;
+  Object *currentObject;
 
   while(!*this->isTerminating){
-    if(mouse->leftButtonIsDown && !buttonStillDown){
-      buttonStillDown = true;
-
-
-      this->objects->addObject(new Vector(0.0f, 0.0f, 0.0f, "texturedshape"));
-      this->objects->nextObject->object->setPos(mouse->xPos, mouse->yPos, 0.0f);
+    if(this->mouse->leftButtonIsDown){
+      if(!buttonStillDown) {
+        buttonStillDown = true;
+        currentObject = objects->addObject(new Vector(100, 100, 100, ""));
+        currentObject->setPos(this->mouse->xPos, this->mouse->yPos, 0);
+      }
     }
-
-    if(!mouse->leftButtonIsDown ){
+    else {
       buttonStillDown = false;
     }
-
   }
-}
+  }
+
