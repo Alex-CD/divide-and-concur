@@ -11,6 +11,7 @@
 #include "renderables/TexturedShape.h"
 
 TestGameLogic::TestGameLogic(bool *isTerminating, DoubleLinkedObject *objects, Mouse *mouse):GameLogic(isTerminating, objects, mouse) {
+
 }
 
 void TestGameLogic::logicLoop(){
