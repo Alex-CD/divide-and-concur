@@ -15,5 +15,5 @@ configure_file(src/shaders/VertexShader.vsh shaders/VertexShader.vsh COPYONLY)
 configure_file(tests/TestFile.txt test/TestFile.txt COPYONLY)
 
 
-target_link_libraries(dac GL GLU glfw3 X11 Xxf86vm Xrandr pthread Xi dl Xcursor Xinerama portaudio)
-target_link_libraries(dactest GL GLU glfw3 X11 Xxf86vm Xrandr pthread Xi dl Xcursor Xinerama portaudio)
+target_link_libraries(dac GL GLU glfw3 X11 Xxf86vm Xrandr pthread Xi dl Xcursor Xinerama portaudio sndfile)
+target_link_libraries(dactest GL GLU glfw3 X11 Xxf86vm Xrandr pthread Xi dl Xcursor Xinerama portaudio sndfile)

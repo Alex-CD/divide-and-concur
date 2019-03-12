@@ -30,12 +30,12 @@ int main() {
   pthread_create(gamesThread, nullptr, Core::threadEntry, game);
 
 
-  auto *game2 = new TestGameCore();
+  /*auto *game2 = new TestGameCore();
   auto *gamesThread2 = new pthread_t();
 
   pthread_create(gamesThread2, nullptr, Core::threadEntry, game2);
   cout << "\nPress enter to launch another game\n";
-
+*/
   //do nothing
   while(true){}
 }
