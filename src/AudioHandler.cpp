@@ -20,6 +20,11 @@ AudioHandler::AudioHandler(bool *isTerminating, string sounds[], int soundsCount
   for(int i = 0; i < soundsCount; i++){
     this->sounds[i] = new AudioFile(i, soundsDirectoryPath + sounds[i], 10000);
   }
+
+  int error = Pa_Initialize();
+
+
+
 };
 
 int AudioHandler::paStreamCallback(const void *input,
@@ -28,6 +33,26 @@ int AudioHandler::paStreamCallback(const void *input,
                                    const PaStreamCallbackTimeInfo *timeInfo,
                                    PaStreamCallbackFlags statusFlags,
                                    void *userData) {
+
+}
+
+
+
+void AudioHandler::playFile() {
+
+  //int error = Pa_OpenDefaultStream);
+
+  /* Start the stream */
+  //error = Pa_StartStream(stream);
+
+  /* Run until EOF is reached */
+  while(Pa_IsStreamActive(stream))
+  {
+    Pa_Sleep(100);
+  }
+
+  /* Close the soundfile */
+  //sf_close(file);
 
 }
 

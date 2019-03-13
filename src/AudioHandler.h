@@ -19,12 +19,15 @@ class AudioHandler{
   void start();
   int paStreamCallback(const void *input, void *output, unsigned long frameCount, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags, void *userData );
   void destroy();
+  void playFile();
  private:
   bool *isTerminating;
   void audioLoop();
   int soundsCount;
+  int currentSoundID;
+  float currentSoundStartTime;
+  PaStream *stream;
   AudioFile *sounds[];
-
 
 };
 
