@@ -11,6 +11,7 @@ class Vector : public WorldObject {
  public:
   Vector(float xPos, float yPos, float zPos, string id);
   void generateVertices(float *vertices, int xViewportSize, int yViewportSize);
+  bool basicCollisionDetect(float xClick, float yClick);
 };
 
 #endif //DAC_VECTOR_H

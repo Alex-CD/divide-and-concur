@@ -28,3 +28,16 @@ void Vector::generateVertices(float *vertices, int xViewportSize, int yViewportS
   vertices[7] = (this->yPos*yCoef) - (yScreenSize/2);
   vertices[8] = 0.0f;
 }
+
+bool Vector::basicCollisionDetect(float xClick, float yClick) {
+  bool xHit;
+  bool yHit;
+
+  float objWidthX =  (this->xSize * this->xTransform)/2;
+  float objWidthY = (this->ySize * this->yTransform)/2;
+
+  xHit = (xClick > (this->xPos - objWidthX)) && (xClick < (this->xPos + objWidthX));
+  yHit = (yClick > (this->yPos - objWidthY)) && (yClick < (this->yPos + objWidthY));
+
+  return xHit && yHit;
+}

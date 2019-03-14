@@ -25,6 +25,7 @@ void Mouse::updateMouseState(int *xViewBoxSize, int *yViewBoxSize){
 
   glfwGetCursorPos(this->window, &xPosDouble, &yPosDouble);
 
+
   this->xPos = xPosDouble - (*xViewBoxSize / 2);
   this->yPos = (*yViewBoxSize / 2) - yPosDouble;
 

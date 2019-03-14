@@ -58,7 +58,7 @@ void Core::startComponents(){
   this->renderer = new Renderer(&this->isTerminating, &this->maxObjects, this->objectsHead, &this->mouse);
 
   pthread_create(&this->renderThread, nullptr, Renderer::threadEntry, this->renderer);
-  pthread_create(&this->audioHandlerThread, nullptr, AudioHandler::threadEntry, this->audioHandler);
+  //pthread_create(&this->audioHandlerThread, nullptr, AudioHandler::threadEntry, this->audioHandler);
   pthread_create(&this->gameLogicThread, nullptr, GameLogic::threadEntry, this->gameLogic);
 }
 
