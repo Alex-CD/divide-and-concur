@@ -7,9 +7,9 @@
 
 #include <GameLogic.h>
 
-class ChessGameLogic: public GameLogic {
+class ClickerGameLogic: public GameLogic {
  public:
-  explicit ChessGameLogic(bool *isTerminating, DoubleLinkedObject *objects, Mouse *mouse);
+  explicit ClickerGameLogic(bool *isTerminating, DoubleLinkedObject *objects, Mouse *mouse);
   void logicLoop();
  private:
 };
