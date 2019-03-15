@@ -5,9 +5,12 @@
 #ifndef DAC_BITMAP_H
 #define DAC_BITMAP_H
 
-#include "WorldObject.h"
+#include "ScreenObject.h"
 
-class TexturedShape:public WorldObject{
+/**
+ *
+ */
+class TexturedShape:public ScreenObject{
  public:
   TexturedShape(float xPos, float yPos, float zPos, string id);
 };

@@ -2,9 +2,9 @@
 // Created by alex on 28/01/19.
 //
 
+#include "ScreenObject.h"
 #include "TexturedShape.h"
 
-
-TexturedShape::TexturedShape(float xPos, float yPos, float zPos, string id):WorldObject(xPos, yPos, zPos, id) {
+TexturedShape::ScreenObject(float xPos, float yPos, float zPos, string id):WorldObject(xPos, yPos, zPos, id) {
 
 }

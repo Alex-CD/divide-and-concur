@@ -6,6 +6,10 @@
 #define DAC_TEXT_H
 
 #include "ScreenObject.h"
+
+/**
+ * Text
+ */
 class Text: public ScreenObject {
 
 };

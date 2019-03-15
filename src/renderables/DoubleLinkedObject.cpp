@@ -1,12 +1,9 @@
-/**
- * Doubly linked list of game objects.
- */
-
 #include "DoubleLinkedObject.h"
 
 
 /**
- * Constructor.
+ *
+ * @param object
  */
 DoubleLinkedObject::DoubleLinkedObject(Object* object) {
   this->object = object;
@@ -39,6 +36,11 @@ void DoubleLinkedObject::insertBefore(Object* object){
   this->lastObject->insertAfter(object);
 }
 
+/**
+ *
+ * @param id
+ * @return
+ */
 Object* DoubleLinkedObject::getObjectById(string id) {
   if(this->object->id == id){
     return this->object;
@@ -77,7 +79,10 @@ Object* DoubleLinkedObject::getNthElement(int n) {
 
 
 /**
- * Recusive function.
+ *
+ * @param n
+ * @param index
+ * @return
  */
 DoubleLinkedObject* DoubleLinkedObject::getNthElementRecurse(int n, int index) {
   if(index == n){
@@ -86,7 +91,6 @@ DoubleLinkedObject* DoubleLinkedObject::getNthElementRecurse(int n, int index) {
     return nextObject->getNthElementRecurse(n, index + 1);
   }
 }
-
 
 
 /**

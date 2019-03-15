@@ -9,6 +9,10 @@
 #include <GL/gl.h>
 
 using namespace std;
+
+/**
+ * Virtual base class for all logical objects used in games.
+ */
 class Object {
  public:
   explicit Object(string id);

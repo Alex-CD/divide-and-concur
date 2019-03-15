@@ -7,6 +7,9 @@
 
 #include "Object.h"
 
+/**
+ * A doubly linked list of game objects.
+ */
 class DoubleLinkedObject {
  public:
   Object* object;
