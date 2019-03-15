@@ -7,6 +7,9 @@
 
 #include "Object.h"
 
+/**
+ * Parent class for objects that exist in the 3D world.
+ */
 class WorldObject:public Object{
  public:
   float xTransform, yTransform, zTransform;

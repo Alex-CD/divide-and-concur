@@ -1,18 +1,14 @@
-//
-// Created by alex on 28/01/19.
-//
-
 #ifndef DAC_BITMAP_H
 #define DAC_BITMAP_H
 
 #include "ScreenObject.h"
 
 /**
- *
+ * A 2D image appearing on the screen.
  */
 class TexturedShape:public ScreenObject{
  public:
-  TexturedShape(float xPos, float yPos, float zPos, string id);
+  TexturedShape(int xPos, int yPos, string id);
 };
 
 #endif //DAC_BITMAP_H

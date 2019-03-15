@@ -7,11 +7,15 @@
 
 #include "WorldObject.h"
 
+/**
+ * 3D shapes, which exist in the 3D game world.
+ * Act as sprites.
+ */
 class Vector : public WorldObject {
  public:
   Vector(float xPos, float yPos, float zPos, string id);
-  void generateVertices(float *vertices, int xViewportSize, int yViewportSize);
-  bool basicCollisionDetect(float xClick, float yClick);
+  void generateVertices(float *buffer, int xViewportSize, int yViewportSize);
+  bool basicClickDetect(float xClick, float yClick);
 };
 
 #endif //DAC_VECTOR_H

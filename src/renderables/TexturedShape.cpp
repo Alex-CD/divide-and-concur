@@ -1,10 +1,12 @@
-//
-// Created by alex on 28/01/19.
-//
-
 #include "ScreenObject.h"
 #include "TexturedShape.h"
 
-TexturedShape::ScreenObject(float xPos, float yPos, float zPos, string id):WorldObject(xPos, yPos, zPos, id) {
+/**
+ * Constructor for textured shapes.
+ * @param xPos Position of the object in the X axis, relative to the center of the frame (in pixels)
+ * @param yPos Position of the object in the X axis, relative to the center of the frame (in pixels)
+ * @param id Id of the texturedshape.
+ */
+TexturedShape::TexturedShape(int xPos, int yPos, string id):ScreenObject(xPos, yPos, 1, 1, id) {
 
 }

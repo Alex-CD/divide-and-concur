@@ -4,7 +4,10 @@
 
 #include "Object.h"
 
-
+/**
+ * Constructor for the Object class.
+ * @param id ID of the object to create.
+ */
 Object::Object(string id) {
   this->id = id;
 };

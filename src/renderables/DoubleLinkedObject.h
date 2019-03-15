@@ -24,7 +24,6 @@ class DoubleLinkedObject {
   DoubleLinkedObject* nextObject;
   DoubleLinkedObject* lastObject;
 
-
  private:
   DoubleLinkedObject* getNthElementRecurse(int n, int index);
 };

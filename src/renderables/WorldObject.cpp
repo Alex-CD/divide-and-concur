@@ -5,7 +5,7 @@
 #include "WorldObject.h"
 
 /**
- *
+ * Constructor for WorldObjects
  * @param xSize Diameter of the object in the x plane.
  * @param ySize Diameter of the object in the y plane.
  * @param zSize Diameter of the object in the z plane.
@@ -25,10 +25,10 @@ WorldObject::WorldObject(float xSize, float ySize, float zSize, string id):Objec
 };
 
 /**
- *
- * @param xPos
- * @param yPos
- * @param zPos
+ * Sets the position of this world object, relative to the center of the window.
+ * @param xPos X-coord of this object in Px
+ * @param yPos Y-coord of this object in Px
+ * @param zPos Z-coord of this object in Px
  */
 void WorldObject::setPos(int xPos, int yPos, int zPos) {
   this->xPos = xPos;
@@ -37,10 +37,10 @@ void WorldObject::setPos(int xPos, int yPos, int zPos) {
 }
 
 /**
- *
- * @param xDistance
- * @param yDistance
- * @param zDistance
+ * Moves this object a distance (in px)
+ * @param xDistance Distance to move (in the x plane)
+ * @param yDistance Distance to move. (in the y plane)
+ * @param zDistance Distnace to move. (in the z plane)
  */
 void WorldObject::translate(float xDistance, float yDistance, float zDistance) {
   this->xPos += xDistance;
@@ -49,8 +49,8 @@ void WorldObject::translate(float xDistance, float yDistance, float zDistance) {
 }
 
 /**
- *
- * @param scaleFactor
+ * Scales the object by a factor (taking into account current scaling), preserving aspect ratio.
+ * @param scaleFactor Factor to scale by.
  */
 void WorldObject::scale(float scaleFactor) {
   this->xTransform *= scaleFactor;
@@ -59,10 +59,10 @@ void WorldObject::scale(float scaleFactor) {
 }
 
 /**
- *
- * @param xTransform
- * @param yTransform
- * @param zTransform
+ * Sets the scale factors of this object.
+ * @param xTransform Factor to scale by, in the x plane.
+ * @param yTransform Factor to scale by, in the y plane
+ * @param zTransform Factor to scale by, in the z plane
  */
 void WorldObject::setTransform(float xTransform, float yTransform, float zTransform) {
   this->xTransform = xTransform;
@@ -71,9 +71,10 @@ void WorldObject::setTransform(float xTransform, float yTransform, float zTransf
 }
 
 /**
- * @param xFactor
- * @param yFactor
- * @param zFactor
+ * Scales this object by the given scale factors (taking into account current scaling), without preserving aspect ratio.
+ * @param xTransform Factor to scale by, in the x plane.
+ * @param yTransform Factor to scale by, in the y plane
+ * @param zTransform Factor to scale by, in the z plane
  */
 void WorldObject::transform(float xFactor, float yFactor, float zFactor) {
   this->xTransform *= xFactor;
@@ -82,15 +83,10 @@ void WorldObject::transform(float xFactor, float yFactor, float zFactor) {
 }
 
 /**
- *
- * @param xScale
- * @param yScale
- * @param zScale
+ * Generates the vertices for this object,
+ * outputs into the given buffer.
+ * @param buffer Buffer to store vertices in.
  */
-void WorldObject::scale(float xScale, float yScale, float zScale){
-
-}
-
 void WorldObject::generateVertices(float *buffer) {
   // TODO
 }

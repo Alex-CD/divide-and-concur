@@ -9,7 +9,7 @@
 
 /**
  * A game object that does nothing - to be used as a placeholder.
- * All of the methods are empty.
+ * All of its member functions can be called, but do nothing.
  */
 class None: public Object {
  public:

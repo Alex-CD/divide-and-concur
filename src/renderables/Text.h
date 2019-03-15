@@ -8,7 +8,7 @@
 #include "ScreenObject.h"
 
 /**
- * Text
+ * Onscreen object, for strings of text displayed onscreen.
  */
 class Text: public ScreenObject {
 
