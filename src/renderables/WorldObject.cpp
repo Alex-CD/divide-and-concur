@@ -59,6 +59,18 @@ void WorldObject::scale(float scaleFactor) {
 }
 
 /**
+ *
+ * @param scaleFactorX
+ * @param scaleFactorY
+ * @param scaleFactorZ
+ */
+void WorldObject::scale(float scaleFactorX,float scaleFactorY, float scaleFactorZ) {
+  this->xTransform *= scaleFactorX;
+  this->xTransform *= scaleFactorY;
+  this->xTransform *= scaleFactorZ;
+}
+
+/**
  * Sets the scale factors of this object.
  * @param xTransform Factor to scale by, in the x plane.
  * @param yTransform Factor to scale by, in the y plane

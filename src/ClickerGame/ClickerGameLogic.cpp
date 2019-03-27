@@ -33,7 +33,7 @@ void ClickerGameLogic::logicLoop() {
       double roundLengthTicks = INITIAL_ROUND_TIME_SECONDS * CLOCKS_PER_SEC;
 
 
-      while(!this->mouse->leftButtonIsDown && !currentObj->basicCollisionDetect(this->mouse->xPos, this->mouse->yPos)){
+      while(!this->mouse->leftButtonIsDown && !currentObj->basicClickDetect(this->mouse->xPos, this->mouse->yPos)){
       }
 
       //prep for round start
@@ -45,7 +45,7 @@ void ClickerGameLogic::logicLoop() {
       while((clock() - roundStartTime) < roundLengthTicks){
 
         if(this->mouse->leftButtonIsDown){
-          if(!mouseButtonStillDown && currentObj->basicCollisionDetect(this->mouse->xPos, this->mouse->yPos)){
+          if(!mouseButtonStillDown && currentObj->basicClickDetect(this->mouse->xPos, this->mouse->yPos)){
             //Object clicked!
             gameIsOver = false;
             roundsCount += 1;
