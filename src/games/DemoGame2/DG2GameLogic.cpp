@@ -19,6 +19,8 @@ void DG2GameLogic::logicLoop(){
   bool buttonStillDown = false;
   Object *currentObject;
 
+  auto *currentObj = (Vector *)this->objects->addObject(new Vector(100, 100, 100, ""));
+
   while(!*this->isTerminating){
     if(this->mouse->leftButtonIsDown){
       if(!buttonStillDown) {

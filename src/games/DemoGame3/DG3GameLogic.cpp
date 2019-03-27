@@ -25,7 +25,7 @@ void DG3GameLogic::logicLoop() {
   srand(clock());
 
 
-  Vector *currentObj = (Vector *)this->objects->addObject(new Vector(100, 100, 100, ""));
+  auto *currentObj = (Vector *)this->objects->addObject(new Vector(100, 100, 100, ""));
 
   while(!*this->isTerminating) {
     int roundsCount = 0;

@@ -8,6 +8,9 @@
  */
 DoubleLinkedObject::DoubleLinkedObject(Object* object) {
   this->object = object;
+
+  this->nextObject = nullptr;
+  this->lastObject = nullptr;
 }
 
 /**
@@ -16,6 +19,8 @@ DoubleLinkedObject::DoubleLinkedObject(Object* object) {
  * @param object to insert.
  */
 void DoubleLinkedObject::insertAfter(Object *object) {
+
+
   DoubleLinkedObject *oldNextObject = this->nextObject;
   this->nextObject = new DoubleLinkedObject(object);
 

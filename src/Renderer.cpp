@@ -83,20 +83,6 @@ string Renderer::loadShader(string sourceFile){
   return FileHelper::loadString("shaders/" + sourceFile);
 };
 
-
-/**
- * Callback for the GL resize window functions.
- * Can't be a member function because it would have to be static
- * (and wouldn't match the callback signature).
- * @param window The GLFW window to resize.
- * @param width The window width, in screen coords (not necessarily px).
- * @param heightThe window width, in screen coords (not necessarily px).
- */
-void windowResizeCallback(GLFWwindow* window, int width, int height)
-{
-  glViewport(0, 0, width, height);
-}
-
 /**
  *
  * @param VAO
@@ -203,19 +189,12 @@ void Renderer::initShaders(){
   }
 }
 
+
 /**
  *
  */
 void Renderer::initGL(){
-
-
-  initShaders();
-
-  // openGL settings
-  glfwSwapInterval(1);
-  glfwSetFramebufferSizeCallback(this->window, windowResizeCallback);
-  glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-
+  glfwInit();
 }
 
 /**
@@ -225,14 +204,6 @@ void Renderer::initGL(){
  * @returns status code, indicating success of window instantiation.
  */
 int Renderer::initWindow() {
-
-  /* Initialize the library */
-  if (!glfwInit()) {
-    *this->isTerminating = true;
-    return -1;
-  }
-
-
   /* Create a windowed mode window and its OpenGL context */
   window = glfwCreateWindow(400, 400, "Divide and Concur", nullptr, nullptr);
 
@@ -251,7 +222,14 @@ int Renderer::initWindow() {
     exit(-1);
   }
 
+
   this->mouse->setMouseWindow(this->window);
+
+  initShaders();
+
+  // openGL settings
+  glfwSwapInterval(1);
+  glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
   return 0;
 }
@@ -308,9 +286,10 @@ void Renderer::renderLoop() {
     glfwSwapBuffers(window);
     glfwPollEvents();
     glfwGetWindowSize(this->window, &this->xViewportSizePx, &this->yViewportSizePx);
+    glViewport(0, 0, this->xViewportSizePx, this->yViewportSizePx);
     mouse->updateMouseState(&this->xViewportSizePx, &this->yViewportSizePx);
   }
 
   *this->isTerminating = true;
-  glfwTerminate();
+  glfwDestroyWindow(this->window);
 }

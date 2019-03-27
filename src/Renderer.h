@@ -22,14 +22,13 @@ class Renderer {
   void start();
   void showCursor();
   void hideCursor();
+  static void initGL();
 
  private:
   GLuint shaderProgram;
   string loadShader(string sourceFile);
   GLFWwindow *window;
-
   int initWindow();
-  void initGL();
   void initShaders();
   void initBuffers(GLuint* VAO, GLuint* VBO);
   void renderLoop();
