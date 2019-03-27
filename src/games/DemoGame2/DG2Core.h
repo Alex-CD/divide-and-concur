@@ -7,9 +7,9 @@
 
 #include <Core.h>
 
-class TestGameCore : public Core {
+class DG2Core : public Core {
  public:
-  explicit TestGameCore();
+  explicit DG2Core();
  private:
 };
 

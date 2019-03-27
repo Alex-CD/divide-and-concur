@@ -8,9 +8,9 @@
 #include <Core.h>
 
 
-class ClickerGameCore : public Core{
+class DG3Core : public Core{
  public:
-  ClickerGameCore();
+  DG3Core();
  private:
 };
 

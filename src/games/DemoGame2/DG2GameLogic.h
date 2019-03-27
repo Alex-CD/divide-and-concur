@@ -6,10 +6,10 @@
 #define DAC_TESTGAMELOGIC_H
 
 #include <GameLogic.h>
-class TestGameLogic: public GameLogic {
+class DG2GameLogic: public GameLogic {
  public:
   void logicLoop(); // override
-  TestGameLogic(bool* isTerminating, DoubleLinkedObject *objects, Mouse *mouse);
+  DG2GameLogic(bool* isTerminating, DoubleLinkedObject *objects, Mouse *mouse);
  private:
 };
 

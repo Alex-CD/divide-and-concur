@@ -6,14 +6,14 @@
 #include <ctime>
 #include <stdint.h>
 
-#include "ClickerGameLogic.h"
+#include "DG3GameLogic.h"
 #include "renderables/Vector.h"
 
-ClickerGameLogic::ClickerGameLogic(bool *isTerminating, DoubleLinkedObject *objects, Mouse *mouse):GameLogic(isTerminating, objects, mouse){
+DG3GameLogic::DG3GameLogic(bool *isTerminating, DoubleLinkedObject *objects, Mouse *mouse):GameLogic(isTerminating, objects, mouse){
 
 }
 
-void ClickerGameLogic::logicLoop() {
+void DG3GameLogic::logicLoop() {
 
   bool gameIsOver = false;
   bool mouseButtonStillDown = false;

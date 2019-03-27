@@ -7,9 +7,9 @@
 
 #include <GameLogic.h>
 
-class ClickerGameLogic: public GameLogic {
+class DG3GameLogic: public GameLogic {
  public:
-  explicit ClickerGameLogic(bool *isTerminating, DoubleLinkedObject *objects, Mouse *mouse);
+  explicit DG3GameLogic(bool *isTerminating, DoubleLinkedObject *objects, Mouse *mouse);
   void logicLoop();
  private:
 };

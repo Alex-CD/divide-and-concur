@@ -8,10 +8,12 @@
 #include <pthread.h>
 #include "Core.h"
 
-
-#include <TestGame/TestGameLogic.h>
-#include <TestGame/TestGameCore.h>
-#include <ClickerGame/ClickerGameCore.h>
+#include <games/DemoGame1/DG1GameLogic.h>
+#include <games/DemoGame1/DG1Core.h>
+#include <games/DemoGame2/DG2GameLogic.h>
+#include <games/DemoGame2/DG2Core.h>
+#include <games/DemoGame3/DG3GameLogic.h>
+#include <games/DemoGame3/DG3Core.h>
 
 using namespace std;
 
@@ -23,7 +25,7 @@ int main() {
   const int MAX_THREADS = 15;
 
   cout << "Welcome to divide and concur, a concurrency-based gamelogic environment for the modern era.";
-  auto *game = new ClickerGameCore();
+  auto *game = new DG3Core();
   auto *gamesThread = new pthread_t();
   int gamesCount = 0;
   bool keepGoing = true;
@@ -31,7 +33,7 @@ int main() {
   pthread_create(gamesThread, nullptr, Core::threadEntry, game);
 
 
-  /*auto *game2 = new TestGameCore();
+  /*auto *game2 = new DG2Core();
   auto *gamesThread2 = new pthread_t();
 
   pthread_create(gamesThread2, nullptr, Core::threadEntry, game2);
