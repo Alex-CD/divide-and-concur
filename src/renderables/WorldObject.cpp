@@ -12,10 +12,10 @@ WorldObject::WorldObject(string id):Object(id) {
   this->transform = Vec3(1.0f, 1.0f, 1.0f);
 }
 /**
- * Constructor for WorldObjects
- * @param xSize Diameter of the object in the x plane.
- * @param ySize Diameter of the object in the y plane.
- * @param zSize Diameter of the object in the z plane.
+ * Constructor for the worldObject class.
+ * @param size Size of the object to create
+ * @param position Position of the created object
+ * @param id Id of the object to create
  */
 WorldObject::WorldObject(Vec3 size, Vec3 position, string id):Object(id){
 
@@ -26,30 +26,26 @@ WorldObject::WorldObject(Vec3 size, Vec3 position, string id):Object(id){
 
 
 /**
- * Sets the position of this world object, relative to the center of the window.
- * @param xPos X-coord of this object in Px
- * @param yPos Y-coord of this object in Px
- * @param zPos Z-coord of this object in Px
+ * Sets the position of this object, in px, relative to the center of the screen.
+ * @param pos position to move this object to.
  */
 void WorldObject::setPos(Vec3 pos) {
   this->pos = pos;
 }
 
 /**
- *
- * @param xPos
- * @param yPos
- * @param zPos
+ * Sets the position of this object, in px, relative to the center of the screen.
+ * @param xPos Y coordinate in px where this object will be moved to.
+ * @param yPos X coordinate in px where this object will be moved to.
+ * @param zPos Z coordinate in px where this object will be moved to.
  */
 void WorldObject::setPos(float xPos, float yPos, float zPos) {
   this->setPos(Vec3(xPos, yPos, zPos));
 }
 
 /**
- * Moves this object a distance (in px)
- * @param xDistance Distance to move (in the x plane)
- * @param yDistance Distance to move. (in the y plane)
- * @param zDistance Distnace to move. (in the z plane)
+ * Moves this object by a given distance(vector).
+ * @param offset Distance to move this object.
  */
 void WorldObject::move(Vec3 offset) {
   this->pos.x += offset.x;
@@ -57,14 +53,20 @@ void WorldObject::move(Vec3 offset) {
   this->pos.z += offset.z;
 }
 
-
+/**
+ * Moves this object by a given distance (vector).
+ * @param xDistance Distance to move in the X plane.
+ * @param yDistance Distance to move in the Y plane.
+ * @param zDistance Distance to move in the Z plane.
+ */
 void WorldObject::move(float xDistance, float yDistance, float zDistance) {
   this->move(Vec3(xDistance, yDistance, zDistance));
 }
 
 
 /**
- * Scales the object by a factor (taking into account current scaling), preserving aspect ratio.
+ * Multiplies the size of the current object by the given factor, preserving aspect ratio.
+ * Takes into account existing scaling (ie compound scaling)
  * @param scaleFactor Factor to scale by.
  */
 void WorldObject::scaleBy(float scaleFactor) {
@@ -72,15 +74,20 @@ void WorldObject::scaleBy(float scaleFactor) {
 }
 
 /**
- *
- * @param scaleFactorX
- * @param scaleFactorY
- * @param scaleFactorZ
+ * Multiplies the size of the current object by the given factor (in each plane).
+ * Takes into account existing scaling (ie compound scaling).
+ * @param scaleFactorX Factor to scale by, in the X plane.
+ * @param scaleFactorY Factor to scale by, in the Y plane.
+ * @param scaleFactorZ Factor to scale by, in the Z plane.
  */
 void WorldObject::scaleBy(float xScale, float yScale, float zScale) {
   this->scaleBy(Vec3(xScale, yScale, zScale));
 }
 
+/**
+ * Multiplies the size of the current object by the given factor (in each plane)
+ * @param scaleFactor Factor to scale by.
+ */
 void WorldObject::scaleBy(Vec3 scaleFactor) {
   this->transform.x *= scaleFactor.x;
   this->transform.x *= scaleFactor.y;
@@ -88,10 +95,10 @@ void WorldObject::scaleBy(Vec3 scaleFactor) {
 }
 
 /**
- * Sets the scale factors of this object.
- * @param xTransform Factor to scale by, in the x plane.
- * @param yTransform Factor to scale by, in the y plane
- * @param zTransform Factor to scale by, in the z plane
+ * Sets the transform of this object.
+ * Size is multiplied by the transform to calculate how large an object should be when rendered.
+ * Multiplies pre-perspective matrix transformation.
+ * @param scale Factor Factors to scale by.
  */
 void WorldObject::setTransform(Vec3 scaleFactor) {
   this->transform.x = scaleFactor.x;
@@ -100,6 +107,14 @@ void WorldObject::setTransform(Vec3 scaleFactor) {
 }
 
 
+/**
+ * Sets the transform of this object.
+ * Size is multiplied by the transform to calculate how large an object should be when rendered.
+ * Multiplies pre-perspective matrix transformation.
+ * @param xTransform Factor to scale by, in the X plane.
+ * @param yTransform Factor to scale by, in the Y plane.
+ * @param zTransform Factor to scale by, in the Z plane.
+ */
 void WorldObject::setTransform(float xTransform, float yTransform, float zTransform) {
   setTransform(Vec3(xTransform, yTransform, zTransform));
 }

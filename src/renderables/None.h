@@ -8,7 +8,7 @@
 #include "Object.h"
 
 /**
- * A game object that does nothing - to be used as a placeholder.
+ * A game object that does nothing - to be used as a placeholder (or spacer)
  * All of its member functions can be called, but do nothing.
  */
 class None: public Object {

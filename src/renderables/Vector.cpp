@@ -6,15 +6,25 @@
 
 
 
+/**
+ * Constructor for the vector class.
+ * @param size Size of the vector to be created.
+ * @param id ID of the object to create.
+ */
 Vector::Vector(Vec3 size, string id):WorldObject(size, Vec3(), id){
+  this->col1 = Vec3();
+  this->col2 = Vec3();
+  this->col3 = Vec3();
 }
 
 /**
- *
- * @param xPos
- * @param yPos
- * @param zPos
- * @param id
+ * Constructor for the vector class.
+ * @param colour1 Colour of the top corner in RGB
+ * @param colour2 Colour of the bottom left in RGB, range 0-1.0f.
+ * @param colour3 Colour of the bottom right in RGB, range 0-1.0f.
+ * @param pos Position of the object to create.
+ * @param size Size of the object to create, in px.
+ * @param id Id of the object to create.
  */
 Vector::Vector(Vec3 colour1, Vec3 colour2, Vec3 colour3, Vec3 pos, Vec3 size, string id):WorldObject(size, pos, id){
   this->col1 = colour1;
@@ -22,8 +32,12 @@ Vector::Vector(Vec3 colour1, Vec3 colour2, Vec3 colour3, Vec3 pos, Vec3 size, st
   this->col3 = colour3;
 }
 
-
-
+/**
+ * Constructor for the vector class
+ * @param pos Position of the object to create.
+ * @param size Size of the object to create, in px.
+ * @param id Id of the object to create.
+ */
 Vector::Vector(Vec3 pos, Vec3 size, string id):WorldObject(size, pos, id) {
   this->bufferSize = 3 * sizeof(int);
 
@@ -35,6 +49,7 @@ Vector::Vector(Vec3 pos, Vec3 size, string id):WorldObject(size, pos, id) {
 
 /**
  * Generates the vertices used to render this object, storing them in the given buffer.
+ * Projects objects onto the view using an orthonographic projection.
  * @param buffer The buffer in which to store the vertices.
  * @param xViewportSize Size of the viewport (in the X place)
  * @param yViewportSize Size of the viewport (in the Y plane)
@@ -71,6 +86,12 @@ void Vector::generateVertices(float *buffer, int xViewportSize, int yViewportSiz
   buffer[17] = this->col3.z;
 }
 
+/**
+ * Sets the colour of this vector.
+ * @param col1 RGB colour for one of the corners.
+ * @param col2 RGB colour for one of the corners.
+ * @param col3 RGB colour for one of the corners.
+ */
 void Vector::setColour(Vec3 col1, Vec3 col2, Vec3 col3) {
   this->col1 = col1;
   this->col2 = col2;
@@ -78,11 +99,10 @@ void Vector::setColour(Vec3 col1, Vec3 col2, Vec3 col3) {
 }
 
 /**
- * Detects whether or not this object has been clicked.
- * Treats the given object as a square.
- * @param xClick X-coordinate, (in pixels) of the given click (relative to the center)
- * @param yClick Y-coordinate, (in pixels) of the given click (relative to the center).
- * @return
+ * A basic click detection algorithm - delects whether a click on the given cood was made on top of this vector.
+ * @param xClick Click coordinate on the X plane, relative to the center of the screen.
+ * @param yClick Click coordinate on the Y plane, relative to the center of the screen.
+ * @return a boolean indicating whether the given coordinates were a 'hit'.
  */
 bool Vector::basicClickDetect(float xClick, float yClick){
   bool xHit;

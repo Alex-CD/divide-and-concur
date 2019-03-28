@@ -1,10 +1,10 @@
 #include "DoubleLinkedObject.h"
 
 
+
 /**
- * Constructor for the doublelinkedObject class.
- * @param object object to be stored in this doublelinked object.
- * Does *not* set lastObject and nextObject - this should be done from the calling function.
+ * Constructor for the doublelinked Object.
+ * @param object
  */
 DoubleLinkedObject::DoubleLinkedObject(Object* object) {
   this->object = object;
@@ -37,7 +37,6 @@ void DoubleLinkedObject::insertAfter(Object *object) {
 
 /**
  * Inserts the given object into the linked list, before this object.
- * Sets the relevenat last and next object pointers.
  * @param object to insert.
  */
 void DoubleLinkedObject::insertBefore(Object* object){
@@ -62,7 +61,7 @@ Object* DoubleLinkedObject::getObjectById(string id) {
 }
 
 /**
- * Adds an object to the end of the linked list.
+ * Adds an object to the end of the linked list to which this element belongs.
  * @param object to insert
  * @return pointer to the inserted object.
  */
@@ -108,22 +107,21 @@ DoubleLinkedObject* DoubleLinkedObject::getNthElementRecurse(int n, int index) {
 
 
 /**
- * Removes references to the current object.
- * DOES NOT DELETE ELEMENTS, SO KEEP TRACK OF THIS ELEMENT
- * BEFORE YOU DELETE IT IF YOU DON'T WANT A MEMORY LEAK.
+ * Removes this object from the linked list to which it belongs, but does not delete this element.
+ * @return pointer to this object.
  */
-void DoubleLinkedObject::remove() {
+DoubleLinkedObject* DoubleLinkedObject::remove() {
   this->lastObject->nextObject = this->nextObject;
   this->nextObject->lastObject = this->lastObject;
 
   this->nextObject = nullptr;
   this->lastObject = nullptr;
 
+  return this;
 }
 
 /**
  * Deletes all elements forward of this element.
- * (does not delete this object)
  */
 void DoubleLinkedObject::disposeOfList() {
 

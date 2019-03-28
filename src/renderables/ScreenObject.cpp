@@ -6,13 +6,12 @@
 #include "ScreenObject.h"
 
 
+
 /**
- * Constructor for the screenobject parent class.
- * @param xPos X-coord of the object, in pixels, relative to the center of the screen.
- * @param yPos Y-coord of the object, in pixels, relative to the center of the screen.
- * @param xSize Size of the object (in the X-plane) in pixels.
- * @param ySize Size of the object (in the Y-plane) in pixels.
- * @param id Id of this object.
+ * Constructor for the screenObject class
+ * @param pos position of the created object
+ * @param size Size of the created object (in px)
+ * @param id identifier of the created object
  */
 ScreenObject::ScreenObject(Vec3 pos, Vec3 size, string id):Object(id){
   this->pos = pos;

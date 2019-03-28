@@ -8,19 +8,19 @@
 #include "Object.h"
 
 /**
- * A doubly linked list of game objects.
+ * A doubly linked list storing renderable game objects.
  */
 class DoubleLinkedObject {
  public:
   Object* object;
   explicit DoubleLinkedObject(Object* object);
-  void remove();
+  DoubleLinkedObject *remove();
   void insertAfter(Object *object);
   void insertBefore(Object *object);
   void disposeOfList();
   Object *addObject(Object *object);
-  Object* getNthElement(int n);
-  Object* getObjectById(string id);
+  Object *getNthElement(int n);
+  Object *getObjectById(string id);
   DoubleLinkedObject* nextObject;
   DoubleLinkedObject* lastObject;
 

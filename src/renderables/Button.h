@@ -4,7 +4,7 @@
 #include "ScreenObject.h"
 
 /**
- * UI element, a combination of text and vectors.
+ * A clickable UI element, containing a button and some text
  */
 class Button:ScreenObject{
 };

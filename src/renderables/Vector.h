@@ -9,7 +9,6 @@
 
 /**
  * 3D shapes, which exist in the 3D game world.
- * Act as sprites.
  */
 class Vector : public WorldObject {
  public:
