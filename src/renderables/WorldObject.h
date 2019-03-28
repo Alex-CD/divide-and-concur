@@ -15,7 +15,6 @@
 class WorldObject:public Object{
  public:
   Vec3 transform;
-  Vec3 position;
   Vec3 velocity;
   Vec3 size;
   float vertices[6];

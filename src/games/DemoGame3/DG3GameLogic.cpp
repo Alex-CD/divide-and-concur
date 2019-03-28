@@ -26,6 +26,7 @@ void DG3GameLogic::logicLoop() {
 
 
   auto *currentObj = (Vector *)this->objects->addObject(new Vector(Vec3(100.0f, 100.0f, 100.0f), ""));
+  ((Vector*)currentObj)->setColour(Vec3(1.0f, 1.0f, 1.0f),Vec3(1.0f, 1.0f, 1.0f), Vec3(1.0f, 1.0f, 1.0f));
 
   while(!*this->isTerminating) {
     int roundsCount = 0;

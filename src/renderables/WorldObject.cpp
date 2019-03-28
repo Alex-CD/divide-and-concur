@@ -7,7 +7,7 @@
 
 
 WorldObject::WorldObject(string id):Object(id) {
-  this->position = Vec3(0.0f, 0.0f, 0.0f);
+  this->pos = Vec3(0.0f, 0.0f, 0.0f);
   this->size = Vec3(0.0f, 0.0f, 0.0f);
   this->transform = Vec3(0.0f, 0.0f, 0.0f);
 }
@@ -19,7 +19,7 @@ WorldObject::WorldObject(string id):Object(id) {
  */
 WorldObject::WorldObject(Vec3 size, Vec3 position, string id):Object(id){
 
-  this->position = position;
+  this->pos = position;
   this->size = size;
   this->transform = Vec3(0.0f, 0.0f, 0.0f);
 };

@@ -41,8 +41,8 @@ int main() {
   int gamesCount = 0;
   bool keepGoing = true;
 
-  pthread_create(game1Thread, nullptr, Core::threadEntry, game1);
-  pthread_create(game2Thread, nullptr, Core::threadEntry, game2);
+  //pthread_create(game1Thread, nullptr, Core::threadEntry, game1);
+  //pthread_create(game2Thread, nullptr, Core::threadEntry, game2);
   pthread_create(game3Thread, nullptr, Core::threadEntry, game3);
 
   //do nothing

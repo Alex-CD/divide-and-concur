@@ -60,17 +60,17 @@ void Vector::generateVertices(float *buffer, int xViewportSize, int yViewportSiz
   buffer[7] = (this->pos.y*yCoef) + (yScreenSize/2);
   buffer[8] = 0.0f;
 
-  buffer[3] = this->col2.x;
-  buffer[4] = this->col2.y;
-  buffer[5] = this->col2.z;
+  buffer[9] = this->col2.x;
+  buffer[10] = this->col2.y;
+  buffer[11] = this->col2.z;
 
   buffer[12] = (this->pos.x*xCoef) + (xScreenSize/2);
   buffer[13] = (this->pos.y*yCoef) - (yScreenSize/2);
   buffer[14] = 0.0f;
 
-  buffer[3] = this->col3.x;
-  buffer[4] = this->col3.y;
-  buffer[5] = this->col3.z;
+  buffer[15] = this->col3.x;
+  buffer[16] = this->col3.y;
+  buffer[17] = this->col3.z;
 }
 
 void Vector::setColour(Vec3 col1, Vec3 col2, Vec3 col3) {
