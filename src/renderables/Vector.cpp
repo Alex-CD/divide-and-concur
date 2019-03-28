@@ -4,6 +4,13 @@
 
 #include "Vector.h"
 
+
+struct vec3 {
+  float x;
+  float y;
+  float z;
+};
+
 /**
  *
  * @param xPos
@@ -11,11 +18,11 @@
  * @param zPos
  * @param id
  */
-Vector::Vector(float xPos, float yPos, float zPos, string id):WorldObject(xPos, yPos, zPos, id){
+Vector::Vector(vec3 colour1, vec3 colour2, vec3 colour3, vec3 pos, string id):WorldObject(xPos, yPos, zPos, id){
   this->bufferSize = 3 * sizeof(int);
   this->rCol = 1.0f;
   this->gCol = 1.0f;
-  this->bCol = 2.0f;
+  this->bCol = 1.0f;
 }
 
 /**
@@ -53,7 +60,7 @@ void Vector::generateVertices(float *buffer, int xViewportSize, int yViewportSiz
 
   buffer[15] = this->rCol;
   buffer[16] = this->gCol;
-  buffer[18] = this->bCol;
+  buffer[17] = this->bCol;
 }
 
 /**
