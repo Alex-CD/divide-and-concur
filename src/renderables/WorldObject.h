@@ -7,21 +7,26 @@
 
 #include "Object.h"
 
+#include "Vec3.h"
+
 /**
  * Parent class for objects that exist in the 3D world.
  */
 class WorldObject:public Object{
  public:
-  float xTransform, yTransform, zTransform;
+  Vec3 transform;
+  Vec3 position;
+  Vec3 velocity;
+  Vec3 size;
   float vertices[6];
-  WorldObject (float xSize, float ySize, float zSize, string id);
+  WorldObject();
+  WorldObject (Vec3 size, Vec3 position, string id);
   void generateVertices(float *buffer);
-  void setPos(int xPos, int yPos, int zPos);
-  void translate(float xDistance, float yDistance, float zDistance);
-  void setTransform(float xTransform, float yTransform, float zTransform);
-  void transform(float xFactor, float yFactor, float zFactor);
-  void scale(float scaleFactor);
-  void scale(float xScale, float yScale, float zScale);
+  void setPos(Vec3 pos);
+  void move(Vec3 offset);
+  void setTransform(Vec3 transform);
+  void scaleBy(float scaleFactor);
+  void scaleBy(Vec3 scale);
 };
 
 #endif //DAC_SCENEOBJECT_H

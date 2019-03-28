@@ -13,14 +13,13 @@
  */
 class ScreenObject:public Object{
  public:
-  ScreenObject(int xPos, int yPos, int xSize, int ySize, string id);
+  ScreenObject(Vec3 pos, Vec3 size, string id);
   void generateVertices(float *buffer, int xViewportSize, int yViewportSize);
-  void setPos(float xPos, float yPos, float zPos);
-  void translate(float xDistance, float yDistance, float zDistance);
-  void setTransform(float xTransform, float yTransform, float zTransform);
-  void transform(float xFactor, float yFactor, float zFactor);
-  void scale(float scaleFactor);
-  void scale(float xScale, float yScale, float zScale);
+  void setPos(Vec3 pos);
+  void translate(Vec3 distance);
+  void setTransform(Vec3 transform);
+  void scaleBy(float scaleFactor);
+  void scaleBy(Vec3 transform);
 
 };
 

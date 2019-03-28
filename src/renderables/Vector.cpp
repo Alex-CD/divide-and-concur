@@ -18,11 +18,20 @@ struct vec3 {
  * @param zPos
  * @param id
  */
-Vector::Vector(vec3 colour1, vec3 colour2, vec3 colour3, vec3 pos, string id):WorldObject(xPos, yPos, zPos, id){
+Vector::Vector(Vec3 colour1, Vec3 colour2, Vec3 colour3, Vec3 pos, Vec3 size, string id):WorldObject(pos, size, id){
+  this->col1 = colour1;
+  this->col2 = colour2;
+  this->col3 = colour3;
+}
+
+
+Vector::Vector(Vec3 pos, Vec3 size, string id):WorldObject(pos, size, id) {
   this->bufferSize = 3 * sizeof(int);
-  this->rCol = 1.0f;
-  this->gCol = 1.0f;
-  this->bCol = 1.0f;
+
+  //Default white colour
+  this->col1 = Vec3(1.0f, 1.0f, 1.0f);
+  this->col2 = Vec3(1.0f, 1.0f, 1.0f);
+  this->col3 = Vec3(1.0f, 1.0f, 1.0f);
 }
 
 /**
@@ -35,32 +44,32 @@ void Vector::generateVertices(float *buffer, int xViewportSize, int yViewportSiz
   float xCoef = 2.0f/xViewportSize;
   float yCoef = 2.0f/yViewportSize;
 
-  float xScreenSize = xSize * xCoef * xTransform;
-  float yScreenSize = ySize * yCoef * yTransform;
+  float xScreenSize = size.x * xCoef * transform.x;
+  float yScreenSize = size.y* yCoef * transform.y;
 
-  buffer[0] = (this->xPos*xCoef) - (xScreenSize/2);
-  buffer[1] = (this->yPos*yCoef) - (yScreenSize/2);
+  buffer[0] = (this->pos.x*xCoef) - (xScreenSize/2);
+  buffer[1] = (this->pos.y*yCoef) - (yScreenSize/2);
   buffer[2] = 0.0f;
 
-  buffer[3] = this->rCol;
-  buffer[4] = this->gCol;
-  buffer[5] = this->bCol;
+  buffer[3] = this->col1.x;
+  buffer[4] = this->col1.y;
+  buffer[5] = this->col1.z;
 
-  buffer[6] = (this->xPos*xCoef);
-  buffer[7] = (this->yPos*yCoef) + (yScreenSize/2);
+  buffer[6] = (this->pos.x*xCoef);
+  buffer[7] = (this->pos.y*yCoef) + (yScreenSize/2);
   buffer[8] = 0.0f;
 
-  buffer[9] = this->rCol;
-  buffer[10] = this->gCol;
-  buffer[11] = this->bCol;
+  buffer[3] = this->col2.x;
+  buffer[4] = this->col2.y;
+  buffer[5] = this->col2.z;
 
-  buffer[12] = (this->xPos*xCoef) + (xScreenSize/2);
-  buffer[13] = (this->yPos*yCoef) - (yScreenSize/2);
+  buffer[12] = (this->pos.x*xCoef) + (xScreenSize/2);
+  buffer[13] = (this->pos.y*yCoef) - (yScreenSize/2);
   buffer[14] = 0.0f;
 
-  buffer[15] = this->rCol;
-  buffer[16] = this->gCol;
-  buffer[17] = this->bCol;
+  buffer[3] = this->col3.x;
+  buffer[4] = this->col3.y;
+  buffer[5] = this->col3.z;
 }
 
 /**
@@ -70,15 +79,15 @@ void Vector::generateVertices(float *buffer, int xViewportSize, int yViewportSiz
  * @param yClick Y-coordinate, (in pixels) of the given click (relative to the center).
  * @return
  */
-bool Vector::basicClickDetect(float xClick, float yClick) {
+bool Vector::basicClickDetect(float xClick, float yClick){
   bool xHit;
   bool yHit;
 
-  float objWidthX =  (this->xSize * this->xTransform)/2;
-  float objWidthY = (this->ySize * this->yTransform)/2;
+  float objWidthX =  (this->size.x * this->transform.x)/2;
+  float objWidthY = (this->size.y * this->transform.y)/2;
 
-  xHit = (xClick > (this->xPos - objWidthX)) && (xClick < (this->xPos + objWidthX));
-  yHit = (yClick > (this->yPos - objWidthY)) && (yClick < (this->yPos + objWidthY));
+  xHit = (xClick > (this->pos.x - objWidthX)) && (xClick < (this->pos.x + objWidthX));
+  yHit = (yClick > (this->pos.y - objWidthY)) && (yClick < (this->pos.y + objWidthY));
 
   return xHit && yHit;
 }

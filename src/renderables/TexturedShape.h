@@ -8,7 +8,7 @@
  */
 class TexturedShape:public ScreenObject{
  public:
-  TexturedShape(int xPos, int yPos, string id);
+  //TODO
 };
 
 #endif //DAC_BITMAP_H

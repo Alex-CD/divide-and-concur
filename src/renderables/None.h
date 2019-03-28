@@ -16,12 +16,11 @@ class None: public Object {
   None();
   GLuint bufferSize = 0;
   void generateVertices(float *buffer, int xViewportSize, int yViewportSize);
-  void setPos(int xPos, int yPos, int zPos);
-  void translate(float xDistance, float yDistance, float zDistance);
-  void setTransform(float xTransform, float yTransform, float zTransform);
-  void transform(float xFactor, float yFactor, float zFactor);
-  void scale(float scaleFactor);
-  void scale(float xScale, float yScale, float zScale);
+  void setPos(Vec3 pos);
+  void translate(Vec3 distance);
+  void setTransform(Vec3 transform);
+  void scaleBy(float scaleFactor);
+  void scaleBy(Vec3 transform);
 };
 
 #endif //DAC_NONE_H

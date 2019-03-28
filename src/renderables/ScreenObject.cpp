@@ -2,6 +2,7 @@
 // Created by alex on 22/02/19.
 //
 
+#include <Vec3.h>
 #include "ScreenObject.h"
 
 
@@ -13,18 +14,17 @@
  * @param ySize Size of the object (in the Y-plane) in pixels.
  * @param id Id of this object.
  */
-ScreenObject::ScreenObject(int xPos, int yPos, int xSize, int ySize, string id):Object(id){
-  this->xPos = xPos;
-  this->yPos = yPos;
-  this->xSize = xSize;
-  this->ySize = ySize;
+ScreenObject::ScreenObject(Vec3 pos, Vec3 size, string id):Object(id){
+  this->pos = pos;
+  this->size = size;
+  this->transform = Vec3();
+
 }
 
-// TODO
+//TODO
 void ScreenObject::generateVertices(float *buffer, int xViewportSize, int yViewportSize) {}
-void ScreenObject::setPos(float xPos, float yPos, float zPos){}
-void ScreenObject::translate(float xDistance, float yDistance, float zDistance){}
-void ScreenObject::setTransform(float xTransform, float yTransform, float zTransform){}
-void ScreenObject::transform(float xFactor, float yFactor, float zFactor){}
-void ScreenObject::scale(float scaleFactor){}
-void ScreenObject::scale(float xScale, float yScale, float zScale){}
+void ScreenObject::setPos(Vec3 pos){}
+void ScreenObject::translate(Vec3 distance){}
+void ScreenObject::setTransform(Vec3 transform){}
+void ScreenObject::scaleBy(float scaleFactor){}
+void ScreenObject::scaleBy(Vec3 scale){}
