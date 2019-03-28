@@ -73,7 +73,6 @@ void Renderer::saveLog(char *toSave, string filename){
   FileHelper::saveString(toSave, filename + ".log");
 };
 
-
 /**
  *
  * @param sourceFile
@@ -92,15 +91,17 @@ void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
 
   // Empty data to init
   float vertices[] = {
-      0.0f, 0.0f, 0.0f,
-      0.0f, 0.0f, 0.0f,
-      0.0f,  0.0f, 0.0f,
+      0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+      0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+      0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f
   };
+
 
 
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glGenBuffers(*this->maxObjects, VBO);
   glGenVertexArrays(*this->maxObjects, VAO);
+
 
 
   // Bind a VBO to each VAO.
@@ -109,16 +110,20 @@ void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
     glBindVertexArray(VAO[i]);
     glBindBuffer(GL_ARRAY_BUFFER, VBO[i]);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), nullptr);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3*sizeof(float)));
+
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
-    //Enable attribute 0 of vertexarray
+    //Enable vertex attribs
     glEnableVertexAttribArray(0);
-
-    // Unbind vertex array and buffer
-    glBindVertexArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(3);
   }
+
+  // Unbind vertex array and buffer
+  glBindVertexArray(0);
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 /**
@@ -189,7 +194,6 @@ void Renderer::initShaders(){
   }
 }
 
-
 /**
  *
  */
@@ -252,9 +256,9 @@ void Renderer::renderLoop() {
 
 
   float buffer[] = {
-      0.0f, 0.0f, 0.0f,
-      0.0f, 0.0f, 0.0f,
-      0.0f,  0.0f, 0.0f,
+      0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+      0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+      0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f
   };
 
 
@@ -267,16 +271,17 @@ void Renderer::renderLoop() {
     DoubleLinkedObject *currObject = this->objects;
 
     glClear(GL_COLOR_BUFFER_BIT);
-
-
+    
     int x = 0;
-    while(currObject != nullptr){
+    while(currObject != nullptr && x < sizeof(VAO)){
       currObject->object->generateVertices(buffer, this->xViewportSizePx, this->yViewportSizePx);
+
+
       glBindVertexArray(VAO[x]);
       glBindBuffer(GL_ARRAY_BUFFER, VBO[x]);
 
       glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(buffer), buffer);
-      glDrawArrays(GL_TRIANGLES, 0, 3);
+      glDrawArrays(GL_TRIANGLES, 0, 6);
 
       x += 1;
       currObject = currObject->nextObject;

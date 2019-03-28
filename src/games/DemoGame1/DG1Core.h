@@ -5,7 +5,12 @@
 #ifndef DAC_DG1CORE_H
 #define DAC_DG1CORE_H
 
-class DG1Core {
+#include "Core.h"
+
+class DG1Core:Core{
+ public:
+  DG1Core();
+ private:
 
 };
 

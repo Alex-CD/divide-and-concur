@@ -13,6 +13,9 @@
  */
 Vector::Vector(float xPos, float yPos, float zPos, string id):WorldObject(xPos, yPos, zPos, id){
   this->bufferSize = 3 * sizeof(int);
+  this->rCol = 1.0f;
+  this->gCol = 1.0f;
+  this->bCol = 2.0f;
 }
 
 /**
@@ -32,13 +35,25 @@ void Vector::generateVertices(float *buffer, int xViewportSize, int yViewportSiz
   buffer[1] = (this->yPos*yCoef) - (yScreenSize/2);
   buffer[2] = 0.0f;
 
-  buffer[3] = (this->xPos*xCoef);
-  buffer[4] = (this->yPos*yCoef) + (yScreenSize/2);
-  buffer[5] = 0.0f;
+  buffer[3] = this->rCol;
+  buffer[4] = this->gCol;
+  buffer[5] = this->bCol;
 
-  buffer[6] = (this->xPos*xCoef) + (xScreenSize/2);
-  buffer[7] = (this->yPos*yCoef) - (yScreenSize/2);
+  buffer[6] = (this->xPos*xCoef);
+  buffer[7] = (this->yPos*yCoef) + (yScreenSize/2);
   buffer[8] = 0.0f;
+
+  buffer[9] = this->rCol;
+  buffer[10] = this->gCol;
+  buffer[11] = this->bCol;
+
+  buffer[12] = (this->xPos*xCoef) + (xScreenSize/2);
+  buffer[13] = (this->yPos*yCoef) - (yScreenSize/2);
+  buffer[14] = 0.0f;
+
+  buffer[15] = this->rCol;
+  buffer[16] = this->gCol;
+  buffer[18] = this->bCol;
 }
 
 /**

@@ -5,7 +5,14 @@
 #ifndef DAC_DG1GAMELOGIC_H
 #define DAC_DG1GAMELOGIC_H
 
-class DG1GameLogic {
+#include "GameLogic.h"
+
+class DG1GameLogic:public GameLogic {
+
+ public:
+  explicit DG1GameLogic(bool *isTerminating, DoubleLinkedObject *objects, Mouse *mouse);
+  void logicLoop();
+ private:
 
 };
 

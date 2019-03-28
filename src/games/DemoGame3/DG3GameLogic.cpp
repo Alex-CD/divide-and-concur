@@ -19,7 +19,7 @@ void DG3GameLogic::logicLoop() {
   bool mouseButtonStillDown = false;
 
   const float ROUND_TIME_REDUCTION_FACTOR = 0.6f;
-  const int INITIAL_ROUND_TIME_SECONDS = 3;
+  const int INITIAL_ROUND_TIME_SECONDS = 10;
 
 
   srand(clock());
