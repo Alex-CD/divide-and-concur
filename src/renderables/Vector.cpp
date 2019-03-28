@@ -6,9 +6,7 @@
 
 
 
-Vector::Vector(Vec3 size, string id):WorldObject(id){
-  this->size = size;
-  this->pos = Vec3();
+Vector::Vector(Vec3 size, string id):WorldObject(size, Vec3(), id){
 }
 
 /**

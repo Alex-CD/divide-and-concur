@@ -8,8 +8,8 @@
 
 WorldObject::WorldObject(string id):Object(id) {
   this->pos = Vec3(0.0f, 0.0f, 0.0f);
-  this->size = Vec3(0.0f, 0.0f, 0.0f);
-  this->transform = Vec3(0.0f, 0.0f, 0.0f);
+  this->size = Vec3(100.0f, 100.0f, 100.0f);
+  this->transform = Vec3(1.0f, 1.0f, 1.0f);
 }
 /**
  * Constructor for WorldObjects
@@ -21,7 +21,7 @@ WorldObject::WorldObject(Vec3 size, Vec3 position, string id):Object(id){
 
   this->pos = position;
   this->size = size;
-  this->transform = Vec3(0.0f, 0.0f, 0.0f);
+  this->transform = Vec3(1.0f, 1.0f, 1.0f);
 };
 
 

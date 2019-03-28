@@ -21,7 +21,7 @@ Core::Core(){
   this->audioHandler = nullptr;
   this->gameLogic = nullptr;
   this->isTerminating = false;
-  this->maxObjects = 100;
+  this->maxObjects = 90000;
   this->mouse = Mouse();
   this->objectsHead = new DoubleLinkedObject(new None());
 
