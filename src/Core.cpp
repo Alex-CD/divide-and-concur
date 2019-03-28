@@ -27,9 +27,11 @@ Core::Core(){
 
 }
 
+
 /**
- * Create a new thread on this object for component multithreading.
- * Calls start() when run.
+ * Static method, to which new threads in an outer scope should be directed.
+ * This directs threads onto a core object on which to run.
+ * @param param The object on which this thread should run.
  */
 void *Core::threadEntry(void *param){
   auto *thisGame = (Core*)param;
@@ -38,18 +40,15 @@ void *Core::threadEntry(void *param){
 }
 
 /**
- * Does the logic of the Core module.
- * Can be called directly (for unit testing).
- * For multithreading, create new thread on threadEntry
+ * First method called by a new thread.
+ * Do the high level stuff here!
  */
 void Core::start(){
   startComponents();
-
   // do the next thing the core module needs to do
 }
 
 /**
- * Internal method.
  * Creates new methods in each of the component threads,
  * and stores the thread pointers in the Core pthread_t members
  * (Components should already be initialised!)
@@ -62,6 +61,9 @@ void Core::startComponents(){
   pthread_create(&this->gameLogicThread, nullptr, GameLogic::threadEntry, this->gameLogic);
 }
 
+/**
+ * Disposes of the components belonging to this core.
+ */
 void Core::disposeComponents(){
   delete this->renderer;
   delete this->audioHandler;

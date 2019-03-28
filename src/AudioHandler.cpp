@@ -10,9 +10,13 @@
 
 using namespace std;
 
+
 /**
  *
  * @param isTerminating
+ * @param sounds
+ * @param soundsCount
+ * @param soundsDirectoryPath
  */
 AudioHandler::AudioHandler(bool *isTerminating, string sounds[], int soundsCount, string soundsDirectoryPath) {
   this->isTerminating = isTerminating;
@@ -27,6 +31,16 @@ AudioHandler::AudioHandler(bool *isTerminating, string sounds[], int soundsCount
 
 };
 
+/**
+ *
+ * @param input
+ * @param output
+ * @param frameCount
+ * @param timeInfo
+ * @param statusFlags
+ * @param userData
+ * @return
+ */
 int AudioHandler::paStreamCallback(const void *input,
                                    void *output,
                                    unsigned long frameCount,
@@ -37,7 +51,9 @@ int AudioHandler::paStreamCallback(const void *input,
 }
 
 
-
+/**
+ *
+ */
 void AudioHandler::playFile() {
 
   //int error = Pa_OpenDefaultStream);

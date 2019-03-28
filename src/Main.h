@@ -7,3 +7,10 @@
 
 #endif //PROJECT_MAIN_H
 
+
+/**
+ * Launcher for games created in the game environment.
+ */
+class Main {
+
+};

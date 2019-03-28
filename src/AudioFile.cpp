@@ -7,6 +7,12 @@
 #include <sndfile.hh>
 
 
+/**
+ * Constructor for Audio file objects.
+ * @param id Id of this audio file.
+ * @param filePath Path to the audio file to load into this file.
+ * @param buffSize Size of the buffer into which the file will be loaded.
+ */
 AudioFile::AudioFile(int id, string filePath, int buffSize) {
 
   this->fileName = filePath;
@@ -22,6 +28,10 @@ AudioFile::AudioFile(int id, string filePath, int buffSize) {
   this->channels = file.channels();
 }
 
+/**
+ * Destroys the buffer of this object.
+ * Call delete([thisobject]) to fully clean up.
+ */
 void AudioFile::destroy() {
   delete(this->buff);
 }

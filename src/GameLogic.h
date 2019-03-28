@@ -10,6 +10,10 @@
 #include <iostream>
 #include <cmath>
 
+/**
+ * Contains the code on which the logic thread of an instantiation of a game runs.
+ * Different for each different game.
+ */
 class GameLogic {
  public:
   explicit GameLogic(bool *isTerminating, DoubleLinkedObject* objects, Mouse *mouse);

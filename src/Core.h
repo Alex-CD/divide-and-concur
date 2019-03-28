@@ -19,6 +19,16 @@
 
 using namespace std;
 
+/**
+ * 'Core' of a game.
+ *  Each game has one instance of a Core.
+ *
+ *  Instantiates each of the child components belonging to a game, stores values shared between components,
+ *  and coordinates sharing information between components.
+ *
+ *  Create a new class that inherits from this class (and naother one that inherits from GameLogic), if you want to create a new game.
+ *  @see src/games/ for examples.
+ */
 class Core {
  public:
   Core();

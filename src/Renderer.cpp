@@ -15,8 +15,11 @@
 
 
 /**
- *
- * @param isTerminating
+ * Constructor for the renderer object.
+ * @param isTerminating Pointer to the boolean indicating if this component should gracefully terminate.
+ * @param maxObjects Max objects that can be rendered by this component. (also how much VRAM should be allocated)
+ * @param objects Pointer to the list of objects to be rendered by the rendering loop.
+ * @param mouse Pointer to the mouse object, so that the viewbox size can be passed.
  */
 Renderer::Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *objects, Mouse *mouse) {
   this->isTerminating = isTerminating;
@@ -30,20 +33,21 @@ Renderer::Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *obj
 
 
 /**
- * For multithreading on this component, create a new thread on this method.
- * Calls start()
+ * Static method, to which new threads in an outer scope should be directed.
+ * This directs threads onto a core object on which to run.
+ * @param The object on which this thread should run.
  */
 void *Renderer::threadEntry(void *param){
-  cout << "started!";
   auto thisRenderer = (Renderer *)param;
   thisRenderer->start();
   return nullptr;
 }
 
+
 /**
- * Starts the logic for the renderer module.
- * Terminates when isTerminating is set to true
- * Create a new thread on threadEntry if you need multithreading.1
+ * First method run by new threads in this component.
+ * This thread takes control from here.
+ * Coordinate high level logic here!
  */
 void Renderer::start(){
   initWindow();
@@ -52,30 +56,31 @@ void Renderer::start(){
 }
 
 /**
- *
+ * Stops the cursor from being rendered over this game's window.
  */
 void Renderer::hideCursor(){
   glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 }
 
 /**
- *
+ * Makes the cursor be rendered over this game's window.
  */
 void Renderer::showCursor(){
   glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 }
 
 /**
- *
- * @param toSave
+ * Saves a log to a file.
+ * @param toSave String to save to a file
+ * @param filename  Filename of the file in which the log will be saved.
  */
 void Renderer::saveLog(char *toSave, string filename){
   FileHelper::saveString(toSave, filename + ".log");
 };
 
 /**
- *
- * @param sourceFile
+ * Loads a shader file from the disk.
+ * @param sourceFile Name of the shader file to be loaded (including extension).
  * @return
  */
 string Renderer::loadShader(string sourceFile){
@@ -83,9 +88,10 @@ string Renderer::loadShader(string sourceFile){
 };
 
 /**
- *
- * @param VAO
- * @param VBO
+ * Initialises the given VBO's and VAO's.
+ * Logic relating to data layout in the buffers in contained here.
+ * @param VAO Vertex array object to initialise.
+ * @param VBO Vertex buffer object to initialise.
  */
 void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
 
@@ -128,7 +134,7 @@ void Renderer::initBuffers(GLuint* VAO, GLuint* VBO){
 }
 
 /**
- *
+ * Loads, compiles and attaches the shaders used by this game.
  */
 void Renderer::initShaders(){
   this->shaderProgram = glCreateProgram();
@@ -145,7 +151,6 @@ void Renderer::initShaders(){
 
   GLint operationSuccess;
   glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &operationSuccess);
-
 
   if(!operationSuccess)
   {
@@ -196,14 +201,15 @@ void Renderer::initShaders(){
 }
 
 /**
- *
+ * Initialises openGL.
+ * SHOULD BE CALLED ONCE PER PROCESS (regardless of how many threads).
  */
 void Renderer::initGL(){
   glfwInit();
 }
 
 /**
- *
+ * Initialises the window and viewbox used by this game.
  * Built on GLFW example docs (https://www.glfw.org/docs/latest/window_guide.html)
  * Internal method, instantiates an OpenGL window.
  * @returns status code, indicating success of window instantiation.
@@ -241,6 +247,10 @@ int Renderer::initWindow() {
 
 
 /**
+ * The render loop.
+ * Continually renders the objects contained in the objects list,
+ * using the initialised buffers.
+ * Only terminates when the window is closed, or isTerminating is set to true.
  * Built on GLFW docs ( https://www.glfw.org/docs/latest/window_guide.html )
  * Internal method, The main render loop of the application.
  * Continues until the window closes or the

@@ -11,6 +11,10 @@
 using namespace std;
 
 
+/**
+ * Exists in its own thread,
+ * handling the output of audio in games.
+ */
 class AudioHandler{
 
  public:

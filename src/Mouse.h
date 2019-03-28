@@ -7,6 +7,10 @@
 
 #include <GLFW/glfw3.h>
 
+/**
+ * Mouse object, used to track the current state of the mouse.
+ * i.e. Buttons state, cursor location.
+ */
 class Mouse {
  public:
   Mouse();

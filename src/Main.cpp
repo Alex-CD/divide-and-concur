@@ -20,13 +20,14 @@
 using namespace std;
 
 /**
- * Launches the game.
+ * Launches games.
  * @return Application exit code.
  */
 int main() {
   const int MAX_THREADS = 15;
 
   cout << "Welcome to divide and concur, a concurrency-based gamelogic environment for the modern era.";
+
   auto *game1 = new DG1Core();
   auto *game1Thread = new pthread_t();
 

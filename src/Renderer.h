@@ -15,6 +15,13 @@
 
 using namespace std;
 
+/**
+ * Renderer components.
+ * Initialises an openGL context, and blindly renders the list of components it's given a pointer to.
+ * A twitchy beast.
+ * THIS SHOULDN'T BE EXTENDED IF YOU WANT A NEW GAME.
+ * ONLY EXTEND GAME LOGIC AND CORE.
+ */
 class Renderer {
  public:
   explicit Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *objects, Mouse *mouse);

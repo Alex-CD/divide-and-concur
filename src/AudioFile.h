@@ -9,6 +9,10 @@
 
 using namespace std;
 
+/**
+ * Audio files.
+ * Used to store audio files to be played in games.
+ */
 class AudioFile {
  public:
   explicit AudioFile(int id, string filePath, int buffSize);
