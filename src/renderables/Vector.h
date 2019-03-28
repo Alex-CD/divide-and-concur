@@ -13,6 +13,7 @@
  */
 class Vector : public WorldObject {
  public:
+  Vector(Vec3 size, string id);
   Vector(Vec3 pos, Vec3 size, string id);
   Vector(Vec3 colour1, Vec3 colour2, Vec3 colour3, Vec3 pos, Vec3 size, string id);
   Vec3 col1, col2, col3; //Corner colours

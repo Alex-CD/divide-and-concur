@@ -23,7 +23,7 @@ void DG2GameLogic::logicLoop(){
     if(this->mouse->leftButtonIsDown){
       if(!buttonStillDown) {
         buttonStillDown = true;
-        currentObject = objects->addObject(new Vector(100, 100, 100, ""));
+        currentObject = objects->addObject(new Vector(Vec3(100.0f, 100.0f, 100.0f), ""));
         currentObject->setPos(this->mouse->xPos, this->mouse->yPos, 0);
       }
     }

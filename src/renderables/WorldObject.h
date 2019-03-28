@@ -19,14 +19,17 @@ class WorldObject:public Object{
   Vec3 velocity;
   Vec3 size;
   float vertices[6];
-  WorldObject();
+  explicit WorldObject(string id);
   WorldObject (Vec3 size, Vec3 position, string id);
-  void generateVertices(float *buffer);
   void setPos(Vec3 pos);
+  void setPos(float xPos, float yPos, float zPos);
   void move(Vec3 offset);
-  void setTransform(Vec3 transform);
+  void move(float xDistance, float yDistance, float zDistance);
+  void setTransform(Vec3 scaleFactor);
+  void setTransform(float xTransform, float yTransform, float zTransform);
   void scaleBy(float scaleFactor);
-  void scaleBy(Vec3 scale);
+  void scaleBy(Vec3 scaleFactor);
+  void scaleBy(float xScale, float yScale, float zScale);
 };
 
 #endif //DAC_SCENEOBJECT_H

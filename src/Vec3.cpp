@@ -10,3 +10,9 @@ Vec3::Vec3(float x, float y, float z) {
   this->y = y;
   this->z = z;
 }
+
+Vec3::Vec3(){
+  this->x = 0.0f;
+  this->y = 0.0f;
+  this->z = 0.0f;
+}

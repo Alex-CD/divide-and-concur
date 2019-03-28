@@ -30,8 +30,10 @@ void DG1GameLogic::logicLoop(){
 
   while(!*this->isTerminating){
     if((clock() - lastObjCreation) >= intervalTicks){
-      currentObj = objects->addObject(this->objects->addObject(new Vector(100, 100, 100, "")));
-      currentObj->setPos((rand() % 1000) - 500, (rand() % 1000) - 500, 0);
+      currentObj = objects->addObject(this->objects->addObject(new Vector(Vec3(100, 100, 100), "")));
+
+
+      currentObj->setPos(Vec3((rand() % 1000) - 500, (rand() % 1000) - 500, 0));
       lastObjCreation = clock();
     }
   }

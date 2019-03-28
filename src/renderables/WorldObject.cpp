@@ -6,7 +6,7 @@
 
 
 
-WorldObject::WorldObject():Object(id) {
+WorldObject::WorldObject(string id):Object(id) {
   this->position = Vec3(0.0f, 0.0f, 0.0f);
   this->size = Vec3(0.0f, 0.0f, 0.0f);
   this->transform = Vec3(0.0f, 0.0f, 0.0f);
@@ -36,6 +36,16 @@ void WorldObject::setPos(Vec3 pos) {
 }
 
 /**
+ *
+ * @param xPos
+ * @param yPos
+ * @param zPos
+ */
+void WorldObject::setPos(float xPos, float yPos, float zPos) {
+  this->setPos(Vec3(xPos, yPos, zPos));
+}
+
+/**
  * Moves this object a distance (in px)
  * @param xDistance Distance to move (in the x plane)
  * @param yDistance Distance to move. (in the y plane)
@@ -47,14 +57,18 @@ void WorldObject::move(Vec3 offset) {
   this->pos.z += offset.z;
 }
 
+
+void WorldObject::move(float xDistance, float yDistance, float zDistance) {
+  this->move(Vec3(xDistance, yDistance, zDistance));
+}
+
+
 /**
  * Scales the object by a factor (taking into account current scaling), preserving aspect ratio.
  * @param scaleFactor Factor to scale by.
  */
 void WorldObject::scaleBy(float scaleFactor) {
-  this->transform.x *= scaleFactor;
-  this->transform.y *= scaleFactor;
-  this->transform.z *= scaleFactor;
+  this->scaleBy(Vec3(scaleFactor, scaleFactor, scaleFactor));
 }
 
 /**
@@ -63,10 +77,14 @@ void WorldObject::scaleBy(float scaleFactor) {
  * @param scaleFactorY
  * @param scaleFactorZ
  */
-void WorldObject::scaleBy(Vec3 scale) {
-  this->transform.x *= scale.x;
-  this->transform.y *= scale.y;
-  this->transform.z *= scale.z;
+void WorldObject::scaleBy(float xScale, float yScale, float zScale) {
+  this->scaleBy(Vec3(xScale, yScale, zScale));
+}
+
+void WorldObject::scaleBy(Vec3 scaleFactor) {
+  this->transform.x *= scaleFactor.x;
+  this->transform.x *= scaleFactor.y;
+  this->transform.x *= scaleFactor.z;
 }
 
 /**
@@ -75,17 +93,13 @@ void WorldObject::scaleBy(Vec3 scale) {
  * @param yTransform Factor to scale by, in the y plane
  * @param zTransform Factor to scale by, in the z plane
  */
-void WorldObject::setTransform(Vec3 transform) {
-  this->transform.x = transform.x;
-  this->transform.y = transform.y;
-  this->transform.z = transform.z;
+void WorldObject::setTransform(Vec3 scaleFactor) {
+  this->transform.x = scaleFactor.x;
+  this->transform.y = scaleFactor.y;
+  this->transform.z = scaleFactor.z;
 }
 
-/**
- * Generates the vertices for this object,
- * outputs into the given buffer.
- * @param buffer Buffer to store vertices in.
- */
-void WorldObject::generateVertices(float *buffer) {
-  // TODO
+
+void WorldObject::setTransform(float xTransform, float yTransform, float zTransform) {
+  setTransform(Vec3(xTransform, yTransform, zTransform));
 }

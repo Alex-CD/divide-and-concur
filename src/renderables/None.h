@@ -14,13 +14,15 @@
 class None: public Object {
  public:
   None();
-  GLuint bufferSize = 0;
   void generateVertices(float *buffer, int xViewportSize, int yViewportSize);
   void setPos(Vec3 pos);
-  void translate(Vec3 distance);
-  void setTransform(Vec3 transform);
+  void setPos(float xPos, float yPos, float zPos);
+  void move(Vec3 distance);
+  void move(float xDistance, float yDistance, float zDistance);
+  void setTransform(float xTransform, float yTransform, float zTransform);
   void scaleBy(float scaleFactor);
-  void scaleBy(Vec3 transform);
+  void scaleBy(Vec3 scaleFactor);
+  void scaleBy(float xScale, float yScale, float zScale);
 };
 
 #endif //DAC_NONE_H

@@ -5,11 +5,11 @@
 #include "Vector.h"
 
 
-struct vec3 {
-  float x;
-  float y;
-  float z;
-};
+
+Vector::Vector(Vec3 size, string id):WorldObject(id){
+  this->size = size;
+  this->pos = Vec3();
+}
 
 /**
  *
@@ -18,14 +18,15 @@ struct vec3 {
  * @param zPos
  * @param id
  */
-Vector::Vector(Vec3 colour1, Vec3 colour2, Vec3 colour3, Vec3 pos, Vec3 size, string id):WorldObject(pos, size, id){
+Vector::Vector(Vec3 colour1, Vec3 colour2, Vec3 colour3, Vec3 pos, Vec3 size, string id):WorldObject(size, pos, id){
   this->col1 = colour1;
   this->col2 = colour2;
   this->col3 = colour3;
 }
 
 
-Vector::Vector(Vec3 pos, Vec3 size, string id):WorldObject(pos, size, id) {
+
+Vector::Vector(Vec3 pos, Vec3 size, string id):WorldObject(size, pos, id) {
   this->bufferSize = 3 * sizeof(int);
 
   //Default white colour
@@ -70,6 +71,12 @@ void Vector::generateVertices(float *buffer, int xViewportSize, int yViewportSiz
   buffer[3] = this->col3.x;
   buffer[4] = this->col3.y;
   buffer[5] = this->col3.z;
+}
+
+void Vector::setColour(Vec3 col1, Vec3 col2, Vec3 col3) {
+  this->col1 = col1;
+  this->col2 = col2;
+  this->col3 = col3;
 }
 
 /**
