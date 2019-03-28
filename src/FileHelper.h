@@ -13,7 +13,9 @@
 
 using namespace std;
 
-
+/**
+ * Helper classed, used to save and load files.
+ */
 class FileHelper {
  public:
   static void saveString(string toSave, string filePath);

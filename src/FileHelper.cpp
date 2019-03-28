@@ -14,8 +14,9 @@ using namespace std;
 
 
 /**
- *
- * @return
+ * Saves a given string to a given file.
+ * @param toSave String to save.
+ * @param filePath File in which to save file (include file extension if needed)
  */
 void FileHelper::saveString(string toSave, string filePath) {
 
@@ -28,8 +29,9 @@ void FileHelper::saveString(string toSave, string filePath) {
 }
 
 /**
- *
- * @return
+ * Loads a given file to a string.
+ * @param filePath Path to the file to load.
+ * @return A string containing lines from the loaded file.
  */
 string FileHelper::loadString(string filePath) {
 
