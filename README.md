@@ -51,7 +51,7 @@ You'll need the x11 window manager dev tools to build this.
 sudo apt-get install x11-dev
 ```
 
- 
+
 ##### GLFW (v3.2.1 tested):
 
 GLFW is the wrapper library for OpenGL, for things like window management.
@@ -89,5 +89,14 @@ It should work with up to date versions of g++, gcc and make.
 ### Running
 
 Compiling the project will spit out two executables, one is the program itself, one is a test suite.
+
+## How to create a new game
+
+1. Create a new folder inside src/Games
+2. Create two new classes, inheriting from Core and GameLogic respectively.
+3. Include boilerplate constructors (see Demo Game 1)
+4. Import any required classes from renderables/
+5. Write game logic code in GameLogic
+6. Add game to launcher in Main.cpp
 
 # License
