@@ -3,9 +3,9 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>472</x>
-      <y>696</y>
-      <w>1112</w>
+      <x>0</x>
+      <y>1672</y>
+      <w>1088</w>
       <h>568</h>
     </coordinates>
     <panel_attributes>dac</panel_attributes>
@@ -14,13 +14,13 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>544</x>
-      <y>1168</y>
+      <x>296</x>
+      <y>2144</y>
       <w>184</w>
       <h>72</h>
     </coordinates>
     <panel_attributes>&lt;&lt;singleton&gt;&gt;
-Main.cpp
+Main
 --
 Instantiates games, and persists.</panel_attributes>
     <additional_attributes/>
@@ -28,8 +28,8 @@ Instantiates games, and persists.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>616</x>
-      <y>1232</y>
+      <x>368</x>
+      <y>2208</y>
       <w>80</w>
       <h>88</h>
     </coordinates>
@@ -40,329 +40,244 @@ Instantiates games, and persists.</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>896</x>
-      <y>1000</y>
+      <x>648</x>
+      <y>1976</y>
       <w>176</w>
       <h>208</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
-core.cpp
+core
 --
 
 - Objects[]
 
-- TexturesPaths[]
-- AudioPaths[]
+- Textures[]
+- AudioFiles[]
 
 - audioQueue[]
 - audioQueueMutex
-
-- networkQueue
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>616</x>
-      <y>1112</y>
+      <x>368</x>
+      <y>2072</y>
       <w>128</w>
-      <h>72</h>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Instantiates games</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>536</x>
-      <y>1016</y>
+      <x>288</x>
+      <y>1992</y>
       <w>176</w>
       <h>88</h>
     </coordinates>
-    <panel_attributes>test-game.cpp
+    <panel_attributes>Game2Core
 --
---</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>536</x>
-      <y>912</y>
-      <w>176</w>
-      <h>88</h>
-    </coordinates>
-    <panel_attributes>chessLogic.cpp
---
---
+
+Instantiates components
+relating to this game.
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1096</x>
-      <y>856</y>
-      <w>120</w>
-      <h>72</h>
+      <x>288</x>
+      <y>1888</y>
+      <w>176</w>
+      <h>88</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;interface&gt;&gt;
-renderer.cpp
+    <panel_attributes>Game2Logic
 --
--objects*</panel_attributes>
+Implements game logic
+for this game</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1096</x>
-      <y>744</y>
+      <x>848</x>
+      <y>1776</y>
       <w>120</w>
-      <h>104</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
-gameLogic.cpp
+gameLogic
 --
 - objects*
-- audioQueue*</panel_attributes>
+- audioQueue*
+- isTerminating*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>784</x>
-      <y>832</y>
+      <x>528</x>
+      <y>1776</y>
       <w>144</w>
       <h>88</h>
     </coordinates>
     <panel_attributes>&lt;&lt;consumer&gt;&gt; &lt;&lt;abstract&gt;&gt;
-audioHandler.cpp
+audioHandler
 --
 
 - audioQueue*
-- audioQueueMutex*</panel_attributes>
+- audioQueueMutex*
+- isTerminating*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1056</x>
-      <y>920</y>
-      <w>72</w>
-      <h>96</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>70.0;10.0;10.0;100.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>856</x>
-      <y>912</y>
-      <w>72</w>
-      <h>104</h>
+      <x>744</x>
+      <y>1840</y>
+      <w>128</w>
+      <h>152</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-</panel_attributes>
-    <additional_attributes>10.0;10.0;70.0;110.0</additional_attributes>
+instantiates &amp;
+runs in new thread</panel_attributes>
+    <additional_attributes>10.0;10.0;20.0;170.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1064</x>
-      <y>768</y>
+      <x>600</x>
+      <y>1856</y>
+      <w>128</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+instantiates &amp;
+runs in new thread</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0;80.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>816</x>
+      <y>1864</y>
       <w>216</w>
-      <h>264</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
+instantiates &amp;
+runs in new thread
 </panel_attributes>
-    <additional_attributes>190.0;10.0;250.0;40.0;250.0;220.0;10.0;310.0</additional_attributes>
+    <additional_attributes>120.0;10.0;120.0;90.0;10.0;160.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>512</x>
-      <y>864</y>
+      <x>32</x>
+      <y>1848</y>
       <w>224</w>
       <h>256</h>
     </coordinates>
-    <panel_attributes>games</panel_attributes>
+    <panel_attributes>game1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>936</x>
-      <y>848</y>
-      <w>120</w>
-      <h>72</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;interface&gt;&gt;
-networkHandler.cpp
---
-- objects*</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1336</x>
-      <y>1016</y>
-      <w>104</w>
-      <h>88</h>
-    </coordinates>
-    <panel_attributes>chessPiece.cpp
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1144</x>
-      <y>1016</y>
+      <x>912</x>
+      <y>2008</y>
       <w>144</w>
-      <h>192</h>
+      <h>152</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
-Object.cpp
---
-
--XPos
--YPos
--ZPos
-
--Mutex
--Draw()</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1064</x>
-      <y>1056</y>
-      <w>96</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-</panel_attributes>
-    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>944</x>
-      <y>912</y>
-      <w>24</w>
-      <h>104</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1280</x>
-      <y>1056</y>
-      <w>72</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;&gt;
-Extends</panel_attributes>
-    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1320</x>
-      <y>984</y>
-      <w>136</w>
-      <h>136</h>
-    </coordinates>
-    <panel_attributes>example</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1288</x>
-      <y>752</y>
-      <w>120</w>
-      <h>104</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;abstract&gt;&gt;
-InputHandler.cpp
---
-- objects*
-- audioQueue*</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1064</x>
-      <y>848</y>
-      <w>304</w>
-      <h>200</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-</panel_attributes>
-    <additional_attributes>360.0;10.0;360.0;120.0;10.0;230.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>784</x>
-      <y>96</y>
-      <w>144</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;abstract, polymorphic&gt;&gt;
 Object
 --
--Draw()
--Mutex
-
-- xPos
-- yPos</panel_attributes>
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>816</x>
+      <y>2048</y>
+      <w>112</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;.
+Has a linked
+list of</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>888</x>
+      <y>1984</y>
+      <w>184</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>renderable</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>880</x>
-      <y>480</y>
+      <x>536</x>
+      <y>1056</y>
+      <w>144</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;virtual, polymorphic&gt;&gt;
+Object
+--
+- generateVertices()
+- scaleBy
+- move
+
+- xPos
+- yPos
+
+- mutex</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>632</x>
+      <y>1456</y>
       <w>144</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>Sprite
 --
-- Draw()
+- generateVertices()
+- generateVertices()
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1032</x>
-      <y>480</y>
+      <x>784</x>
+      <y>1456</y>
       <w>144</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>Vector
 --
-- Draw()
+- generateVertices()
 - vertices[,]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>656</x>
-      <y>288</y>
+      <x>408</x>
+      <y>1264</y>
       <w>144</w>
       <h>128</h>
     </coordinates>
@@ -378,73 +293,80 @@ Object
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>416</x>
-      <y>480</y>
+      <x>168</x>
+      <y>1456</y>
       <w>144</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>Button
 --
-- Draw()
+- generateVertices()
 - buttonText</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>712</x>
-      <y>208</y>
+      <x>464</x>
+      <y>1200</y>
       <w>120</w>
-      <h>96</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 is a</panel_attributes>
-    <additional_attributes>10.0;100.0;130.0;10.0</additional_attributes>
+    <additional_attributes>10.0;80.0;130.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>808</x>
-      <y>288</y>
+      <x>560</x>
+      <y>1264</y>
       <w>144</w>
-      <h>128</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes>WorldObject
 --
-</panel_attributes>
+- generateVertices()
+- scaleBy
+- move
+
+- xPos
+- yPos
+
+- mutex</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>856</x>
-      <y>208</y>
+      <x>608</x>
+      <y>1200</y>
       <w>40</w>
-      <h>96</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 is a</panel_attributes>
-    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
-      <y>480</y>
+      <x>472</x>
+      <y>1456</y>
       <w>144</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>Text
 --
-- Draw()
+- generateVertices()
 - string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>408</y>
+      <x>376</x>
+      <y>1384</y>
       <w>72</w>
       <h>88</h>
     </coordinates>
@@ -455,44 +377,44 @@ is a</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>736</x>
-      <y>408</y>
-      <w>72</w>
-      <h>88</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;&gt;
-is a</panel_attributes>
-    <additional_attributes>70.0;90.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>872</x>
-      <y>408</y>
-      <w>72</w>
-      <h>88</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;&gt;
-is a</panel_attributes>
-    <additional_attributes>70.0;90.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>896</x>
-      <y>408</y>
-      <w>216</w>
-      <h>88</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;&gt;
-is a</panel_attributes>
-    <additional_attributes>250.0;90.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
       <x>488</x>
-      <y>408</y>
+      <y>1384</y>
+      <w>72</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+is a</panel_attributes>
+    <additional_attributes>70.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>624</x>
+      <y>1400</y>
+      <w>72</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+is a</panel_attributes>
+    <additional_attributes>70.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>1400</y>
+      <w>216</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+is a</panel_attributes>
+    <additional_attributes>250.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>1384</y>
       <w>184</w>
       <h>88</h>
     </coordinates>
@@ -503,53 +425,438 @@ is a</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>568</x>
-      <y>480</y>
-      <w>144</w>
-      <h>112</h>
-    </coordinates>
-    <panel_attributes>Cursor
---
-- Draw()
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>608</x>
-      <y>784</y>
-      <w>504</w>
-      <h>96</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;&gt;
-Extend</panel_attributes>
-    <additional_attributes>10.0;100.0;10.0;30.0;610.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1192</x>
-      <y>480</y>
+      <x>944</x>
+      <y>1456</y>
       <w>144</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>TexturedShape
 --
-- Draw()
+- generateVertices()
 - Lines[,]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>944</x>
-      <y>400</y>
+      <x>696</x>
+      <y>1376</y>
       <w>328</w>
       <h>96</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 is a</panel_attributes>
     <additional_attributes>390.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>264</x>
+      <y>1848</y>
+      <w>224</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>game2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>64</x>
+      <y>1888</y>
+      <w>176</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Game1Logic
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>64</x>
+      <y>1992</y>
+      <w>176</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Game1Core.cpp
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>1024</y>
+      <w>1088</w>
+      <h>576</h>
+    </coordinates>
+    <panel_attributes>renderables</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>704</x>
+      <y>1776</y>
+      <w>120</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+renderer
+--
+-objects*
+-isTerminating*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>1696</y>
+      <w>152</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Filehelper
+--
+
+- saveString()
+- loadString()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>168</x>
+      <y>1696</y>
+      <w>152</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Mouse
+--
+
+- xPos
+- yPos</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>1456</y>
+      <w>144</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>Cursor
+--
+- generateVertices()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>512</x>
+      <y>424</y>
+      <w>104</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>
+
+
+
+
+
+
+Game1Core.cpp</panel_attributes>
+    <additional_attributes>50.0;10.0;80.0;70.0;40.0;110.0;70.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>464</x>
+      <y>240</y>
+      <w>88</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>
+
+
+
+
+
+
+Renderer.cpp</panel_attributes>
+    <additional_attributes>40.0;10.0;70.0;70.0;30.0;110.0;60.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>240</y>
+      <w>136</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>
+
+
+
+
+
+
+Game1GameLogic.cpp</panel_attributes>
+    <additional_attributes>70.0;10.0;100.0;70.0;60.0;110.0;90.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>744</x>
+      <y>208</y>
+      <w>336</w>
+      <h>392</h>
+    </coordinates>
+    <panel_attributes>Game 2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>424</x>
+      <y>208</y>
+      <w>304</w>
+      <h>392</h>
+    </coordinates>
+    <panel_attributes>Game 1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>704</x>
+      <y>624</y>
+      <w>64</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>
+
+
+
+
+
+
+Main.cpp</panel_attributes>
+    <additional_attributes>30.0;10.0;60.0;70.0;20.0;110.0;50.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>248</y>
+      <w>88</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>
+
+
+
+
+
+
+Renderer.cpp</panel_attributes>
+    <additional_attributes>40.0;10.0;70.0;70.0;30.0;110.0;60.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>904</x>
+      <y>248</y>
+      <w>136</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>
+
+
+
+
+
+
+GameGameLogic.cpp</panel_attributes>
+    <additional_attributes>70.0;10.0;100.0;70.0;60.0;110.0;90.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>848</x>
+      <y>424</y>
+      <w>104</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>
+
+
+
+
+
+
+Game2Core.cpp</panel_attributes>
+    <additional_attributes>50.0;10.0;80.0;70.0;40.0;110.0;70.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>240</x>
+      <y>96</y>
+      <w>1040</w>
+      <h>720</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>712</x>
+      <y>112</y>
+      <w>80</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>dac.exe process</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>1120</x>
+      <y>400</y>
+      <w>120</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+[for n games]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1528</x>
+      <y>232</y>
+      <w>168</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Renderer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1528</x>
+      <y>296</y>
+      <w>168</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Game1Core</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1528</x>
+      <y>376</y>
+      <w>168</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Game1GameLogic</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1480</x>
+      <y>200</y>
+      <w>256</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>Game1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1664</x>
+      <y>520</y>
+      <w>168</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Main</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1760</x>
+      <y>200</y>
+      <w>256</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>Game2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1808</x>
+      <y>232</y>
+      <w>168</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Renderer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1808</x>
+      <y>296</y>
+      <w>168</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>Game2Core</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1808</x>
+      <y>376</y>
+      <w>168</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Game2GameLogic</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>2056</x>
+      <y>312</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>[for n games]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1456</x>
+      <y>160</y>
+      <w>704</w>
+      <h>472</h>
+    </coordinates>
+    <panel_attributes>dac.exe</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
