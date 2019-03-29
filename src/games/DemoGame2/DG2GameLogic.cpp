@@ -42,6 +42,13 @@ void DG2GameLogic::logicLoop(){
       ((Vector *)currentObject)->setColour(Vec3(0.5f, 0.0f, 0.0f),Vec3(1.0f, 0.5f, 1.0f),Vec3());
       currentObject->setPos(Vec3(this->mouse->xPos, this->mouse->yPos, 0));
     }
+
+    if(this->mouse->rightButtonIsDown){
+      this->saveLog("Hello world! This is a log. Gonna terminate now, if you don't mind.", "Game1");
+      *this->isTerminating = true;
+    }
   }
+
+
 }
 

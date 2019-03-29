@@ -2,8 +2,9 @@
 // Created by Alex on 23/11/2018.
 //
 
-#include "GameLogic.h"
-#include "renderables/DoubleLinkedObject.h"
+#include <GameLogic.h>
+#include <renderables/DoubleLinkedObject.h>
+#include <FileHelper.h>
 
 
 /**
@@ -16,6 +17,15 @@ GameLogic::GameLogic(bool *isTerminating, DoubleLinkedObject* objects, Mouse *mo
   this->isTerminating = isTerminating;
   this->objects = objects;
   this->mouse = mouse;
+}
+
+/**
+ * Saves a gameLog to a file.
+ * @param logText Log text to save.
+ * @param logName Name of the log (EXCLUDING EXTENSION)
+ */
+void GameLogic::saveLog(string logText, string logName) {
+  FileHelper::saveString(logText, logName + ".gamelog");
 }
 
 

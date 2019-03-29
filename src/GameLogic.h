@@ -6,7 +6,8 @@
 #define DAC_GAMELOGIC_H
 
 #include <renderables/DoubleLinkedObject.h>
-#include "Mouse.h"
+#include <FileHelper.h>
+#include <Mouse.h>
 #include <iostream>
 #include <cmath>
 
@@ -22,6 +23,7 @@ class GameLogic {
   DoubleLinkedObject *objects;
   bool *isTerminating;
   virtual void logicLoop() = 0;
+  void saveLog(string logText, string logName);
   Mouse *mouse;
 };
 
