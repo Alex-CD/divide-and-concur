@@ -21,11 +21,13 @@
  * @param objects Pointer to the list of objects to be rendered by the rendering loop.
  * @param mouse Pointer to the mouse object, so that the viewbox size can be passed.
  */
-Renderer::Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *objects, Mouse *mouse) {
+Renderer::Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *objects, Mouse *mouse, string windowName) {
   this->isTerminating = isTerminating;
   this->maxObjects = maxObjects;
   this->objects = objects;
   this->mouse = mouse;
+
+  this->windowText = windowName;
 
   this->xViewportSizePx = 400;
   this->yViewportSizePx = 400;
@@ -218,6 +220,7 @@ int Renderer::initWindow() {
   /* Create a windowed mode window and its OpenGL context */
   window = glfwCreateWindow(400, 400, "Divide and Concur", nullptr, nullptr);
 
+  glfwSetWindowTitle(window, windowText.c_str());
   if (!window) {
     *this->isTerminating = true;
     glfwTerminate();

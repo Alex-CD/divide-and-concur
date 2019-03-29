@@ -31,11 +31,12 @@ using namespace std;
  */
 class Core {
  public:
-  Core();
+  explicit Core(string gameName);
   void terminate();
   int getState();
   static void *threadEntry(void *param);
   void start();
+  string gameName;
   int maxObjects;
   Renderer *renderer;
   GameLogic *gameLogic;

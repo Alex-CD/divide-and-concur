@@ -13,6 +13,7 @@
 
 DG1GameLogic::DG1GameLogic(bool *isTerminating, DoubleLinkedObject *objects, Mouse *mouse):GameLogic(isTerminating, objects, mouse) {}
 
+// This thread should be nonterminating, containing a loop that terminates when this->isTerminating is true.
 void DG1GameLogic::logicLoop(){
 
   bool buttonStillDown = false;
@@ -32,7 +33,6 @@ void DG1GameLogic::logicLoop(){
 
   float OBJ_SIZE_RANGE = 200.0f;
   float MIN_OBJ_WIDTH = 50.0f;
-
 
 
   while(!*this->isTerminating){

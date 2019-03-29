@@ -24,7 +24,7 @@ using namespace std;
  */
 class Renderer {
  public:
-  explicit Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *objects, Mouse *mouse);
+  explicit Renderer(bool *isTerminating, int *maxObjects, DoubleLinkedObject *objects, Mouse *mouse, string windowName);
   static void *threadEntry(void *param);
   void start();
   void showCursor();
@@ -41,6 +41,7 @@ class Renderer {
   void renderLoop();
   void saveLog(char* toSave, string filename);
   bool *isTerminating;
+  string windowText;
   int *maxObjects;
   int xViewportSizePx, yViewportSizePx;
   Mouse *mouse;

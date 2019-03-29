@@ -16,7 +16,7 @@
 /**
  * Default constructor
  */
-Core::Core(){
+Core::Core(string gameName){
   this->renderer = nullptr;
   this->audioHandler = nullptr;
   this->gameLogic = nullptr;
@@ -24,7 +24,7 @@ Core::Core(){
   this->maxObjects = 90000;
   this->mouse = Mouse();
   this->objectsHead = new DoubleLinkedObject(new None());
-
+  this->gameName = gameName;
 }
 
 
@@ -54,7 +54,7 @@ void Core::start(){
  * (Components should already be initialised!)
  */
 void Core::startComponents(){
-  this->renderer = new Renderer(&this->isTerminating, &this->maxObjects, this->objectsHead, &this->mouse);
+  this->renderer = new Renderer(&this->isTerminating, &this->maxObjects, this->objectsHead, &this->mouse, this->gameName);
 
   pthread_create(&this->renderThread, nullptr, Renderer::threadEntry, this->renderer);
   //pthread_create(&this->audioHandlerThread, nullptr, AudioHandler::threadEntry, this->audioHandler);

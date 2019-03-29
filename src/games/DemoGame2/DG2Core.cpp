@@ -6,7 +6,7 @@
 
 #include "DG2GameLogic.h"
 
-DG2Core::DG2Core():Core(){
+DG2Core::DG2Core():Core("Demo Game 2 - \"Click me baby, one more time\""){
   this->gameLogic = new DG2GameLogic(&isTerminating, this->objectsHead, &this->mouse);
 
   // TODO load list from file
