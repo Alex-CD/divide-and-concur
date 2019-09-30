@@ -1,5 +1,32 @@
 # Divide and Concur
-A concurrency-base game environment, written in C++.
+
+![DaC screenshot](docs/images/readme_splash.gif)
+
+
+### What is is
+
+A basic multithreading game engine, with collection of simple demonstration games.
+
+This was my first foray into low-level graphics programming, and was the product of the dissertation for my Software Engineering BSc.
+
+### What is does
+
+Runs multiple different games at once (under the same process), with each game being run by several of its own threads, concurrently handling game logic and rendering.
+
+It's a simple a simple framework for games, providing utility for object creation, and automatically handling window creation and rendering.
+
+Ideally, it functions as an example of how to handle multithreading with GLFW, if somewhat bloated!
+
+### What it's built with
+
+Written in: [C++](https://isocpp.org/), [GLSL](https://www.khronos.org/opengl/wiki/OpenGL_Shading_Language)
+
+Uses: [OpenGL](https://www.opengl.org/),
+[GLFW](https://www.glfw.org/),
+[GLAD](https://glad.dav1d.de/),
+[GLM](https://glm.g-truc.net/0.9.9/index.html)
+[Doxygen](https://glm.g-truc.net/0.9.9/index.html)
+
 
 ## Getting started
 
