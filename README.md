@@ -13,7 +13,7 @@ This was my first foray into low-level graphics programming, and was the product
 
 Runs multiple different games at once (under the same process), with each game being run by several of its own threads, concurrently handling game logic and rendering.
 
-It's a simple a simple framework for games, providing utility for object creation, and automatically handling window creation and rendering.
+It's a simple framework for games, providing utility for object creation, and automatically handling window creation and rendering.
 
 Ideally, it functions as an example of how to handle multithreading with GLFW, if somewhat bloated!
 
