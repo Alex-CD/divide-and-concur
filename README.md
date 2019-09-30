@@ -24,7 +24,7 @@ Written in: [C++](https://isocpp.org/), [GLSL](https://www.khronos.org/opengl/wi
 Uses: [OpenGL](https://www.opengl.org/),
 [GLFW](https://www.glfw.org/),
 [GLAD](https://glad.dav1d.de/),
-[GLM](https://glm.g-truc.net/0.9.9/index.html)
+[GLM](https://glm.g-truc.net/0.9.9/index.html),
 [Doxygen](https://glm.g-truc.net/0.9.9/index.html)
 
 
