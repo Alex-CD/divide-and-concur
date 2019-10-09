@@ -7,7 +7,18 @@
 
 A basic multithreading game engine, with collection of simple demonstration games.
 
-This was my first foray into low-level graphics programming, and was the product of the dissertation for my Software Engineering BSc.
+> This was my first foray into low-level graphics programming, my first big c++ project and was the product of the dissertation for my Software Engineering BSc.
+>
+> Aside from getting my head around the ins and outs of graphics programming, this project taught me a couple of lessons about writing software.
+>
+> 1. Always. Have. A. Goal. -  It's not enough to specify a feature or use case and just '_code till it's done_'. Brains are dumb, and I'll forget what I was working towards, and write a bunch of code that I'll never use (like a lot of the code in this project).  Meeting smaller goals gives a tangible feeling of progress, which is a bonus.
+>
+>
+> 2. Know your tools - I spent many an evening smashing my head against the keyboard trying to fix inexplicable bugs, because I didn't really understand how CMAKE, or the C++ build process worked. Having more than a surface-level understanding savs time in the long term!
+>
+>
+> 3. Unit testing is a godsend in large projects - I gave up on unit testing fairly early on, I thought it took to long to run. Once you start to hit several layers of abstraction, you start to regret not having it.
+
 
 ### What is does
 
@@ -26,6 +37,7 @@ Uses: [OpenGL](https://www.opengl.org/),
 [GLAD](https://glad.dav1d.de/),
 [GLM](https://glm.g-truc.net/0.9.9/index.html),
 [Doxygen](https://glm.g-truc.net/0.9.9/index.html)
+
 
 
 ## Getting started
